@@ -1,0 +1,72 @@
+{%extends "registration/base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+<br><br><br> <br>
+<!-- <style>
+    .card {
+        padding: 4%;
+        border-radius: 10%;
+        background: linear-gradient(to top left, #f19ee6, #99f048);
+        filter: drop-shadow(2px 4px 8px #585858);
+    }
+
+    .card:hover {
+        filter: drop-shadow(2px 4px 8px #fff);
+    }
+
+    .title {
+        font-weight: 900;
+        font-size: x-large;
+    }
+
+    .guide {
+        padding-bottom: 10%;
+        border-bottom: .5px solid black;
+    }
+</style> -->
+
+<div class="container mt-5" style="align-items:center; width:60%">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6" style="width: 100%; padding:10%;">
+                
+                <div class="input">
+                    <div class="text-center">
+                        <div class="title">Create a profile to start using Sophia's products.</div>
+                        <hr />
+                        <div class="guide">
+                            Please add an image for your profile picture, a bio and your contact.
+                        </div>
+                    </div>
+
+                    <form action="{%url 'create_profile'%}" method="post" enctype="multipart/form-data">
+                        {%csrf_token%} {% bootstrap_form form%}
+                        <input type="submit" class="btn btn-dark" value="Create Profile"/>
+                    </form>
+                    {% include 'alerts.html'%}
+                    <div class="guide">
+                        <p>You can now visit the site and shop. <a href="{% url 'index' %}" class="btn btn-light btn-block">Go to Home</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="container-full container">
+    <div class="row">
+        <h1 class="text-center">Welcome To <span>Sophias Kitchen</span></h1>
+        <h4 class="text-center">Lets start by <span>CREATING YOUR PROFILE</span></h4>
+        <br><br>
+
+        <div class="">
+            <form action="{%url 'create_profile'%}" method="post" enctype="multipart/form-data" class="create-profile">
+                {%csrf_token%} {% bootstrap_form form%}
+                <button class="btn" type="submit" style="background: #9C0646; color: #fff;" >Create Profile</button>
+            </form>
+            {% include 'alerts.html'%}
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,133 @@
+<style>
+    .box{
+        text-align: center;
+        /* background-color: grey; */
+        margin: 2%;
+    }
+    .box h3 {
+        width: 60%;
+        margin-left: 20%;
+    }
+    .box h3:hover{
+        border-bottom: 4px solid black;
+    }
+    .footer {
+        background-color: #fff;
+        padding-left: 5%;
+        padding-right: 5%;
+        text-transform: capitalize;
+        border-top: .5px solid grey;
+    }
+    
+    .footer .box-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(2%, .5fr));
+        gap: .2%;
+    }
+    
+    .footer .box-container .box h3 {
+        font-size: xx-large;
+        color: black;
+        padding: 2%;
+    }
+    
+    .footer .box-container .box .links {
+        display: block;
+        font-size: x-large;
+        color: black;
+        margin-top: 5%;
+    }
+    
+    .footer .box-container .box .links i {
+        padding-right: 0.5%;
+    }
+    
+    .footer .box-container .box .links:hover i {
+        padding-right: 5%;
+    }
+    
+    .footer .box-container .box p {
+        line-height: 1.8;
+        font-size: x-large;
+        color: black;
+        padding: 2%;
+    }
+    
+    .footer .box-container .box .share a {
+        height: 15%;
+        width: 15%;
+        line-height: 15%;
+        font-size: xx-large;
+        color: black;
+        margin-right: 0.2%;
+        background: none;
+        text-align: center;
+    }
+    
+    .footer .box-container .box .share a:hover {
+        background: inherit;
+        color: #fff;
+    }
+    
+    .footer .box-container .box .email {
+        width: 100%;
+        margin-bottom: 2%;
+        padding: 2%;
+        background: #eee;
+        font-size: larger;
+        color: black;
+        text-transform: none;
+    }
+    
+    #mail {
+        font-size: larger;
+    }
+    
+    .footer {
+        text-align: center;
+        margin-top: .5%;
+        padding: 1%;
+        padding-top: .5%;
+        font-size: x-large;
+        font-weight: 900;
+        color: var(--black);
+        border-top: 3px solid rgb(160, 156, 156);
+    }
+    
+    @media (max-width: 450px) {
+        .footer {
+            text-align: center;
+        }
+    }
+</style>
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>follow us</h3>
+            <div class="share">
+                <a href="https://www.instagram.com/sophias_confectionery.ke/" target="_blank" class="fab fa-instagram"></a>
+                <a href="https://www.youtube.com/channel/UCg1H4ynX55XErp-3Z-bDcFA" target="_blank" class="fab fa-youtube"></a>
+                <a href="https://twitter.com/TheeSophia?t=p2XK65vNaf4i0eTPqjIwdA&s=08" target="_blank" class="fab fa-twitter"></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +254798336626 </a>
+            <a href="#" class="links" id="mail" style="font-size: large;"> <i class="fas fa-envelope"></i>sophiasconfectionery@gmail.com </a>
+            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> juja, kenya. </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <input type="email" placeholder="Your Email" class="email">
+            <button class="btn btn-outline-success" type="submit">Subscribe</button>
+
+        </div>
+
+    </div>
+</section>

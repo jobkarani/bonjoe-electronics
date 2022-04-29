@@ -1,0 +1,466 @@
+import datetime
+from multiprocessing import context
+from re import sub
+import time
+from django.contrib import messages
+from django.db.models import Q
+from django.forms import SlugField
+import requests
+
+from .models import *
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, render, redirect
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from .email import send_welcome_email
+from .forms import *
+from django.core.paginator import PageNotAnInteger,EmptyPage,Paginator
+from django.core.exceptions import ObjectDoesNotExist
+from decouple import config, Csv
+from django.http.response import Http404
+
+from .mpesa_credentials import MpesaAccessToken, LipaNaMpesaPassword
+from .models import MpesaPayment
+
+# auth 
+
+@login_required(login_url="/accounts/login/")
+def create_profile(request):
+    current_user = request.user
+    title = "Create Profile"
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+            messages.success(request, 'Profile Succesfully Created')
+        return HttpResponseRedirect('/')
+
+    else:
+        form = ProfileForm()
+    return render(request, 'all-temps/create_profile.html', {"form": form, "title": title})
+
+
+
+
+@login_required(login_url="/accounts/login/")
+def profile(request):
+    current_user = request.user
+    profile = Profile.objects.filter(user_id=current_user.id).first()
+    product = Product.objects.filter(id=current_user.id).all()
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['user']
+            email = form.cleaned_data['email']
+            recipient = NewsLetterRecipients(name=name, email=email)
+            recipient.save()
+            send_welcome_email(name, email)
+
+            HttpResponseRedirect('profile')
+    else:
+        form = ProfileForm()
+
+    return render(request, "all-temps/profile.html", {"profile": profile, "product": product, "letterForm": form})
+
+
+@login_required(login_url="/accounts/login/")
+def create_profile(request):
+    current_user = request.user
+    title = "Create Profile"
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        return HttpResponseRedirect('/')
+
+    else:
+        form = ProfileForm()
+    return render(request, 'all-temps/create_profile.html', {"form": form, "title": title})
+
+
+def update_profile(request, id):
+    # current_user = request.user
+    user = User.objects.get(id=id)
+    profile = Profile.objects.get(user=user)
+    form = UpdateProfileForm(instance=profile)
+    if request.method == "POST":
+        form = UpdateProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+
+            profile = form.save(commit=False)
+            profile.save()
+            return redirect('profile')
+
+    ctx = {
+        "form": form,
+        "user":user,
+        "profile":profile,
+        }
+    return render(request, 'all-temps/update_prof.html', ctx)
+
+
+def About(request):
+
+    return render(request, 'all-temps/aboutus.html',)
+
+
+# pages 
+
+def index(request, category_slug=None):
+    categories = None
+    products = None
+
+    if category_slug != None:
+        categories = get_object_or_404(Category, slug=category_slug)
+        products = Product.objects.filter(category=categories, is_available=True)
+        product_count = products.count()
+    else:
+        products = Product.objects.all().filter(is_available=True)
+        product_count = products.count()
+    context = {
+        'products': products,
+        'product_count':product_count,
+    }
+    return render(request, 'all-temps/index.html', context)
+
+
+def shop(request, category_slug=None):
+    categories = None
+    products = None
+
+    if category_slug != None:
+        categories = get_object_or_404(Category, slug=category_slug)
+        products = Product.objects.filter(category=categories, is_available=True)
+        paginator = Paginator(products, 3)
+        page = request.GET.get('page')
+        paged_product = paginator.get_page(page)
+        product_count = products.count()
+    else:
+        products = Product.objects.all().filter(is_available=True)
+        paginator = Paginator(products, 3)
+        page = request.GET.get('page')
+        paged_product = paginator.get_page(page)
+        product_count = products.count()
+    context = {
+        'products': paged_product,
+        'product_count':product_count,
+    }
+    return render(request, 'all-temps/shop.html', context)
+
+def product_detail(request, category_slug, product_slug):
+
+    try:
+        single_product = Product.objects.get(category__slug=category_slug,slug=product_slug)
+        in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product )
+        
+    except Exception as e:
+        raise e
+    
+    context = {
+        'single_product': single_product,
+        'in_cart':in_cart
+    }
+    return render(request, 'all-temps/product.html',context)
+
+def _cart_id(request):
+    cart = request.session.session_key
+    if not cart:
+        cart = request.session.create()
+        return cart
+
+@login_required(login_url="/accounts/login/")
+def add_cart(request, product_id):
+    product = Product.objects.get(id = product_id) 
+    product_variation = []
+    if request.method == 'POST':
+        for item in request.POST:
+            key = item
+            value =request.POST[key]
+
+            try:
+                variation = Variation.objects.get(product=product, variation_category__iexact=key, variation_value__iexact=value)
+                product_variation.append(variation)
+            except:
+                pass
+
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request)) #get cart using cart_id present in the session
+    except Cart.DoesNotExist:
+        cart = Cart.objects.create(
+            cart_id = _cart_id(request)
+        )
+    cart.save()
+
+    is_cart_item_exists = CartItem.objects.filter(product=product, cart=cart).exists()
+    if is_cart_item_exists:
+        cart_item = CartItem.objects.filter(product=product, cart=cart)
+        ex_var_list = []
+        id = []
+        for item in cart_item:
+            existing_variation = item.variations.all()
+            ex_var_list.append(list(existing_variation))
+            id.append(item.id)
+
+        print(ex_var_list)
+
+        if product_variation in ex_var_list:
+            # increase CartItem qty
+            index = ex_var_list.index(product_variation)
+            item_id = id[index]
+            item = CartItem.objects.get(product=product, id=item_id)
+            item.quantity += 1
+            item.save()
+        else:
+            # add a new cartitem
+            item = CartItem.objects.create(product=product, quantity=1, cart=cart, user=request.user)
+            if len(product_variation) > 0:
+                item.variations.clear()
+                item.variations.add(*product_variation)
+            item.save()
+    else:
+        cart_item = CartItem.objects.create(
+            product = product,
+            quantity = 1,
+            cart = cart,
+            user=request.user,
+        )
+        if len(product_variation) > 0:
+            cart_item.variations.clear()
+            cart_item.variations.add(*product_variation)
+        cart_item.save()
+    
+    return redirect('cart')
+
+@login_required(login_url="/accounts/login/")
+def remove_cart(request, product_id,cart_item_id):
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    product = get_object_or_404(Product, id=product_id)
+    try:
+        cart_item = CartItem.objects.get(product=product, cart=cart, id=cart_item_id)
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+
+        else:
+            cart_item.delete()
+    except:
+        pass
+    
+    return redirect('cart')
+
+@login_required(login_url="/accounts/login/")
+def remove_cart_item(request, product_id, cart_item_id ):
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    product = get_object_or_404(Product, id=product_id)
+    
+    cart_item = CartItem.objects.get(product=product, cart=cart, id= cart_item_id)
+
+    cart_item.delete()
+    return redirect('cart')
+
+@login_required(login_url="/accounts/login/")
+def cart(request, total=0, quantity=0, cart_items=None): 
+    try:
+        sub_total = 0
+        if request.user.is_authenticated:
+            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+        else:
+            cart = Cart.objects.get(cart_id=_cart_id(request))
+            cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        for cart_item in cart_items:
+            total += (cart_item.product.price * cart_item.quantity)
+            quantity += cart_item.quantity
+            sub_total = total 
+    except ObjectDoesNotExist:
+        pass #just ignore
+
+    ctx = {
+        'total': total,
+        'quantity': quantity,
+        'cart_items': cart_items,
+        'sub_total': sub_total,
+    }
+
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart,is_active=True)
+        for cart_item in cart_items:
+            total += (cart_item.product.price*cart_item.quantity)
+    except ObjectDoesNotExist:
+        pass
+
+    ctx = {
+        'total':total,
+        'quantity':quantity,
+        'cart_items':cart_items
+    }
+    return render(request, 'all-temps/cart.html', ctx)
+
+def search(request):
+    if 'keyword' in request.GET:
+        keyword=request.GET['keyword']
+        if keyword:
+            products= Product.objects.order_by('-name').filter(Q(description__icontains=keyword) | Q(name__icontains=keyword))
+            product_count = products.count()
+    ctx={
+        'products':products,
+        'product_count':product_count,
+    }
+    return render(request, 'all-temps/shop.html', ctx)
+
+
+@login_required(login_url="/accounts/login/")
+def checkout(request, total=0, quantity=0, cart_items=None):
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart,is_active=True)
+        for cart_item in cart_items:
+            total += (cart_item.product.price*cart_item.quantity)
+    except ObjectDoesNotExist:
+        pass
+
+    ctx = {
+        'total':total,
+        'quantity':quantity,
+        'cart_items':cart_items
+    }
+    return render(request, 'all-temps/checkout.html',ctx)
+
+def payments(request):
+    
+    return render(request, 'all-temps/payments.html')
+
+@login_required(login_url="/accounts/login/")
+def place_order(request,total=0, quantity=0,):
+    current_user = request.user
+
+    cart_items = CartItem.objects.filter(user=current_user)
+    cart_count = cart_items.count()
+    if cart_count <= 0:
+        return redirect('shop')
+
+    
+    sub_total = 0
+    for cart_item in cart_items:
+        total += (cart_item.product.price*cart_item.quantity)
+        quantity += cart_item.quantity
+    sub_total = total
+    print(sub_total)
+
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            # store all billing info 
+            data = Order()
+            data.user = current_user
+            data.first_name = form.cleaned_data['first_name']
+            data.last_name = form.cleaned_data['last_name']
+            data.phone = form.cleaned_data['phone']
+            data.email = form.cleaned_data['email']
+            data.county = form.cleaned_data['county']
+            data.town = form.cleaned_data['town']
+            data.order_note = form.cleaned_data['order_note']
+            data.order_total = sub_total
+            data.ip = request.META.get('REMOTE_ADDR')
+            data.save()
+
+            # generate order number 
+            yr = int(datetime.date.today().strftime('%Y'))
+            dt = int(datetime.date.today().strftime('%d'))
+            mt = int(datetime.date.today().strftime('%m'))
+            d = datetime.date(yr,mt,dt)
+            current_date = d.strftime("%Y%m%d") #20210305
+            order_number = current_date + str(data.id)
+            data.order_number = order_number
+            data.save()
+
+            order = Order.objects.get(user=current_user,is_ordered=False,order_number=order_number)
+            ctx = {
+                'order':order,
+                'cart_items':cart_items,
+                'sub_total':sub_total,
+            }
+            return render(request, 'all-temps/payments.html',ctx)
+        
+
+    else:
+        return redirect('checkout')
+
+@login_required
+def userPayment(request):
+    current_user = request.user
+
+    cart_items = CartItem.objects.filter(user=current_user)
+    total = 0
+    quantity = 0
+    sub_total = 0
+    for cart_item in cart_items:
+        total += (cart_item.product.price*cart_item.quantity)
+        quantity += cart_item.quantity
+        sub_total = total
+    
+    if request.method == 'POST':
+        mpesa_form = PaymentForm(
+            request.POST, request.FILES, instance=request.user)
+        if mpesa_form.is_valid():
+            access_token = MpesaAccessToken().validated_mpesa_access_token
+            stk_push_api_url = config("STK_PUSH_API_URL")
+            headers = {
+                "Authorization": "Bearer %s" % access_token,
+                "Content-Type": "application/json",
+            }
+           
+            request = {
+                "BusinessShortCode": LipaNaMpesaPassword().BusinessShortCode,
+                "Password": LipaNaMpesaPassword().decode_password,
+                "Timestamp": LipaNaMpesaPassword().payment_time,
+                "TransactionType": "CustomerPayBillOnline",
+                "Amount": "1",
+                "PartyA": phoneSanitize(request.POST.get('phone')),
+                "PartyB": LipaNaMpesaPassword().BusinessShortCode,
+                "PhoneNumber": phoneSanitize(request.POST.get('phone')),
+                # "CallBackURL": "https://mpesa-api-python.herokuapp.com/api/v1/mpesa/callback/",
+                "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
+                "AccountReference": "Sophieskitchen",
+                "TransactionDesc": "Testing stk push",
+            }
+            response = requests.post(
+                stk_push_api_url, json=request, headers=headers)
+
+            print(response.text)
+
+            mpesa_form.save()
+            # messages.success(
+            # request, 'Your Payment has been made successfully')
+            user = User.objects.get(id=current_user.id)
+            user.save()
+            # time.sleep(10)
+            return redirect('userPayment')
+    else:
+        mpesa_form = PaymentForm(instance=request.user)
+    context = {
+        'mpesa_form': mpesa_form,
+        'cart_items':cart_items,
+        'sub_total':sub_total,
+    }
+    return render(request, 'all-temps/pay.html', context)
+
+
+def phoneSanitize(phone):
+    if phone.startswith("0"):
+        phone = phone.replace('0','254', 1)
+    elif phone.startswith("+254"):
+        phone = phone.replace('+254','254')
+    elif phone.startswith("+1"):
+        phone = phone.replace('+1','254')
+    elif phone.startswith("7"):
+        phone = phone.replace('7', '2547', 1)
+    print(phone)
+    return phone
+    
+print(phoneSanitize("0112528016"))
+        

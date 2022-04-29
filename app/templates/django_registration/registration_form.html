@@ -1,0 +1,115 @@
+{%extends "registration/base.html"%} {% load bootstrap5 %}
+{% load static %}
+{% load crispy_forms_tags%}
+{% block content %}
+
+
+<div class="content">
+  <div class="container">
+    <div class="row">
+      {% if form.errors %}
+      <p>Some Information Might be Incorrect</p>
+      {% endif %}
+      <div class="col-md-6">
+        <img class="sign" src="{%static 'image/undraw_my_password_re_ydq7.svg' %}" alt=""style="width: 100%; ">
+      </div>
+      <div class="col-md-6 contents">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="mb-4">
+            <h3>Register with your Email</h3>
+            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+          </div>
+          <form  method="post">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+  
+            <div class="form-group text-center">
+              <button class="btn " type="submit" style="background: #9C0646; color: #fff;">Sign Up</button>
+            </div>
+          </form>
+          </div>
+          <div class="card" >
+            <p>Already have an account?<a href="/accounts/login/">Login</a></p>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}
+
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Style 
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Sign Up #7</title>
+  </head>
+  <body>
+  
+
+  
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3>Sign Up</h3>
+              <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+            </div>
+            <form action="#" method="post">
+             
+              
+              <div class="d-flex mb-5 align-items-center">
+                <label class="control control--checkbox mb-0"><span class="caption">Creating an account means you're okay with our <a href="#">Terms and Conditions</a> and our <a href="#">Privacy Policy</a>.</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </div>
+
+              <input type="submit" value="Register" class="btn btn-block btn-primary">
+
+              <span class="d-block text-left my-4 text-muted">&mdash; or register with &mdash;</span>
+              
+              
+            </form>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html> -->

@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to Sophia's Kitchen. Make sure you go through our wonderful delicious menu and make an order. Delivery is free within the CBD. Orders made out of the CBD are charged at an extra fee depending on the pick-up point. 

@@ -1,0 +1,44 @@
+{%extends "registration/base.html"%}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+
+
+<div class="content">
+  <div class="container">
+    <div class="row">
+      {% if form.errors %}
+      <p>Some Information Might be Incorrect</p>
+      {% endif %}
+      <div class="col-md-6">
+        <img src="{% static 'image/undraw_welcome_re_h3d9.svg' %}" alt="" style="width: 100%; ">
+      </div>
+      <div class="col-md-6 contents">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="mb-4">
+            <h3>Login </h3>
+            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+          </div>
+          <form  method="post">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+  
+            <div class="form-group text-center">
+              <button class="btn" type="submit" style="background: #9C0646; color: #fff;" >Log In</button>
+            </div>
+          </form>
+          </div>
+          <div class="" style="margin-top: 1rem;padding-left: 5%;">
+            <p>Don't have an account?<a href="/accounts/register/">Register</a></p>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

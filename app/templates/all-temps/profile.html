@@ -1,0 +1,67 @@
+{% extends "all-temps/base.html" %}
+{% block content %}
+<br><br><br><br>
+<style>
+    .container {
+        margin-left: 35%;
+    }
+
+    section {
+        overflow: hidden;
+        width: 100%;
+    }
+</style>
+<section>
+    <div class=" container">
+        <div class=" mt-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card"
+                        style="filter: drop-shadow(2px 4px 8px #585858);">
+                        {% if profile.profile_photo %}
+                        <img src="{{profile.profile_photo.url}}" alt="" class="card-img-top">
+                        {%else%}
+                        <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
+                            class="card-img-top" alt="My profile picture">
+                        {% endif %}
+                        <div class="card-body text-center">
+                            <h4 class="card-text">
+                                {{ user.first_name }} 
+                            </h4>
+                            <p><span style="font: weight 900px; font-size:larger;">Username: </span> {{ user.username }}
+                            </p>
+                            <p>
+
+                                {% if profile.phone_number %}
+                            <p> <span style="font: weight 900px; font-size:larger;"> Phone Number:
+                                </span>{{profile.phone}}</p>
+                            {% else %}
+                            <span class="badge rounded-pill bg-info text-white">No contact</span>
+                            {% endif %}
+                            </p>
+                            
+                            <h6>Joined on: <span class="badge rounded-pill bg-secondary text-white">
+                                    {{ user.date_joined|date }} </span></h6>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="deets">
+                        <div>
+                            <!-- <h3>{{user.username}}</h3> -->
+                            {% if request.user is user %}
+                            <div style="margin-bottom: 5%;">
+                                <button class="btn btn-primary" type="submit"><a
+                                        href="{%url 'update_profile' user.id %}" style="color: #fff;text-decoration: none;">
+                                        Edit Profile
+                                    </a></button>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

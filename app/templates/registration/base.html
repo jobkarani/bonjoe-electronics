@@ -1,0 +1,36 @@
+{% load bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+    {%if title%}
+
+    <title>{{title}}</title>
+
+
+    {%endif%}
+
+     {% block styles %} {% bootstrap_css %}
+     <link rel="stylesheet" href="css/owl.carousel.min.css">
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+ 
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      {% endblock %}
+  </head>
+
+  <body>
+    {% block content %} {%endblock%} {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src=" {% static 'js/popper.min.js' %}"></script>
+    <script src=" {% static 'jjs/jquery-3.3.1.min.js' %}"></script>
+    <script src=" {% static 'js/bootstrap.min.js' %}"></script>
+    <script src=" {% static 'js/main.js' %}"></script>
+    {% bootstrap_javascript %} {% endblock %}
+  </body>
+</html>
