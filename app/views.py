@@ -125,7 +125,7 @@ def index(request, category_slug=None):
         'products': products,
         'product_count':product_count,
     }
-    return render(request, 'all-temps/index.html', context)
+    return render(request, 'index.html', context)
 
 
 def shop(request, category_slug=None):
