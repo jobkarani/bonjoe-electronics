@@ -7,59 +7,6 @@ from django.urls import reverse
 
 # Create your models here.
 
-FLAVOUR_CHOICES = (
-    ('CHOCOLATE FUDGE', 'CHOCOLATE FUDGE'),
-    ('CHOCOLATE MINT', 'CHOCOLATE MINT'),
-    ('CHOCOLATE CHIP', 'CHOCOLATE CHIP'),
-    ('RED VELVET', 'RED VELVET'),
-    ('BLUE VELVET', 'BLUE VELVET'),
-    ('GREEN VELVET', 'GREEN VELVET'),
-    ('VANILLA', 'VANILLA'),
-    ('COFFEE', 'COFFEE'),
-    ('COCONUT', 'COCONUT'),
-    ('GINGER', 'GINGER'),
-    ('ZEBRA', 'ZEBRA'),
-    ('CINNAMON', 'CINNAMON'),
-    ('SPICE', 'SPICE'),
-    ('MARBLE', 'MARBLE'),
-    ('PINA COLADA', 'PINA COLADA'),
-    ('LEMON', 'LEMON'),
-    ('LIME', 'LIME'),
-    ('BANANA', 'BANANA'),
-    ('ORANGE', 'ORANGE'),
-    ('PASSION JUICE', 'PASSION JUICE'),
-    ('BUBBLEGUM', 'BUBBLEGUM'),
-    ('CARROT', 'CARROT'),
-    ('MINT', 'MINT'),
-    ('OREO', 'OREO'),
-    ('CARAMEL', 'CARAMEL'),
-    ('BLUEBERRY', 'BLUEBERRY'),
-    ('STRAWBERRY', 'STRAWBERRY'),
-    ('BUTTER', 'BUTTER'),
-    ('FRUIT', 'FRUIT'),
-    ('BLACK FOREST', 'BLACK FOREST'),
-    ('WHITE FOREST', 'WHITE FOREST'),
-    ('BLUEBERRY FOREST', 'BLUEBERRY FOREST'),
-    ('PASSION FRUIT FOREST', 'PASSION FRUIT FOREST'),
-)
-
-TOPPINGS_CHOICES = (
-    ('SKITTLES', 'SKITTLES'),
-    ('GUMMIES', 'GUMMIES'),
-    ('FRUITS', 'FRUITS'),
-    ('NUTS', 'NUTS'),
-    ('OREOS', 'OREOS'),
-    ('CHERRIES', 'CHERRIES'),
-    ('CAKE SAIL', 'CAKE SAIL'),
-    ('CAKE TOPPERS', 'CAKE TOPPERS'),
-    ('ASSORTED CHOCOLATES', 'ASSORTED CHOCOLATES'),
-)
-
-SIZE_CHOICES =(
-    ('Small', 'Small'),
-    ('Medium', 'Medium'),
-    ('Large', 'Large'),
-)
 
 class NewsLetterRecipients(models.Model):
     name = models.CharField(max_length=30)
@@ -103,9 +50,6 @@ class Product(models.Model):
     stock = models.IntegerField()
     is_available = models.BooleanField(default = True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    flavour =  models.CharField(max_length=60, choices=FLAVOUR_CHOICES, default="VANILLA")
-    topping = models.CharField(max_length=60, choices=TOPPINGS_CHOICES, default="GUMMIES")
-    size = models.CharField(max_length=60, choices=SIZE_CHOICES, default="Medium")
 
     class Meta:
         ordering = ('name',)
