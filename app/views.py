@@ -149,7 +149,7 @@ def shop(request, category_slug=None):
         'products': paged_product,
         'product_count':product_count,
     }
-    return render(request, 'all-temps/shop.html', context)
+    return render(request, 'shop.html', context)
 
 def product_detail(request, category_slug, product_slug):
 
