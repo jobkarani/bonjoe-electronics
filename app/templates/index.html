@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   
 {% extends 'base.html' %} {% load static %} {% block content %}  
   <div id="preloader">
@@ -12,6 +13,34 @@
           <span data-text-preloader="A" class="letters-loading"> A </span>
 
           <span data-text-preloader="D" class="letters-loading"> D </span>
+=======
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="utf-8" />
+    <title>Suruchi - Fashion eCommerce HTML Template</title>
+    <meta name="description" content="Morden Bootstrap HTML5 Template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/img/favicon.ico"
+    />
+
+    <!-- ======= All CSS Plugins here ======== -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/glightbox.min.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+
+  <!-- Plugin css -->
+  <!-- <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css"> -->
+
+  <!-- Custom Style CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+  </head>
+>>>>>>> 923b8be8b55808c4aebf3b17dbf7d4f1e520a96e
 
           <span data-text-preloader="I" class="letters-loading"> I </span>
 
@@ -568,7 +597,368 @@
                   </a>
                 </li>
               </ul>
+<<<<<<< HEAD
             </nav>
+=======
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header__bottom">
+        <div class="container-fluid">
+          <div
+            class="header__bottom--inner position__relative d-none d-lg-flex justify-content-between align-items-center"
+          >
+            <div class="header__menu">
+              <nav class="header__menu--navigation">
+                <ul class="d-flex">
+                  <li class="header__menu--items">
+                    <a class="header__menu--link text-white" href="index-2.html"
+                      >Home
+                      <svg
+                        class="menu__arrowdown--icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="7.41"
+                        viewBox="0 0 12 7.41"
+                      >
+                        <path
+                          d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"
+                          transform="translate(-6 -8.59)"
+                          fill="currentColor"
+                          opacity="0.7"
+                        />
+                      </svg>
+                    </a>
+                    <ul class="header__sub--menu">
+                      <li class="header__sub--menu__items">
+                        <a href="index-2.html" class="header__sub--menu__link"
+                          >Home One</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a href="index-3.html" class="header__sub--menu__link"
+                          >Home Two</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a href="index-4.html" class="header__sub--menu__link"
+                          >Home Three</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="header__menu--items mega__menu--items">
+                    <a class="header__menu--link text-white" href="shop.html"
+                      >Shop
+                      <svg
+                        class="menu__arrowdown--icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="7.41"
+                        viewBox="0 0 12 7.41"
+                      >
+                        <path
+                          d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"
+                          transform="translate(-6 -8.59)"
+                          fill="currentColor"
+                          opacity="0.7"
+                        />
+                      </svg>
+                    </a>
+                    <ul class="header__mega--menu d-flex">
+                      <li class="header__mega--menu__li">
+                        <span class="header__mega--subtitle">Column One</span>
+                        <ul class="header__mega--sub__menu">
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="shop.html"
+                              >Shop Left Sidebar</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="shop-right-sidebar.html"
+                              >Shop Right Sidebar</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="shop-grid.html"
+                              >Shop Grid</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="shop-grid-list.html"
+                              >Shop Grid List</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="{% url 'shop' %}"
+                              >Shop List</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="header__mega--menu__li">
+                        <span class="header__mega--subtitle">Column Two</span>
+                        <ul class="header__mega--sub__menu">
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="product-details.html"
+                              >Product Details</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="product-video.html"
+                              >Video Product</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="product-details.html"
+                              >Variable Product</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="product-left-sidebar.html"
+                              >Product Left Sidebar</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="product-gallery.html"
+                              >Product Gallery</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="header__mega--menu__li">
+                        <span class="header__mega--subtitle">Column Three</span>
+                        <ul class="header__mega--sub__menu">
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="my-account.html"
+                              >My Account</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="my-account-2.html"
+                              >My Account 2</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="404.html"
+                              >404 Page</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="login.html"
+                              >Login Page</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="faq.html"
+                              >Faq Page</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="header__mega--menu__li">
+                        <span class="header__mega--subtitle">Column Four</span>
+                        <ul class="header__mega--sub__menu">
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="compare.html"
+                              >Compare Pages</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="checkout.html"
+                              >Checkout page</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="checkout-2.html"
+                              >Checkout Style 2</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="checkout-3.html"
+                              >Checkout Style 3</a
+                            >
+                          </li>
+                          <li class="header__mega--sub__menu_li">
+                            <a
+                              class="header__mega--sub__menu--title"
+                              href="checkout-4.html"
+                              >Checkout Style 4</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="header__menu--items">
+                    <a class="header__menu--link text-white" href="about.html"
+                      >About US
+                    </a>
+                  </li>
+                  <li class="header__menu--items">
+                    <a class="header__menu--link text-white" href="blog.html"
+                      >Blog
+                      <svg
+                        class="menu__arrowdown--icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="7.41"
+                        viewBox="0 0 12 7.41"
+                      >
+                        <path
+                          d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"
+                          transform="translate(-6 -8.59)"
+                          fill="currentColor"
+                          opacity="0.7"
+                        />
+                      </svg>
+                    </a>
+                    <ul class="header__sub--menu">
+                      <li class="header__sub--menu__items">
+                        <a href="blog.html" class="header__sub--menu__link"
+                          >Blog Grid</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a
+                          href="blog-details.html"
+                          class="header__sub--menu__link"
+                          >Blog Details</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a
+                          href="blog-left-sidebar.html"
+                          class="header__sub--menu__link"
+                          >Blog Left Sidebar</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a
+                          href="blog-right-sidebar.html"
+                          class="header__sub--menu__link"
+                          >Blog Right Sidebar</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="header__menu--items d-none d-xl-block">
+                    <a class="header__menu--link text-white" href="shop.html"
+                      >Categories
+                    </a>
+                  </li>
+                  <li class="header__menu--items">
+                    <a class="header__menu--link text-white" href="#"
+                      >Pages
+                      <svg
+                        class="menu__arrowdown--icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="7.41"
+                        viewBox="0 0 12 7.41"
+                      >
+                        <path
+                          d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z"
+                          transform="translate(-6 -8.59)"
+                          fill="currentColor"
+                          opacity="0.7"
+                        />
+                      </svg>
+                    </a>
+                    <ul class="header__sub--menu">
+                      <li class="header__sub--menu__items">
+                        <a href="about.html" class="header__sub--menu__link"
+                          >About Us</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a href="contact.html" class="header__sub--menu__link"
+                          >Contact Us</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a href="cart.html" class="header__sub--menu__link"
+                          >Cart Page</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a href="portfolio.html" class="header__sub--menu__link"
+                          >Portfolio Page</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a href="wishlist.html" class="header__sub--menu__link"
+                          >Wishlist Page</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a href="login.html" class="header__sub--menu__link"
+                          >Login Page</a
+                        >
+                      </li>
+                      <li class="header__sub--menu__items">
+                        <a href="404.html" class="header__sub--menu__link"
+                          >Error Page</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="header__menu--items">
+                    <a class="header__menu--link text-white" href="contact.html"
+                      >Contact
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <p class="header__discount--text">
+              <img
+                class="header__discount--icon__img"
+                src="assets/img/icon/lamp.png"
+                alt="lamp-img"
+              />
+              Special up to 60% Off all item
+            </p>
+>>>>>>> 923b8be8b55808c4aebf3b17dbf7d4f1e520a96e
           </div>
           <p class="header__discount--text">
             <img class="header__discount--icon__img" src="assets/img/icon/lamp.png" alt="lamp-img" />
@@ -7197,7 +7587,17 @@
   <!-- <script src="assets/js/plugins/swiper-bundle.min.js"></script> -->
   <!-- <script src="assets/js/plugins/glightbox.min.js"></script> -->
 
+<<<<<<< HEAD
   <!-- Customscript js -->
   <!-- <script src="assets/js/script.js"></script> -->
 
   {% endblock %}
+=======
+    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/glightbox.min.js' %}"></script>
+  
+    <!-- Customscript js -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
+  </body>
+</html>
+>>>>>>> 923b8be8b55808c4aebf3b17dbf7d4f1e520a96e
