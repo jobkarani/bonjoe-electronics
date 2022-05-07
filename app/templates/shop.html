@@ -25,7 +25,15 @@
 </head>
 
 <body>
+    <style>
+    .box {
+        filter: drop-shadow(2px 4px 8px #f37610);
+    }
 
+    .box:hover {
+        filter: drop-shadow(2px 4px 8px rgb(36, 35, 35));
+    }
+    </style>
     <!-- Start preloader -->
     <div id="preloader">
         <div id="ctn-preloader" class="ctn-preloader">
@@ -1262,18 +1270,18 @@
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-8">
-                        <div class="shop__product--wrapper">
-                            <div class="tab_content">
+                        <div class="shop__product--wrapper box">
+                            <div class="tab_content" >
                                 <div id="product_grid" class="tab_pane active show">
                                     <div class="product__section--inner product__grid--inner">
-                                        <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-2 mb--n30">
+                                        <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-2 mb--n30" >
                                             {% for product in products %}
-                                            <div class="col mb-30">
+                                            <div class="col mb-30 " style="margin-left: 2%;filter: drop-shadow(2px 4px 8px #585858);"  >
                                                 <div class="product__items ">
                                                     <div class="product__items--thumbnail">
-                                                        <a class="product__items--link" href="product-details.html">
-                                                            <img class="product__items--img product__primary--img" src="assets/img/product/product3.png" alt="product-img">
-                                                            <img class="product__items--img product__secondary--img" src="assets/img/product/product4.png" alt="product-img">
+                                                        <a class="product__items--link"  href="{{ product.get_url }}">
+                                                            <img class="product__items--img product__primary--img" style="height: 40vh;" src="{{product.image.url}}" alt="img">
+                                                            <img class="product__items--img product__secondary--img" style="height: 40vh;" src="{{product.image.url}}" alt="product-img">
                                                         </a>
                                                         <div class="product__badge">
                                                             <span class="product__badge--items sale">Sale</span>
@@ -1905,17 +1913,17 @@
                                 <nav class="pagination">
                                     <ul class="pagination__wrapper d-flex align-items-center justify-content-center">
                                         <li class="pagination__list">
-                                            <a href="shop.html" class="pagination__item--arrow  link ">
+                                            <a href="{% url 'shop' %}" class="pagination__item--arrow  link ">
                                                 <svg xmlns="http://www.w3.org/2000/svg"  width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/></svg>
                                                 <span class="visually-hidden">pagination arrow</span>
                                             </a>
                                         <li>
                                         <li class="pagination__list"><span class="pagination__item pagination__item--current">1</span></li>
-                                        <li class="pagination__list"><a href="shop.html" class="pagination__item link">2</a></li>
-                                        <li class="pagination__list"><a href="shop.html" class="pagination__item link">3</a></li>
-                                        <li class="pagination__list"><a href="shop.html" class="pagination__item link">4</a></li>
+                                        <li class="pagination__list"><a href="{% url 'shop' %}" class="pagination__item link">2</a></li>
+                                        <li class="pagination__list"><a href="{% url 'shop' %}" class="pagination__item link">3</a></li>
+                                        <li class="pagination__list"><a href="{% url 'shop' %}" class="pagination__item link">4</a></li>
                                         <li class="pagination__list">
-                                            <a href="shop.html" class="pagination__item--arrow  link ">
+                                            <a href="{% url 'shop' %}" class="pagination__item--arrow  link ">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"/></svg>
                                                 <span class="visually-hidden">pagination arrow</span>
                                             </a>
