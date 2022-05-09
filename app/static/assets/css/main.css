@@ -1,0 +1,99 @@
+
+/* HEADER */
+header .head{
+    background: coral;
+}
+.header__account--btn:hover{
+    color: coral;
+}
+.header__account--btn .items__count {
+    background: coral;
+}
+.header__search--box .header__search--button{
+    background: coral;
+}
+.style2 .text-white:hover{
+    color: coral;
+}
+.header__menu--items .header__menu--link:hover{
+    color: coral;
+}
+.offcanvas__stikcy--toolbar__list .offcanvas__stikcy--toolbar__icon{
+    background: coral;
+}
+.offcanvas__stikcy--toolbar__label .items__count{
+    background: coral;
+}
+.minicart__conditions--link{
+    color: coral;
+}
+.minicart__button--link{
+    background: coral;
+}
+.offcanvas__menu_li .offcanvas__menu_item:hover{
+    background: coral;
+}
+.offcanvas__account--items__icon{
+    background: coral;
+}
+/* END OF HEADER */
+
+/* SLIDER */
+.slider__content .primary__btn{
+    background: coral;
+}
+.swiper__nav--btn{
+    background: coral;
+}
+/* END OF SLIDER */
+/* SHIPPING */
+.shipping__style3--icon svg{
+    color: coral;
+}
+
+/* END OF SHIPPING */
+/* NEW PRODUCTS */
+.section__heading--maintitle::before{
+    color: coral;
+}
+.product__tab--primary__btn__list{
+    color: coral;
+}
+.product__items--action__list .product__items--action__btn:hover{
+    background: coral;
+}
+/* END OF NEW PRODUCTS */
+/* NEW COLLECTION */
+.btn__style3{
+    background: coral;
+}
+.new__product--content .new__product--content__title a:hover{
+    color: coral;
+}
+.new__product--thumbnail__link .new__product--thumbnail__img:hover{
+    color: coral;
+}
+/* END OF NEW PRODUCTS */
+/* BANNER  */
+.banner__items--content .banner__items--content__link:hover{
+    color: coral;
+}
+/* END OF BANNER */
+/* FOOTER */
+.newsletter__subscribe--button{
+    background: coral;
+}
+/* END OF FOOTER */
+/* NEWSLETTER */
+.newsletter__popup--close__btn{
+    background: coral;
+}
+.newsletter__popup--subscribe__btn{
+    background: coral;
+}
+/* END OF NEWSLETTER */
+/* SCROLLTOP */
+#scroll__top{
+    background: coral;
+}
+/* END OF SCROLLTOP */
