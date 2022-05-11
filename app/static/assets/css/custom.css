@@ -9,6 +9,7 @@
     float: right;
 }
 
+/* showing stars  */
 .rate > label:before{
     display: inline-block;
     font-size: 1.5rem;
@@ -19,13 +20,20 @@
     cursor: pointer;
 }
 
+/* half star  */
 .rate .half:before{
     content: '\f089';
     position: absolute;
     padding-right: 0;
 }
  
+/* click and hover */
 input:checked ~ label, label:hover ~ label{
     color: #ffb503;
+}
 
+/* hover highlight */
+input:checked + label:hover, input:checked ~ label:hover, input:checked ~ label:hover ~ hover,
+label:hover ~ input:checked ~ label{
+    color: #a0cc00;
 }
