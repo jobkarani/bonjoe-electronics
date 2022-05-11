@@ -45,7 +45,12 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    image = CloudinaryField('image')
+    image1 = CloudinaryField('image')
+    image2 = CloudinaryField('image')
+    image3 = CloudinaryField('image')
+    image4 = CloudinaryField('image')
+    image5 = CloudinaryField('image')
+    image6 = CloudinaryField('image')
     description = models.TextField(max_length=500, blank=True)
     new_price = models.FloatField()
     old_price = models.FloatField()
