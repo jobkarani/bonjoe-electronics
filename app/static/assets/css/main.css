@@ -100,6 +100,9 @@ header .head{
 .pagination__item--arrow:hover{
     color: coral;
 }
+.product__list--items__content--title .prod-details:hover{
+    color: coral;
+}
 /* END OF NEW PRODUCTS */
 /* NEW COLLECTION */
 .btn__style3{
