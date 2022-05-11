@@ -55,7 +55,7 @@ class Product(models.Model):
         ordering = ('name',)
 
     def get_url(self):
-        return reverse('product_detail', args=[self.category, self.slug])
+        return reverse('product_detail', args=[self.category.slug, self.slug])
 
     def __str__(self):
         return self.name
