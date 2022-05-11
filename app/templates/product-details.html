@@ -1125,7 +1125,7 @@
                                             </div>
                                             <!--  -->
                                         <div id="writereview" class="reviews__comment--reply__area">
-                                            <form action="" method="POST">
+                                            <form action="{% url 'submit_review' single_product.id %}" method="POST">
                                                  {% csrf_token%}
                                                 <h3 class="reviews__comment--reply__title mb-15">Add a review </h3>
                                                 <label>How do you rate this product?</label>
@@ -1145,20 +1145,17 @@
                                                     <br>
                                                 <div class="row">
                                                     <div class="col-12 mb-10">
-                                                        <textarea class="reviews__comment--reply__textarea" name="review" placeholder="Your Comments...." ></textarea>
+                                                        Review:
+                                                        <textarea class="reviews__comment--reply__textarea" name="review" placeholder="Your Review...." ></textarea>
                                                     </div> 
-                                                    <div class="col-lg-6 col-md-6 mb-15">
-                                                        <label>
-                                                            <input class="reviews__comment--reply__input" name="subject" placeholder="Your Name...." type="text">
-                                                        </label>
-                                                    </div>  
-                                                    <div class="col-lg-6 col-md-6 mb-15">
-                                                        <label>
-                                                            <input class="reviews__comment--reply__input" name="email" placeholder="Your Email...." type="email">
-                                                        </label>
-                                                    </div>  
                                                 </div>
-                                                <button class="reviews__comment--btn text-white primary__btn" data-hover="Submit" type="submit">SUBMIT</button>
+                                                {% if user.is_authenticated %}
+                                                <input class="btn btn-primary" value="Submit Review" type="submit">
+                                                {% else %}
+                                                <p>You must be logged in to post a review. <span ><a class="btn btn-outline-primary" href="{% url 'login' %}">Login now</a></span></p>
+                                                {% endif %}
+
+                                                {% include 'alerts.html' %}
                                             </form>   
                                         </div> 
                                     </div>    
