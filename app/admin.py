@@ -7,7 +7,7 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'stock','description','category', 'is_available')
+    list_display = ('name', 'new_price', 'old_price','description','category', 'is_available')
     prepopulated_fields = {'slug': ('name',)}
 
 class VariationAdmin(admin.ModelAdmin):
@@ -30,3 +30,4 @@ admin.site.register(Variation, VariationAdmin)
 admin.site.register(Payment)
 admin.site.register(Order)
 admin.site.register(OrderProduct)
+admin.site.register(ReviewRating)

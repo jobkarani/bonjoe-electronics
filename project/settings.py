@@ -41,7 +41,6 @@ ALLOWED_HOSTS = ['*']
 LOGIN_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 # Application definition
 
 INSTALLED_APPS = [

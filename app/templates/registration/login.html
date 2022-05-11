@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{% static 'assets/img/sign_up.svg' %}" alt="sing up image"></figure>
-                        <a href="accounts/register" class="signup-image-link">Create an account</a>
+                        <a href="/accounts/register/" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
@@ -39,6 +40,7 @@
                 
                             <input type="hidden" name="next" value="{{next}}">
                         </form>
+
                         <div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">
