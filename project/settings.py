@@ -40,10 +40,11 @@ ALLOWED_HOSTS = ['*']
 # redirect urls
 LOGIN_REDIRECT_URL = '/'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # Application definition
 
 INSTALLED_APPS = [
-    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,10 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
-    'bootstrap5',
+    'bootstrap4',
     'cloudinary',
     'tinymce',
     'django_daraja',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

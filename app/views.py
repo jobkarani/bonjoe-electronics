@@ -79,7 +79,7 @@ def create_profile(request):
 
     else:
         form = ProfileForm()
-    return render(request, 'all-temps/create_profile.html', {"form": form, "title": title})
+    return render(request, 'create_profile.html', {"form": form, "title": title})
 
 
 def update_profile(request, id):
