@@ -27,3 +27,8 @@ class PaymentForm(forms.ModelForm):
     class Meta:
         model = Pay
         fields = ['first_name', 'last_name', 'phone']
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = ReviewRating
+        fields = ['subject', 'review', 'rating']
