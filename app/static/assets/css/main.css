@@ -36,6 +36,9 @@ header .head{
 .offcanvas__account--items__icon{
     background: coral;
 }
+.predictive__search--button{
+    background: coral;
+}
 /* END OF HEADER */
 
 /* SLIDER */
@@ -50,7 +53,12 @@ header .head{
 .shipping__style3--icon svg{
     color: coral;
 }
-
+.readcrumb__content--menu__items a:hover{
+    color: coral;
+}
+.readcrumb__content--menu__items span:hover{
+    color: coral;
+}
 /* END OF SHIPPING */
 /* NEW PRODUCTS */
 .section__heading--maintitle::before{
@@ -61,6 +69,39 @@ header .head{
 }
 .product__items--action__list .product__items--action__btn:hover{
     background: coral;
+}
+.pagination__list .pagination__item:hover{
+    background: coral;
+    border: coral;
+}
+.pagination__list .pagination__item--current{
+    background: coral;
+    border: coral;
+
+}
+.product__grid--column__buttons .active{
+    color: coral;
+    border: 0.5px solid coral;
+}
+.product__grid--column__buttons--icons:hover{
+    border: 0.5px solid coral;
+    color: coral;
+}
+.product__view--search__form .product__view--search__btn{
+    background: coral;
+}
+.widget__tagcloud--list .widget__tagcloud--link:hover{
+    background: coral;
+    border-color: coral;
+}
+.price__filter--btn{
+    background: coral;
+}
+.pagination__item--arrow:hover{
+    color: coral;
+}
+.product__list--items__content--title .prod-details:hover{
+    color: coral;
 }
 /* END OF NEW PRODUCTS */
 /* NEW COLLECTION */
