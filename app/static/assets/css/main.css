@@ -166,3 +166,12 @@ header .head{
 .variant__size--value:hover{
     color: coral;
 }
+.product__details--tab .active{
+    color: coral;
+}
+.reviews__summary--caption{
+    color: coral;
+}
+.primary__btn{
+    background: coral;
+}

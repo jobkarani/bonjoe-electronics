@@ -975,8 +975,7 @@
                     <div class="col">
                         <ul class="product__details--tab d-flex mb-30">
                             <li class="product__details--tab__list active" data-toggle="tab" data-target="#reviews">Product Reviews</li>
-                            <li class="product__details--tab__list" data-toggle="tab" data-target="#information">Additional Info</li>
-                            <li class="product__details--tab__list" data-toggle="tab" data-target="#custom">Custom Content</li>
+                            
                         </ul>
                         <div class="product__details--tab__inner border-radius-10">
                             <div class="tab_content">
@@ -1106,7 +1105,7 @@
                                                     </div> 
                                                 </div>
                                                 {% if user.is_authenticated %}
-                                                <input class="btn btn-primary" value="Submit Review" type="submit">
+                                                <input class="primary__btn" value="Submit Review" type="submit">
                                                 {% else %}
                                                 <p>You must be logged in to post a review. <span ><a class="btn btn-outline-primary" href="{% url 'login' %}">Login now</a></span></p>
                                                 {% endif %}
