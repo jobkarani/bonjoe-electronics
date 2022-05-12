@@ -876,7 +876,7 @@
                       <div class="product__items--thumbnail">
                         <a
                           class="product__items--link"
-                          href="product-details.html"
+                          href="{{ prod.get_url }}"
                         >
                           <img
                             class="product__items--img product__primary--img"
@@ -898,14 +898,14 @@
                           >{{ prod.category }}</span
                         >
                         <h3 class="product__items--content__title h4">
-                          <a href="product-details.html"
+                          <a href="{{ prod.get_url }}"
                             >{{ prod.name }}</a
                           >
                         </h3>
                         <div class="product__items--price">
-                          <span class="current__price">Ksh{{ prod.price }}</span>
+                          <span class="current__price">Ksh{{ prod.new_price }}</span>
                           <span class="price__divided"></span>
-                          <span class="old__price">$78</span>
+                          <span class="old__price">Ksh{{ prod.old_price }}</span>
                         </div>
                         <ul class="rating product__rating d-flex">
                           <li class="rating__list">
