@@ -22,7 +22,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="{% static 'assets/img/sign_up.svg' %}" alt="sing up image"></figure>
+                        <figure><img src="{% static 'assets/img/prof1.svg' %}" alt="sing up image"></figure>
                         <a href="accounts/register" class="signup-image-link">Create an account</a>
                     </div>
 
@@ -34,10 +34,10 @@
                             {{ form | crispy }}
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-sm" value="SIGN UP">
+                                <input type="submit" class="btn btn-primary btn-sm" value="Create Profile">
                             </div>
                 
-                            <input type="hidden" name="next" value="{{next}}">
+                            
                         </form>
                         <div class="social-login">
                             <span class="social-label">Or login with</span>

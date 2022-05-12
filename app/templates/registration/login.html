@@ -1,5 +1,4 @@
 {% load static %}
-{% load crispy %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,8 +33,8 @@
                             {% load crispy_forms_tags %}
                             {{ form | crispy }}
                             {% csrf_token %}
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-sm" value="SIGN UP">
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Log In"/>
                             </div>
                 
                             <input type="hidden" name="next" value="{{next}}">

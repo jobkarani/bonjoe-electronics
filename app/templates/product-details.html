@@ -653,7 +653,7 @@
                         <a href="product-details.html"><img src="assets/img/product/product1.png" alt="prduct-img"></a>
                     </div>
                     <div class="minicart__text">
-                        <h3 class="minicart__subtitle h4"><a href="product-details.html">Oversize Cotton Dress</a></h3>
+                        <h3 class="minicart__subtitle h4"><a href="product-details.html">{{ single_product.name }}</a></h3>
                         <span class="color__variant"><b>Color:</b> Beige</span>
                         <div class="minicart__price">
                             <span class="current__price">$125.00</span>
@@ -760,15 +760,16 @@
         <section class="product__details--section section--padding">
             <div class="container">
                 <div class="row row-cols-lg-2 row-cols-md-2">
+                    
                     <div class="col">
                         <div class="product__details--media">
                             <div class="product__media--preview  swiper">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="product__media--preview__items">
-                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="assets/img/product/big-product2.jpg"><img class="product__media--preview__items--img" src="assets/img/product/big-product2.jpg" alt="product-media-img"></a>
+                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="{{ single_product.image1.url }}"><img class="product__media--preview__items--img" src="{{ single_product.image1.url }}" alt="product-media-img"></a>
                                             <div class="product__media--view__icon">
-                                                <a class="product__media--view__icon--link glightbox" href="assets/img/product/big-product2.jpg" data-gallery="product-media-preview">
+                                                <a class="product__media--view__icon--link glightbox" href="{{ single_product.image1.url }}" data-gallery="product-media-preview">
                                                     <svg class="product__media--view__icon--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="22.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
                                                 </a>
                                             </div>
@@ -776,9 +777,9 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--preview__items">
-                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="assets/img/product/big-product1.jpg"><img class="product__media--preview__items--img" src="assets/img/product/big-product1.jpg" alt="product-media-img"></a>
+                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="{{ single_product.image2.url }}"><img class="product__media--preview__items--img" src="{{ single_product.image2.url }}" alt="product-media-img"></a>
                                             <div class="product__media--view__icon">
-                                                <a class="product__media--view__icon--link glightbox" href="assets/img/product/big-product1.jpg" data-gallery="product-media-preview">
+                                                <a class="product__media--view__icon--link glightbox" href="{{ single_product.image2.url }}" data-gallery="product-media-preview">
                                                     <svg class="product__media--view__icon--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="22.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
                                                 </a>
                                             </div>
@@ -786,9 +787,9 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--preview__items">
-                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="assets/img/product/big-product3.jpg"><img class="product__media--preview__items--img" src="assets/img/product/big-product3.jpg" alt="product-media-img"></a>
+                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="{{ single_product.image3.url }}"><img class="product__media--preview__items--img" src="{{ single_product.image3.url }}" alt="product-media-img"></a>
                                             <div class="product__media--view__icon">
-                                                <a class="product__media--view__icon--link glightbox" href="assets/img/product/big-product3.jpg" data-gallery="product-media-preview">
+                                                <a class="product__media--view__icon--link glightbox" href="{{ single_product.image3.url }}" data-gallery="product-media-preview">
                                                     <svg class="product__media--view__icon--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="22.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
                                                 </a>
                                             </div>
@@ -796,9 +797,9 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--preview__items">
-                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="assets/img/product/big-product4.jpg"><img class="product__media--preview__items--img" src="assets/img/product/big-product4.jpg" alt="product-media-img"></a>
+                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="{{ single_product.image4.url }} "><img class="product__media--preview__items--img" src="{{ single_product.image4.url }}" alt="product-media-img"></a>
                                             <div class="product__media--view__icon">
-                                                <a class="product__media--view__icon--link glightbox" href="assets/img/product/big-product4.jpg" data-gallery="product-media-preview">
+                                                <a class="product__media--view__icon--link glightbox" href="{{ single_product.image4.url }}" data-gallery="product-media-preview">
                                                     <svg class="product__media--view__icon--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="22.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
                                                 </a>
                                             </div>
@@ -806,9 +807,9 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--preview__items">
-                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="assets/img/product/big-product5.jpg"><img class="product__media--preview__items--img" src="assets/img/product/big-product5.jpg" alt="product-media-img"></a>
+                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="{{ single_product.image5.url }}"><img class="product__media--preview__items--img" src="{{ single_product.image5.url }}" alt="product-media-img"></a>
                                             <div class="product__media--view__icon">
-                                                <a class="product__media--view__icon--link glightbox" href="assets/img/product/big-product5.jpg" data-gallery="product-media-preview">
+                                                <a class="product__media--view__icon--link glightbox" href="{{ single_product.image5.url }}" data-gallery="product-media-preview">
                                                     <svg class="product__media--view__icon--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="22.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
                                                 </a>
                                             </div>
@@ -816,9 +817,9 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--preview__items">
-                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="assets/img/product/big-product6.jpg"><img class="product__media--preview__items--img" src="assets/img/product/big-product6.jpg" alt="product-media-img"></a>
+                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="{{ single_product.image6.url }}"><img class="product__media--preview__items--img" src="{{ single_product.image6.url }}" alt="product-media-img"></a>
                                             <div class="product__media--view__icon">
-                                                <a class="product__media--view__icon--link glightbox" href="assets/img/product/big-product6.jpg" data-gallery="product-media-preview">
+                                                <a class="product__media--view__icon--link glightbox" href="{{ single_product.image6.url }}" data-gallery="product-media-preview">
                                                     <svg class="product__media--view__icon--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="22.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
                                                 </a>
                                             </div>
@@ -830,32 +831,32 @@
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
-                                            <img class="product__media--nav__items--img" src="assets/img/product/small-product7.png" alt="product-nav-img">
+                                            <img class="product__media--nav__items--img" src="{{ single_product.image1.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
-                                            <img class="product__media--nav__items--img" src="assets/img/product/small-product8.png" alt="product-nav-img">
+                                            <img class="product__media--nav__items--img" src="{{ single_product.image2.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
-                                            <img class="product__media--nav__items--img" src="assets/img/product/small-product9.png" alt="product-nav-img">
+                                            <img class="product__media--nav__items--img" src="{{ single_product.image3.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
-                                            <img class="product__media--nav__items--img" src="assets/img/product/small-product10.png" alt="product-nav-img">
+                                            <img class="product__media--nav__items--img" src="{{ single_product.image4.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
-                                            <img class="product__media--nav__items--img" src="assets/img/product/small-product11.png" alt="product-nav-img">
+                                            <img class="product__media--nav__items--img" src="{{ single_product.image5.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
-                                            <img class="product__media--nav__items--img" src="assets/img/product/small-product12.png" alt="product-nav-img">
+                                            <img class="product__media--nav__items--img" src="{{ single_product.image6.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
                                 </div>
@@ -867,11 +868,11 @@
                     <div class="col">
                         <div class="product__details--info">
                             <form action="#">
-                                <h2 class="product__details--info__title mb-15">Oversize Cotton Dress</h2>
+                                <h2 class="product__details--info__title mb-15">{{ single_product.name }}</h2>
                                 <div class="product__details--info__price mb-10">
-                                    <span class="current__price">$110</span>
+                                    <span class="current__price">Ksh {{ single_product.new_price }}</span>
                                     <span class="price__divided"></span>
-                                    <span class="old__price">$178</span>
+                                    <span class="old__price">Ksh {{ single_product.old_price }}</span>
                                 </div>
                                 <div class="product__details--info__rating d-flex align-items-center mb-15">
                                     <ul class="rating d-flex justify-content-center">
@@ -913,19 +914,19 @@
                                     </ul>
                                     <span class="product__items--rating__count--number">(24)</span>
                                 </div>
-                                <p class="product__details--info__desc mb-15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut numquam ullam is recusandae laborum explicabo id sequi quisquam, ab sunt deleniti quidem ea animi facilis quod nostrum odit! Repellendus voluptas suscipit cum harum dolor sciunt.</p>
+                                <p class="product__details--info__desc mb-15">{{ single_product.description }}</p>
                                 <div class="product__variant">
                                     <div class="product__variant--list mb-10">
                                         <fieldset class="variant__input--fieldset">
                                             <legend class="product__variant--title mb-8">Color :</legend>
                                             <input id="color-red1" name="color" type="radio" checked>
-                                            <label class="variant__color--value red" for="color-red1" title="Red"><img class="variant__color--value__img" src="assets/img/product/product1.png" alt="variant-color-img"></label>
+                                            <label class="variant__color--value red" for="color-red1" title="Red"><img class="variant__color--value__img" src="{{ single_product.image1.url }}" alt="variant-color-img"></label>
                                             <input id="color-red2" name="color" type="radio">
-                                            <label class="variant__color--value red" for="color-red2" title="Black"><img class="variant__color--value__img" src="assets/img/product/product2.png" alt="variant-color-img"></label>
+                                            <label class="variant__color--value red" for="color-red2" title="Black"><img class="variant__color--value__img" src="{{ single_product.image2.url }}" alt="variant-color-img"></label>
                                             <input id="color-red3" name="color" type="radio">
-                                            <label class="variant__color--value red" for="color-red3" title="Pink"><img class="variant__color--value__img" src="assets/img/product/product3.png" alt="variant-color-img"></label>
+                                            <label class="variant__color--value red" for="color-red3" title="Pink"><img class="variant__color--value__img" src="{{ single_product.image1.url }}" alt="variant-color-img"></label>
                                             <input id="color-red4" name="color" type="radio">
-                                            <label class="variant__color--value red" for="color-red4" title="Orange"><img class="variant__color--value__img" src="assets/img/product/product4.png" alt="variant-color-img"></label>
+                                            <label class="variant__color--value red" for="color-red4" title="Orange"><img class="variant__color--value__img" src="{{ single_product.image4.url }}" alt="variant-color-img"></label>
                                         </fieldset>
                                     </div>
                                     <div class="product__variant--list mb-15">
@@ -950,10 +951,7 @@
                                         <button class="quickview__cart--btn primary__btn" type="submit">Add To Cart</button>  
                                     </div>
                                     <div class="product__variant--list mb-15">
-                                        <a class="variant__wishlist--icon mb-15" href="wishlist.html" title="Add to wishlist">
-                                            <svg class="quickview__variant--wishlist__svg" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
-                                            Add to Wishlist
-                                        </a>
+
                                         <button class="variant__buy--now__btn primary__btn" type="submit">Buy it now</button>
                                     </div>
                                     <div class="product__details--info__meta">
@@ -2019,7 +2017,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="quickview__thumb">
-                                        <a class="quickview__thumb--link" href="product-details.html"><img class="quickview__thumb--img" src="assets/img/product/big-product2.jpg" alt="product-img"></a>
+                                        <a class="quickview__thumb--link" href="product-details.html"><img class="quickview__thumb--img" src="{{ single_product.name }}" alt="product-img"></a>
                                         <div class="product__badge">
                                             <span class="product__badge--items sale">Sale</span>
                                         </div>
@@ -2027,7 +2025,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="quickview__thumb">
-                                        <a class="quickview__thumb--link" href="product-details.html"><img class="quickview__thumb--img" src="assets/img/product/big-product3.jpg" alt="product-img"></a>
+                                        <a class="quickview__thumb--link" href="product-details.html"><img class="quickview__thumb--img" src="{{ single_product.image3.url }}" alt="product-img"></a>
                                         <div class="product__badge">
                                             <span class="product__badge--items sale">Sale</span>
                                         </div>
@@ -2035,7 +2033,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="quickview__thumb">
-                                        <a class="quickview__thumb--link" href="product-details.html"><img class="quickview__thumb--img" src="assets/img/product/big-product4.jpg" alt="product-img"></a>
+                                        <a class="quickview__thumb--link" href="product-details.html"><img class="quickview__thumb--img" src="{{ single_product.image4.url }}" alt="product-img"></a>
                                         <div class="product__badge">
                                             <span class="product__badge--items sale">Sale</span>
                                         </div>
