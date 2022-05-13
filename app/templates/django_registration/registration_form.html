@@ -28,8 +28,8 @@
                             {% load crispy_forms_tags %}
                             {{ form | crispy }}
                             {% csrf_token %}
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-sm" value="SIGN UP">
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
                             </div>
                 
                             <input type="hidden" name="next" value="{{next}}">

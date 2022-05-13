@@ -53,9 +53,9 @@ INSTALLED_APPS = [
     'app.apps.AppConfig',
     'bootstrap4',
     'cloudinary',
-    'crispy_forms',
     'tinymce',
     'django_daraja',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

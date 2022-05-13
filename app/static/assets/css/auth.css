@@ -350,7 +350,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     padding: 0;
     font-size: 1em;
     display: none; }
-  
+:-ms-input-placeholder{
+  display: none;
+}
   input[type=checkbox]:not(old) + label {
     display: inline-block;
     line-height: 1.5em;
@@ -591,4 +593,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       margin-bottom: 10px; } }
   
   /*# sourceMappingURL=style.css.map */
+
+.form-text{
+  display: none;
+}
   

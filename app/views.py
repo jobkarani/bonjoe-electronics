@@ -80,7 +80,7 @@ def create_profile(request):
 
     else:
         form = ProfileForm()
-    return render(request, 'all-temps/create_profile.html', {"form": form, "title": title})
+    return render(request, 'create_profile.html', {"form": form, "title": title})
 
 
 def update_profile(request, id):
@@ -299,7 +299,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'quantity':quantity,
         'cart_items':cart_items
     }
-    return render(request, 'all-temps/cart.html', ctx)
+    return render(request, 'cart.html', ctx)
 
 def search(request):
     if 'keyword' in request.GET:

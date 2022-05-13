@@ -138,3 +138,45 @@ header .head{
     background: coral;
 }
 /* END OF SCROLLTOP */
+
+
+.product__media--preview__items--link .product__media--preview__items--img{
+    max-width: 100%;
+    max-height: 40rem;
+    object-fit: cover;
+
+}
+.product__media--nav__items .product__media--nav__items--img{
+    max-width: 100%;
+    max-height: 9rem;
+    object-fit: cover;
+}
+.product__media--view__icon--link{
+    background: coral;
+}
+.variant__buy--now__btn{
+    background: coral;
+}
+.quickview__cart--btn{
+    background: coral;
+}
+.quickview__social--icon{
+    background: coral;
+}
+.variant__size--value:hover{
+    color: coral;
+}
+.product__details--tab .active{
+    color: coral;
+}
+.reviews__summary--caption{
+    color: coral;
+}
+.primary__btn{
+    background: coral;
+}
+.product__items--link .product__items--img{
+    max-width: 100%;
+    max-height: 50rem;
+    object-fit: cover;
+}
