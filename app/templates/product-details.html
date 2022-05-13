@@ -656,7 +656,11 @@
                                             </label>
                                             <button type="button" class="quantity__value quickview__value--quantity increase" aria-label="quantity value" value="Increase Value">+</button>
                                         </div>
+                                        {% if single_product.stock <= 0 %}
+                                        <h5 class="text-danger">Out of Stock</h5>
+                                        {% else %}
                                         <a class="quickview__cart--btn btn primary__btn"  href="{% url 'cart' %}" type="submit">Add To Cart</a>  
+                                        {% endif %}
                                     </div>
                                     <div class="product__variant--list mb-15">
 
