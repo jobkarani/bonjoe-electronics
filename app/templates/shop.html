@@ -590,14 +590,10 @@
                             <div class="single__widget widget__bg">
                                 <h2 class="widget__title h3">Categories</h2>
                                 <ul class="widget__tagcloud">
-                                    <li class="widget__tagcloud--list"><a class="widget__tagcloud--link" href="shop.html">Jacket</a></li>
-                                    <li class="widget__tagcloud--list"><a class="widget__tagcloud--link" href="shop.html">Women</a></li>
-                                    <li class="widget__tagcloud--list"><a class="widget__tagcloud--link" href="shop.html">Oversize</a></li>
-                                    <li class="widget__tagcloud--list"><a class="widget__tagcloud--link" href="shop.html">Cotton </a></li>
-                                    <li class="widget__tagcloud--list"><a class="widget__tagcloud--link" href="shop.html">Shoulder </a></li>
-                                    <li class="widget__tagcloud--list"><a class="widget__tagcloud--link" href="shop.html">Winter</a></li>
-                                    <li class="widget__tagcloud--list"><a class="widget__tagcloud--link" href="shop.html">Accessories</a></li>
-                                    <li class="widget__tagcloud--list"><a class="widget__tagcloud--link" href="shop.html">Dress </a></li>
+                                    <li><a href="{% url 'shop' %}">All Products </a></li>
+                                    {% for category in links %}
+                                    <li class="widget__tagcloud--list" ><a class="widget__tagcloud--link" href="{{ category.get_url }}">{{ category.name }} </a></li>
+                                    {% endfor %}
                                 </ul>
                             </div>
 
