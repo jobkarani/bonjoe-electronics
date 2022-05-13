@@ -625,37 +625,19 @@
                                 <p class="product__details--info__desc mb-15">{{ single_product.description }}</p>
                                 <div class="product__variant">
                                     <div class="product__variant--list mb-10">
-                                        <fieldset class="variant__input--fieldset">
-                                            <legend class="product__variant--title mb-8">Color :</legend>
-                                            <input id="color-red1" name="color" type="radio" checked>
-                                            <label class="variant__color--value red" for="color-red1" title="Red"><img class="variant__color--value__img" src="{{ single_product.image1.url }}" alt="variant-color-img"></label>
-                                            <input id="color-red2" name="color" type="radio">
-                                            <label class="variant__color--value red" for="color-red2" title="Black"><img class="variant__color--value__img" src="{{ single_product.image2.url }}" alt="variant-color-img"></label>
-                                            <input id="color-red3" name="color" type="radio">
-                                            <label class="variant__color--value red" for="color-red3" title="Pink"><img class="variant__color--value__img" src="{{ single_product.image1.url }}" alt="variant-color-img"></label>
-                                            <input id="color-red4" name="color" type="radio">
-                                            <label class="variant__color--value red" for="color-red4" title="Orange"><img class="variant__color--value__img" src="{{ single_product.image4.url }}" alt="variant-color-img"></label>
-                                        </fieldset>
+                                        <div class="item-option-select">
+                                            <h6>Choose Color</h6>
+                                            <select name="flavour" class="form-control" required>
+                                              <option value="" disabled selected>Select</option>
+                                              {% for i in single_product.variation_set.color %}
+                                              <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                                              {% endfor %}
+                                            </select>
+                                          </div>
                                     </div>
-                                    <div class="product__variant--list mb-15">
-                                        <fieldset class="variant__input--fieldset weight">
-                                            <legend class="product__variant--title mb-8">Weight :</legend>
-                                            <input id="weight1" name="weight" type="radio" checked>
-                                            <label class="variant__size--value red" for="weight1">5 kg</label>
-                                            <input id="weight2" name="weight" type="radio">
-                                            <label class="variant__size--value red" for="weight2">3 kg</label>
-                                            <input id="weight3" name="weight" type="radio">
-                                            <label class="variant__size--value red" for="weight3">2 kg</label>
-                                        </fieldset>
-                                    </div>
+                                  
                                     <div class="product__variant--list quantity d-flex align-items-center mb-20">
-                                        <div class="quantity__box">
-                                            <button type="button" class="quantity__value quickview__value--quantity decrease" aria-label="quantity value" value="Decrease Value">-</button>
-                                            <label>
-                                                <input type="number" class="quantity__number quickview__value--number" value="1" />
-                                            </label>
-                                            <button type="button" class="quantity__value quickview__value--quantity increase" aria-label="quantity value" value="Increase Value">+</button>
-                                        </div>
+                                        
                                         {% if single_product.stock <= 0 %}
                                         <h5 class="text-danger">Out of Stock</h5>
                                         {% else %}
