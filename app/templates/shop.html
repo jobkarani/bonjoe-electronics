@@ -604,9 +604,9 @@
                                         <div class="price__filter--group">
                                             <label class="price__filter--label" for="Filter-Price-GTE2">From</label>
                                             <div class="price__filter--input border-radius-5 d-flex align-items-center">
-                                                <span class="price__filter--currency">$</span>
+                                                <span class="price__filter--currency">Ksh</span>
                                                 <label>
-                                                    <input class="price__filter--input__field border-0" name="filter.v.price.gte" type="number" placeholder="0" min="0" max="250.00">
+                                                    <input class="price__filter--input__field border-0" name="filter.v.price.gte" type="number" placeholder="0" min="0" max="25000.00">
                                                 </label>
                                             </div>
                                         </div>
@@ -616,9 +616,9 @@
                                         <div class="price__filter--group">
                                             <label class="price__filter--label" for="Filter-Price-LTE2">To</label>
                                             <div class="price__filter--input border-radius-5 d-flex align-items-center">
-                                                <span class="price__filter--currency">$</span>
+                                                <span class="price__filter--currency">Ksh</span>
                                                 <label>
-                                                    <input class="price__filter--input__field border-0" name="filter.v.price.lte" type="number" min="0" placeholder="250.00" max="250.00">
+                                                    <input class="price__filter--input__field border-0" name="filter.v.price.lte" type="number" min="0" placeholder="25000.00" max="25000.00">
                                                 </label>
                                             </div>
                                         </div>
@@ -650,9 +650,9 @@
                                                         <span class="product__items--content__subtitle">{{ product.category }}</span>
                                                         <h3 class="product__items--content__title h4"><a class="prod-details" href="{{ product.get_url }}">{{ product.name }}</a></h3>
                                                         <div class="product__items--price">
-                                                            <span class="current__price">$120</span>
+                                                            <span class="current__price">Ksh {{ product.new_price }}</span>
                                                             <span class="price__divided"></span>
-                                                            <span class="old__price">$88</span>
+                                                            <span class="old__price">Ksh {{ product.old_price }}</span>
                                                         </div>
                                                         <ul class="rating product__rating d-flex">
                                                             <li class="rating__list">
@@ -704,12 +704,6 @@
                                                                         </g>
                                                                     </svg>
                                                                     <span class="add__to--cart__text"> + Add to cart</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="product__items--action__list">
-                                                                <a class="product__items--action__btn" href="wishlist.html">
-                                                                    <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="25.51" height="23.443" viewBox="0 0 512 512"><path d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>
-                                                                    <span class="visually-hidden">Wishlist</span>
                                                                 </a>
                                                             </li>
                                                             <li class="product__items--action__list">
