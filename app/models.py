@@ -49,7 +49,7 @@ class Product(models.Model):
     image2 = CloudinaryField('image')
     image3 = CloudinaryField('image')
     image4 = CloudinaryField('image')
-    image5 = CloudinaryField('image')
+    image5 = CloudinaryField('image')   
     image6 = CloudinaryField('image')
     description = models.TextField(max_length=500, blank=True)
     new_price = models.FloatField()
@@ -67,18 +67,14 @@ class Product(models.Model):
         return self.name
 
 class VariationManager(models.Manager):
-    def flavours(self):
-        return super(VariationManager, self).filter(variation_category="flavour",is_active=True)
-
-    def toppings(self):
-        return super(VariationManager, self).filter(variation_category="topping",is_active=True)
+    def colors(self):
+        return super(VariationManager, self).filter(variation_category="color",is_active=True)
 
     def sizes(self):
         return super(VariationManager, self).filter(variation_category="size",is_active=True)
 
 variation_category_choice=(
-    ('flavour', 'flavour'),
-    ('topping', 'topping'),
+    ('color', 'color'),
     ('size', 'size'),
 )
 
