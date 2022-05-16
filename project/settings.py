@@ -44,6 +44,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap4',
+    'cloudinary',
+    'tinymce',
+    'django_daraja',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,11 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
-    'bootstrap4',
-    'cloudinary',
-    'tinymce',
-    'django_daraja',
-    'crispy_forms',
+
+    
 ]
 
 MIDDLEWARE = [

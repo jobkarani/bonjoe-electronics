@@ -1,4 +1,9 @@
-
+.form-text{
+    display: none;
+}
+.form-group label{
+    display: none;
+}
 /* HEADER */
 header .head{
     background: coral;
@@ -179,4 +184,10 @@ header .head{
     max-width: 100%;
     max-height: 50rem;
     object-fit: cover;
+}
+.continue__shopping .continue__shopping--link{
+    color: coral;
+}
+.continue__shopping .continue__shopping--clear{
+    color: coral;
 }

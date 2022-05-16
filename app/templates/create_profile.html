@@ -28,25 +28,18 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form action="/accounts/register/" method="post">
+                        <form action="" method="post">
 
                             {% load crispy_forms_tags %}
                             {{ form | crispy }}
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-sm" value="Create Profile">
+                                <button type="submit">Create Profile</button>
                             </div>
                 
                             
                         </form>
-                        <div class="social-login">
-                            <span class="social-label">Or login with</span>
-                            <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
