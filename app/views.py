@@ -133,7 +133,7 @@ def index(request, category_slug=None):
 def shop(request, category_slug=None):
     categories = None
     products = None
-    price_filter = Product.objects.filter(new_price__level__gte=0)
+    # price_filter = Product.objects.filter(new_price__level__gte=0)
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=categories, is_available=True)
@@ -150,7 +150,7 @@ def shop(request, category_slug=None):
     context = {
         'products': paged_product,
         'product_count':product_count,
-        'price_filter':price_filter,
+        # 'price_filter':price_filter,
     }
     return render(request, 'shop.html', context)
 
@@ -162,9 +162,9 @@ def product_detail(request, category_slug, product_slug):
     except Exception as e:
         raise e
 
-        context = {
-        'single_product': single_product,
-        'in_cart':in_cart,
+    context = {
+    'single_product': single_product,
+    'in_cart':in_cart,
 
     }
     return render(request, 'product-details.html',context)
