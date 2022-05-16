@@ -47,7 +47,7 @@
 					<img src="{% static 'assets/images/img-01.png' %}" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="/accounts/register/">
+				<form  action="/accounts/register/" method="post" class="login100-form validate-form">
 					<span class="login100-form-title">
 						Member Login
 					</span>
@@ -56,9 +56,7 @@
                     {% bootstrap_form form %}
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
+						<button class="login100-form-btn" type="submit">SIGN UP</button>
 					</div>
 
 					<div class="text-center p-t-12">
