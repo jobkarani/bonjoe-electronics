@@ -69,7 +69,6 @@
         </div>
     </div>
     <!-- End preloader -->
-	
     <!-- Start header area -->
     <header class="header__section">
         <div class="header__topbar bg__secondary head">
@@ -126,18 +125,12 @@
                     <div class="header__account header__sticky--none">
                         <ul class="d-flex">
                             <li class="header__account--items">
-                                <a class="header__account--btn" href="my-account.html">
+                                <a class="header__account--btn" href="{% url 'profile' %}">
                                     <svg xmlns="http://www.w3.org/2000/svg"  width="26.51" height="23.443" viewBox="0 0 512 512"><path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg> 
                                     <span class="header__account--btn__text">My Account</span>
                                 </a>
                             </li>
-                            <li class="header__account--items d-none d-lg-block">
-                                <a class="header__account--btn" href="wishlist.html">
-                                    <svg  xmlns="http://www.w3.org/2000/svg" width="28.51" height="23.443" viewBox="0 0 512 512"><path d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>
-                                    <span class="header__account--btn__text"> Wish List</span>
-                                    <span class="items__count wishlist" >02</span> 
-                                </a>
-                            </li>
+
                             <li class="header__account--items">
                                 <a class="header__account--btn minicart__open--btn" href="javascript:void(0)" data-offcanvas>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="26.51" height="23.443" viewBox="0 0 14.706 13.534">
@@ -151,6 +144,12 @@
                                     </svg>
                                     <span class="header__account--btn__text"> My cart</span>   
                                     <span class="items__count">02</span> 
+                                </a>
+                            </li>
+                            <li class="header__account--items ">
+                                <a class="header__account--btn" href="wishlist.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9"/></svg>
+                                    <span class="header__account--btn__text"> Logout </span>
                                 </a>
                             </li>
                         </ul>
@@ -176,9 +175,6 @@
                                 <li class="header__menu--items style2">
                                     <a class="header__menu--link text-white" href="contact.html">Contact </a>  
                                 </li>
-                                <li class="header__menu--items style2">
-                                    <a class="header__menu--link text-white" href="contact.html">Logout </a>  
-                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -191,15 +187,9 @@
                                 </a>
                             </li>
                             <li class="header__account--items header__account2--items">
-                                <a class="header__account--btn" href="my-account.html">
+                                <a class="header__account--btn" href="{% url 'profile' %}">
                                     <svg xmlns="http://www.w3.org/2000/svg"  width="26.51" height="23.443" viewBox="0 0 512 512"><path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
                                     <span class="visually-hidden">My Account</span>
-                                </a>
-                            </li>
-                            <li class="header__account--items header__account2--items d-none d-lg-block">
-                                <a class="header__account--btn" href="wishlist.html">
-                                    <svg  xmlns="http://www.w3.org/2000/svg" width="28.51" height="23.443" viewBox="0 0 512 512"><path d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>
-                                    <span class="items__count  wishlist style2">02</span> 
                                 </a>
                             </li>
                             <li class="header__account--items header__account2--items">
@@ -214,6 +204,12 @@
                                         </g>
                                     </svg>
                                     <span class="items__count style2">02</span> 
+                                </a>
+                            </li>
+                            <li class="header__account--items ">
+                                <a class="header__account--btn" href="wishlist.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9"/></svg>
+                                    
                                 </a>
                             </li>
                         </ul>
@@ -328,13 +324,9 @@
                 <li class="offcanvas__stikcy--toolbar__list">
                     <a class="offcanvas__stikcy--toolbar__btn" href="wishlist.html">
                         <span class="offcanvas__stikcy--toolbar__icon"> 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18.541" height="15.557" viewBox="0 0 18.541 15.557">
-                            <path  d="M71.775,135.51a5.153,5.153,0,0,1,1.267-1.524,4.986,4.986,0,0,1,6.584.358,4.728,4.728,0,0,1,1.174,4.914,10.458,10.458,0,0,1-2.132,3.808,22.591,22.591,0,0,1-5.4,4.558c-.445.282-.9.549-1.356.812a.306.306,0,0,1-.254.013,25.491,25.491,0,0,1-6.279-4.8,11.648,11.648,0,0,1-2.52-4.009,4.957,4.957,0,0,1,.028-3.787,4.629,4.629,0,0,1,3.744-2.863,4.782,4.782,0,0,1,5.086,2.447c.013.019.025.034.057.076Z" transform="translate(-62.498 -132.915)" fill="currentColor"/>
-                            </svg> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9"/></svg> 
                         </span>
-                        <span class="offcanvas__stikcy--toolbar__label">Wishlist</span>
-                        <span class="items__count" style="background: coral;">3</span> 
-                    </a>
+                        <span class="offcanvas__stikcy--toolbar__label">Logout</span>                    </a>
                 </li>
             </ul>
         </div>
