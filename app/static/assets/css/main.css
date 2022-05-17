@@ -191,3 +191,6 @@ header .head{
 .continue__shopping .continue__shopping--clear{
     color: coral;
 }
+.product__section--inner .mb-30{
+    border: 1px solid coral;
+}
