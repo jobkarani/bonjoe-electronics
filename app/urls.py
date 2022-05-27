@@ -21,5 +21,6 @@ urlpatterns = [
     path('shop/search/', views.search, name='search'),
     path('place_order/', views.place_order, name='place_order'),
     path('payments/', views.payments, name='payments'),
+    path('about/', views.about, name='about'),
     # path('userPayment/', views.userPayment, name='userPayment'),
 ]
