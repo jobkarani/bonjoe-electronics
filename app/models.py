@@ -205,3 +205,13 @@ class ReviewRating(models.Model):
     def __str__(self):
         return self.subject
 
+
+class Account(models.Model):
+    user = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    order = models.ForeignKey('Order', on_delete=models.CASCADE)
+    payment = models.ForeignKey('Payment', on_delete=models.CASCADE)
+
+
+
+    def __str__(self):
+        return self.user

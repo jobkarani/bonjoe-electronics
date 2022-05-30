@@ -5,7 +5,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Ederm - Blogs</title>
+  <title>Bonjoe - About</title>
   <meta name="description" content="Morden Bootstrap HTML5 Template" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" />
@@ -200,16 +200,15 @@
                             <li class="header__menu--items mega__menu--items style2">
                                 <a class="header__menu--link text-white" href="{% url 'shop' %}">Shop
                                 </a>
-
-                            </li>
-                            <li class="header__menu--items style2">
-                                <a class="header__menu--link text-white" href="#">About US </a>
                             </li>
                             <li class="header__menu--items style2 d-none d-xl-block">
                                 <a class="header__menu--link text-white" href="{% url 'shop' %}">Categories </a>
                             </li>
                             <li class="header__menu--items style2">
-                                <a class="header__menu--link text-white" href="contact.html">Contact </a>
+                                <a class="header__menu--link text-white" href="{% url 'about' %}">About US </a>
+                            </li>
+                            <li class="header__menu--items style2">
+                                <a class="header__menu--link text-white" href="{% url 'contact' %}">Contact Us</a>
                             </li>
                         </ul>
                     </nav>
@@ -298,14 +297,15 @@
                                 <a class="header__menu--link text-white" href="{% url 'shop' %}">Shop
                                 </a>
                             </li>
-                            <li class="header__menu--items">
-                                <a class="header__menu--link text-white" href="about.html">About US </a>
-                            </li>
                             <li class="header__menu--items d-none d-xl-block">
                                 <a class="header__menu--link text-white" href="{% url 'shop' %}">Categories </a>
                             </li>
                             <li class="header__menu--items">
-                                <a class="header__menu--link text-white" href="contact.html">Contact </a>
+                                <a class="header__menu--link text-white" href="{% url 'about' %}">About US </a>
+                            </li>
+                            
+                            <li class="header__menu--items">
+                                <a class="header__menu--link text-white" href="{% url 'contact' %}">Contact Us</a>
                             </li>
                             <li class="header__menu--items">
                                 <a class="header__menu--link text-white" href="{%url 'logout' %}">Logout </a>
@@ -336,8 +336,8 @@
                     <li class="offcanvas__menu_li">
                         <a class="offcanvas__menu_item" href="{% url 'shop' %}">Shop</a>
                     </li>
-                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="about.html">About</a></li>
-                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="contact.html">Contact</a>
+                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="{% url 'about' %}">About Us</a></li>
+                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="{% url 'contact' %}">Contact</a>
                     </li>
                 </ul>
                 <div class="offcanvas__account--items">
@@ -629,7 +629,7 @@
               <span class="about__content--subtitle text__secondary mb-20">
                 Why Choose us</span>
               <h2 class="about__content--maintitle mb-25">
-             Erdem Insurance Agency
+             Bonjoe Electronics 
               </h2>
               <p class="about__content--desc mb-20">
                 Erdem Insurance Agency  provides both Corporates and Individuals' insuarance Solutions for 
@@ -646,8 +646,8 @@
               </p>
               <div class="about__author position__relative d-flex align-items-center">
                 <div class="about__author--left">
-                  <h4 class="about__author--name">JOB KIHIKO MUGO</h4>
-                  <span class="about__author--rank">Principle Officer</span>
+                  <h4 class="about__author--name">JOE NJOROGE</h4>
+                  <span class="about__author--rank">Ceo</span>
                 </div>
                 <img class="about__author--signature display-block" 
                 src="static/assets/img/other/signature.png" style="width:50%"
