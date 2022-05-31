@@ -28,24 +28,13 @@ def about(request):
 
     return render(request, 'about.html')
 
-@login_required(login_url="/accounts/login/")
-def create_profile(request):
-    current_user = request.user
-    title = "Create Profile"
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = current_user
-            profile.save()
-            messages.success(request, 'Profile Succesfully Created')
-        return HttpResponseRedirect('/')
+def contact(request):
 
-    else:
-        form = ProfileForm()
-    return render(request, 'all-temps/create_profile.html', {"form": form, "title": title})
+    return render (request, 'contact.html')
 
+def wishlist(request):
 
+    return render (request, 'wishlist.html')
 
 
 @login_required(login_url="/accounts/login/")
@@ -105,12 +94,7 @@ def update_profile(request, id):
         "user":user,
         "profile":profile,
         }
-    return render(request, 'all-temps/update_prof.html', ctx)
-
-
-def About(request):
-
-    return render(request, 'all-temps/aboutus.html',)
+    return render(request, 'update_prof.html', ctx)
 
 
 # pages 
@@ -316,7 +300,7 @@ def search(request):
         'products':products,
         'product_count':product_count,
     }
-    return render(request, 'all-temps/shop.html', ctx)
+    return render(request, 'shop.html', ctx)
 
 
 @login_required(login_url="/accounts/login/")
@@ -334,11 +318,11 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         'quantity':quantity,
         'cart_items':cart_items
     }
-    return render(request, 'all-temps/checkout.html',ctx)
+    return render(request, 'checkout.html',ctx)
 
 def payments(request):
     
-    return render(request, 'all-temps/payments.html')
+    return render(request, 'payments.html')
 
 @login_required(login_url="/accounts/login/")
 def place_order(request,total=0, quantity=0,):
@@ -390,7 +374,7 @@ def place_order(request,total=0, quantity=0,):
                 'cart_items':cart_items,
                 'sub_total':sub_total,
             }
-            return render(request, 'all-temps/payments.html',ctx)
+            return render(request, 'payments.html',ctx)
         
 
     else:
@@ -453,7 +437,7 @@ def place_order(request,total=0, quantity=0,):
 #         'cart_items':cart_items,
 #         'sub_total':sub_total,
 #     }
-#     return render(request, 'all-temps/pay.html', context)
+#     return render(request, 'pay.html', context)
 
 
 def phoneSanitize(phone):
@@ -492,4 +476,7 @@ def submit_review(request, product_id):
                 data.save()
                 messages.success(request, 'Thank you! Your review has been submitted.')
                 return redirect(url)
+
+
+
         

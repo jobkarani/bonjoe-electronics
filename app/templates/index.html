@@ -199,14 +199,15 @@
                                     </a>
 
                                 </li>
-                                <li class="header__menu--items style2">
-                                    <a class="header__menu--link text-white" href="#">About US </a>
-                                </li>
+                                
                                 <li class="header__menu--items style2 d-none d-xl-block">
                                     <a class="header__menu--link text-white" href="{% url 'shop' %}">Categories </a>
                                 </li>
                                 <li class="header__menu--items style2">
-                                    <a class="header__menu--link text-white" href="contact.html">Contact </a>
+                                    <a class="header__menu--link text-white" href="{% url 'about' %}">About US </a>
+                                </li>
+                                <li class="header__menu--items style2">
+                                    <a class="header__menu--link text-white" href="contact.html">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>
@@ -297,14 +298,15 @@
                                     <a class="header__menu--link text-white" href="{% url 'shop' %}">Shop
                                     </a>
                                 </li>
-                                <li class="header__menu--items">
-                                    <a class="header__menu--link text-white" href="about.html">About US </a>
-                                </li>
+                                
                                 <li class="header__menu--items d-none d-xl-block">
                                     <a class="header__menu--link text-white" href="{% url 'shop' %}">Categories </a>
                                 </li>
                                 <li class="header__menu--items">
-                                    <a class="header__menu--link text-white" href="contact.html">Contact </a>
+                                    <a class="header__menu--link text-white" href="{% url 'about' %}">About US </a>
+                                </li>
+                                <li class="header__menu--items">
+                                    <a class="header__menu--link text-white" href="{% url 'contact' %}">Contact Us</a>
                                 </li>
                                 <li class="header__menu--items">
                                     <a class="header__menu--link text-white" href="{%url 'logout' %}">Logout </a>
@@ -1666,6 +1668,7 @@
             </button>
             <div class="box newsletter__popup--box d-flex align-items-center">
                 <div class="newsletter__popup--thumbnail">
+                    
                     <img class="newsletter__popup--thumbnail__img display-block"
                         src=" {% static 'assets/img/banner/newsletter-popup-thumb2.png' %}"
                         alt="newsletter-popup-thumb">

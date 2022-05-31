@@ -15,7 +15,7 @@ class NewsLetterRecipients(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
     profile_photo = CloudinaryField('image')
     email = models.EmailField(max_length=256, null=True)
     phone = models.CharField(max_length=100)
@@ -205,3 +205,13 @@ class ReviewRating(models.Model):
     def __str__(self):
         return self.subject
 
+
+class Account(models.Model):
+    user = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    order = models.ForeignKey('Order', on_delete=models.CASCADE)
+    payment = models.ForeignKey('Payment', on_delete=models.CASCADE)
+
+
+
+    def __str__(self):
+        return self.user
