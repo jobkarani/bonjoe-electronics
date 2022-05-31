@@ -14,6 +14,7 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_photo', 'email', 'phone']
+        
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
