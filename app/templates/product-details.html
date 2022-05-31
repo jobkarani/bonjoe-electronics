@@ -834,10 +834,8 @@
                                         </div>
                                         <div class="reviews__comment--area">
                                             {% for review in reviews %} 
-                                            <div class="reviews__comment--list d-flex">
-                                                <div class="reviews__comment--thumb">
-                                                    <img src="{{ review.user.image.url }}" alt="comment-thumb">
-                                                </div>
+                                            <div class="reviews__comment--list d-flex" style="box-shadow: 5px 5px 5px 5px #e2dede;padding: 5%;">
+                                               
                                                 <div class="reviews__comment--content">
                                                     <div class="reviews__comment--top d-flex justify-content-between">
                                                         <div class="reviews__comment--top__left">
@@ -878,11 +876,13 @@
                                                                         </svg>
                                                                     </span>
                                                                 </li>
+                                                                <div class="rating" style="margin-left:5%;color:coral;">{{review.rating}}</div>
                                                             </ul>
+                                                            
                                                         </div>
-                                                        <span class="reviews__comment--content__date">February 18, 2022</span>
+                                                        <span class="reviews__comment--content__date">{{review.created_at}}</span>
                                                     </div>
-                                                    <p class="reviews__comment--content__desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos ex repellat officiis neque. Veniam, rem nesciunt. Assumenda distinctio, autem error repellat eveniet ratione dolor facilis accusantium amet pariatur, non eius!</p>
+                                                    <p class="reviews__comment--content__desc">{{review.review}}</p>
                                                 </div>
                                             </div>
                                             {% endfor %}
