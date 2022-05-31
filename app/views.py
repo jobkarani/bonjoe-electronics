@@ -67,7 +67,7 @@ def profile(request):
     else:
         form = ProfileForm()
 
-    return render(request, "all-temps/profile.html", {"profile": profile, "product": product, "letterForm": form})
+    return render(request, "profile.html", {"profile": profile, "product": product, "letterForm": form})
 
 
 @login_required(login_url="/accounts/login/")
