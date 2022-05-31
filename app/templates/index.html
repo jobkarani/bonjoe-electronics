@@ -817,10 +817,9 @@
         </section>
         <!-- End shipping section -->
 
-
         <!-- Start product section -->
-        <section class="product__section section--padding pt-0" style="margin-bottom: 4rem;">
-            <div class="container-fluid">
+        <section class="product__section section--padding pt-0" style="margin-bottom: 4rem; padding: 5%;">
+            <div class="container-fluid" style="box-shadow: 6px 6px 5px 5px coral; padding: 5%;">
                 <div class="section__heading text-center mb-35">
                     <h2 class="section__heading--maintitle">New Products</h2>
                 </div>
@@ -828,14 +827,13 @@
                     <li class="product__tab--primary__btn__list " data-toggle="tab" data-target="#featured">
                         Featured
                     </li>
-
                 </ul>
                 <div class="tab_content">
                     <div id="featured" class="tab_pane active show">
                         <div class="product__section--inner">
                             <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
                                 {% for prod in products %}
-                                <div class="col mb-30">
+                                <div class="col mb-30 " id="product" style=" box-shadow: 5px 5px 5px 5px #e2dede; margin:1%; border: none;padding-bottom: 2%; padding-top: 2%;">
                                     <div class="product__items">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="{{ prod.get_url }}">
@@ -946,7 +944,7 @@
                                                             </g>
                                                         </svg>
                                                         <span class="add__to--cart__text">
-                                                            + Add to cart</span>
+                                                        </span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
