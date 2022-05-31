@@ -833,14 +833,15 @@
                                             </div>
                                         </div>
                                         <div class="reviews__comment--area">
+                                            {% for review in reviews %} 
                                             <div class="reviews__comment--list d-flex">
                                                 <div class="reviews__comment--thumb">
-                                                    <img src="assets/img/other/comment-thumb1.png" alt="comment-thumb">
+                                                    <img src="{{ review.user.image.url }}" alt="comment-thumb">
                                                 </div>
                                                 <div class="reviews__comment--content">
                                                     <div class="reviews__comment--top d-flex justify-content-between">
                                                         <div class="reviews__comment--top__left">
-                                                            <h3 class="reviews__comment--content__title h4">Richard Smith</h3>
+                                                            <h3 class="reviews__comment--content__title h4">{{ review.user }}</h3>
                                                             <ul class="rating reviews__comment--rating d-flex">
                                                                 <li class="rating__list">
                                                                     <span class="rating__list--icon">
@@ -884,6 +885,7 @@
                                                     <p class="reviews__comment--content__desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos ex repellat officiis neque. Veniam, rem nesciunt. Assumenda distinctio, autem error repellat eveniet ratione dolor facilis accusantium amet pariatur, non eius!</p>
                                                 </div>
                                             </div>
+                                            {% endfor %}
                                             <!--  -->
                                         <div id="writereview" class="reviews__comment--reply__area">
                                             <form action="{% url 'submit_review' single_product.id %}" method="POST">
