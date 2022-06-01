@@ -68,6 +68,9 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+ 
+
+
 class VariationManager(models.Manager):
     def colors(self):
         return super(VariationManager, self).filter(variation_category="color",is_active=True)
@@ -217,3 +220,12 @@ class Account(models.Model):
 
     def __str__(self):
         return self.user
+
+
+class  Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE) 
+
+    def __str__(self):
+        return self.user
+        
