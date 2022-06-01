@@ -36,29 +36,6 @@ def wishlist(request):
 
     return render (request, 'wishlist.html')
 
-
-@login_required(login_url="/accounts/login/")
-def profile(request):
-    current_user = request.user
-    profile = Profile.objects.filter(user_id=current_user.id).first()
-    product = Product.objects.filter(id=current_user.id).all()
-
-    if request.method == 'POST':
-        form = ProfileForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['user']
-            email = form.cleaned_data['email']
-            recipient = NewsLetterRecipients(name=name, email=email)
-            recipient.save()
-            send_welcome_email(name, email)
-
-            HttpResponseRedirect('profile')
-    else:
-        form = ProfileForm()
-
-    return render(request, "profile.html", {"profile": profile, "product": product, "letterForm": form})
-
-
 @login_required(login_url="/accounts/login/")
 def create_profile(request):
     current_user = request.user
@@ -74,6 +51,14 @@ def create_profile(request):
     else:
         form = ProfileForm()
     return render(request, 'create_profile.html', {"form": form, "title": title})
+
+@login_required(login_url="/accounts/login/")
+def profile(request):
+    current_user = request.user
+    profile = Profile.objects.filter(user_id=current_user.id).first()
+    product = Product.objects.filter(id=current_user.id).all()
+
+    return render(request, "profile.html", { "profile":profile, "product": product})
 
 
 def update_profile(request, id):

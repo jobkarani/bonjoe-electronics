@@ -15,7 +15,9 @@ class NewsLetterRecipients(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
     profile_photo = CloudinaryField('image')
     email = models.EmailField(max_length=256, null=True)
     phone = models.CharField(max_length=100)
