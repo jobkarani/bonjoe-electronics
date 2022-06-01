@@ -591,6 +591,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="cart__table--body">
+                                    {% for product in product %}
                                     <tr class="cart__table--body__items">
                                         <td class="cart__table--body__list">
                                             <div class="cart__product d-flex align-items-center">
@@ -601,23 +602,23 @@
                                                     <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/product1.png" alt="cart-product"></a>
                                                 </div>
                                                 <div class="cart__content">
-                                                    <h4 class="cart__content--title"><a href="product-details.html">Fresh-whole-fish</a></h4>
+                                                    <h4 class="cart__content--title"><a href="product-details.html">{{product.name}}</a></h4>
                                                     <span class="cart__content--variant">COLOR: Blue</span>
                                                     <span class="cart__content--variant">WEIGHT: 2 Kg</span>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="cart__table--body__list">
-                                            <span class="cart__price">£65.00</span>
+                                            <span class="cart__price">{{product.new_price}}</span>
                                         </td>
                                         <td class="cart__table--body__list text-center">
-                                            <span class="in__stock text__secondary">in stock</span>
+                                            <span class="in__stock text__secondary">{{product.is_available}}</span>
                                         </td>
                                         <td class="cart__table--body__list text-right">
                                             <a class="wishlist__cart--btn primary__btn" href="cart.html">Add To Cart</a>
                                         </td>
                                     </tr>
-                                    
+                                    {% endfor %}
                                 </tbody>
                             </table> 
                             <div class="continue__shopping d-flex justify-content-between">
@@ -1202,12 +1203,12 @@
                                         </div>
                                         <button class="primary__btn quickview__cart--btn" type="submit">Add To Cart</button>  
                                     </div>
-                                    <div class="quickview__variant--list variant__wishlist mb-15">
-                                        <a class="variant__wishlist--icon" href="wishlist.html" title="Add to wishlist">
-                                            <svg class="quickview__variant--wishlist__svg" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
-                                            Add to Wishlist
+                                    <li class="product__items--action__list">
+                                        <a class="product__items--action__btn" href="{% url 'add_wishlist' %}">
+                                            <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="25.51" height="23.443" viewBox="0 0 512 512"><path d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>
+                                            <span class="visually-hidden">Wishlist</span> 
                                         </a>
-                                    </div>
+                                    </li>
                                 </div>
                                 <div class="quickview__social d-flex align-items-center">
                                     <label class="quickview__social--title">Social Share:</label>

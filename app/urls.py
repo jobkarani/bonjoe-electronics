@@ -23,6 +23,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('wishlist/', views.wishlist, name='wishlist'),
-    path('addwishlist/', views.add_wishlist, name='addwishlist'),
+    path('add_wishlist/', views.add_wishlist, name='add_wishlist'),
     # path('userPayment/', views.userPayment, name='userPayment'),
 ]
