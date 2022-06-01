@@ -32,9 +32,17 @@ def contact(request):
 
     return render (request, 'contact.html')
 
+@login_required(login_url="/accounts/login/")
 def wishlist(request):
+    current_user = request.user
+    product = Product.objects.filter(id=current_user.id).all()
 
-    return render (request, 'wishlist.html')
+    return render (request, 'wishlist.html', {"product": product,})
+
+def add_wishlist(request, product_id):
+    product = Product.objects.get(id = product_id)
+     
+    return redirect('shop')
 
 @login_required(login_url="/accounts/login/")
 def create_profile(request):
