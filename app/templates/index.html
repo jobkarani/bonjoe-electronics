@@ -570,13 +570,13 @@
                                                 <p class="slider__content--desc desc1 mb-15"><img
                                                         class="slider__text--shape__icon"
                                                         src="assets/img/icon/text-shape-icon.png" alt="text-shape-icon">
-                                                    New Collection</p>
-                                                <h2 class="slider__content--maintitle h1">The Great Fashion <br>
-                                                    Collection 2022</h2>
+                                                    New Mobile Phones</p>
+                                                <h2 class="slider__content--maintitle h1">The Best Electronics  <br>
+                                                    Products </h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40">Up To 40% Off
                                                     Final Sale Items. <br>
                                                     Caught in the Moment!</p>
-                                                <a class="slider__btn primary__btn" href="shop.html">Show Collection
+                                                <a class="slider__btn primary__btn" href="{% url 'shop' %}">Show Collection
                                                     <svg class="primary__btn--arrow__icon"
                                                         xmlns="http://www.w3.org/2000/svg" width="20.2" height="12.2"
                                                         viewBox="0 0 6.2 6.2">
@@ -603,12 +603,12 @@
                                                         class="slider__text--shape__icon"
                                                         src="assets/img/icon/text-shape-icon.png" alt="text-shape-icon">
                                                     New Collection</p>
-                                                <h2 class="slider__content--maintitle h1">The Great Fashion <br>
-                                                    Collection 2022</h2>
+                                                <h2 class="slider__content--maintitle h1">Get The Deals <br>
+                                                    At Affordable Price</h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40 ">Up To 40% Off
                                                     Final Sale Items. <br>
                                                     Caught in the Moment!</p>
-                                                <a class="primary__btn slider__btn" href="shop.html">Show Collection
+                                                <a class="primary__btn slider__btn" href="{% url 'shop' %}">Show Collection
                                                     <svg class="slider__btn--arrow__icon"
                                                         xmlns="http://www.w3.org/2000/svg" width="20.2" height="12.2"
                                                         viewBox="0 0 6.2 6.2">
@@ -635,12 +635,12 @@
                                                         class="slider__text--shape__icon"
                                                         src="assets/img/icon/text-shape-icon.png" alt="text-shape-icon">
                                                     New Collection</p>
-                                                <h2 class="slider__content--maintitle h1">The Great Fashion <br>
-                                                    Collection 2022</h2>
+                                                <h2 class="slider__content--maintitle h1">Affordable Delivery <br>
+                                                    At any Location</h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40">Up To 40% Off
                                                     Final Sale Items. <br>
                                                     Caught in the Moment!</p>
-                                                <a class="primary__btn slider__btn" href="shop.html">Show Collection
+                                                <a class="primary__btn slider__btn" href="{% url 'shop' %}">Show Collection
                                                     <svg class="slider__btn--arrow__icon"
                                                         xmlns="http://www.w3.org/2000/svg" width="20.2" height="12.2"
                                                         viewBox="0 0 6.2 6.2">
@@ -818,8 +818,8 @@
         <!-- End shipping section -->
 
         <!-- Start product section -->
-        <section class="product__section section--padding pt-0" style="margin-bottom: 4rem; padding: 5%;">
-            <div class="container-fluid" style="box-shadow: 6px 6px 5px 5px coral; padding: 5%;">
+        <section class="product__section section--padding pt-0">
+            <div class="container-fluid">
                 <div class="section__heading text-center mb-35">
                     <h2 class="section__heading--maintitle">New Products</h2>
                 </div>
@@ -833,7 +833,7 @@
                         <div class="product__section--inner">
                             <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
                                 {% for prod in products %}
-                                <div class="col mb-30 " id="product" style=" box-shadow: 5px 5px 5px 5px #e2dede; margin:1%; border: none;padding-bottom: 2%; padding-top: 2%;">
+                                <div class="col mb-30 " id="product" style=" box-shadow: 0 2px 22px rgb(0 0 0 / 10%); margin:5px;">
                                     <div class="product__items">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="{{ prod.get_url }}">
@@ -922,7 +922,7 @@
                                             <ul class="product__items--action d-flex">
                                                 <li class="product__items--action__list">
                                                     <a class="product__items--action__btn add__to--cart"
-                                                        href="cart.html">
+                                                        href="{% url 'cart' %}">
                                                         <svg class="product__items--action__btn--svg"
                                                             xmlns="http://www.w3.org/2000/svg" width="22.51"
                                                             height="20.443" viewBox="0 0 14.706 13.534">
@@ -948,7 +948,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
-                                                    <a class="product__items--action__btn" href="wishlist.html">
+                                                    <a class="product__items--action__btn" href="{% url 'wishlist' %}">
                                                         <svg class="product__items--action__btn--svg"
                                                             xmlns="http://www.w3.org/2000/svg" width="25.51"
                                                             height="23.443" viewBox="0 0 512 512">
@@ -1666,7 +1666,7 @@
             </button>
             <div class="box newsletter__popup--box d-flex align-items-center">
                 <div class="newsletter__popup--thumbnail">
-                    
+
                     <img class="newsletter__popup--thumbnail__img display-block"
                         src=" {% static 'assets/img/banner/newsletter-popup-thumb2.png' %}"
                         alt="newsletter-popup-thumb">
