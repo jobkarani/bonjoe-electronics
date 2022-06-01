@@ -7,7 +7,7 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'new_price', 'old_price','description','category', 'is_available')
+    list_display = ('name', 'new_price', 'old_price','category', 'is_available')
     prepopulated_fields = {'slug': ('name',)}
 
 class VariationAdmin(admin.ModelAdmin):
