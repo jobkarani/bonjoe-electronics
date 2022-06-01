@@ -5,12 +5,12 @@
 
 
 <head>
-    <meta charset="utf-8">
-    <title>Suruchi - Fashion eCommerce HTML Template</title>
-    <meta name="description" content="Morden Bootstrap HTML5 Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
+  <meta charset="utf-8">
+  <title>Suruchi - My Account</title>
+  <meta name="description" content="Morden Bootstrap HTML5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    
     <!-- ======= All CSS Plugins here ======== -->
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/glightbox.min.css' %}">
@@ -199,6 +199,9 @@
                                     </a>
 
                                 </li>
+                                <li class="header__menu--items style2">
+                                    <a class="header__menu--link text-white" href="#">About US </a>
+                                </li>
 
                                 <li class="header__menu--items style2 d-none d-xl-block">
                                     <a class="header__menu--link text-white" href="{% url 'shop' %}">Categories </a>
@@ -206,11 +209,7 @@
                                 <li class="header__menu--items style2">
                                     <a class="header__menu--link text-white" href="{% url 'about' %}">About US </a>
                                 </li>
-                                <li class="header__menu--items style2">
-                                    <a class="header__menu--link text-white" href="contact.html">Contact Us</a>
-                                </li>
                             </ul>
-                        </nav>
                     </div>
                     <div class="header__account header__account2 header__sticky--block">
                         <ul class="d-flex">
@@ -298,15 +297,14 @@
                                     <a class="header__menu--link text-white" href="{% url 'shop' %}">Shop
                                     </a>
                                 </li>
-
+                                <li class="header__menu--items">
+                                    <a class="header__menu--link text-white" href="about.html">About US </a>
+                                </li>
                                 <li class="header__menu--items d-none d-xl-block">
                                     <a class="header__menu--link text-white" href="{% url 'shop' %}">Categories </a>
                                 </li>
                                 <li class="header__menu--items">
-                                    <a class="header__menu--link text-white" href="{% url 'about' %}">About US </a>
-                                </li>
-                                <li class="header__menu--items">
-                                    <a class="header__menu--link text-white" href="{% url 'contact' %}">Contact Us</a>
+                                    <a class="header__menu--link text-white" href="contact.html">Contact </a>
                                 </li>
                                 <li class="header__menu--items">
                                     <a class="header__menu--link text-white" href="{%url 'logout' %}">Logout </a>
@@ -1091,7 +1089,16 @@
 <script src="{% static 'assets/js/script.js' %}"></script>
 
 
+    <!-- All Script JS Plugins here  -->
+    <!-- <script src="assets/js/vendor/popper.js" defer="defer"></script> -->
+    <!-- <script src="assets/js/vendor/bootstrap.min.js" defer="defer"></script> -->
 
+    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/glightbox.min.js' %}"></script>
+
+    <!-- Customscript js -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
+  
 </body>
 
 </html>

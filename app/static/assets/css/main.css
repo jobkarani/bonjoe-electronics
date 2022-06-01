@@ -192,5 +192,7 @@ header .head{
     color: coral;
 }
 .product__section--inner .mb-30{
+    padding: 1rem;
+    border-radius: 5px;
     border: 1px solid coral;
 }
