@@ -69,6 +69,25 @@
     </div>
     <!-- End preloader -->
 
+        <!-- Start offcanvas filter sidebar -->
+        <div class="offcanvas__filter--sidebar widget__area">
+            <button type="button" class="offcanvas__filter--close" data-offcanvas>
+                <svg class="minicart__close--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"></path></svg> <span class="offcanvas__filter--close__text">Close</span>
+            </button>
+            <div class="offcanvas__filter--sidebar__inner">
+                <div class="single__widget widget__bg">
+                    <h2 class="widget__title h3">Categories</h2>
+                    <ul class="widget__tagcloud">
+                        <li class="widget__tagcloud--list"><a  class="widget__tagcloud--link" href="{% url 'shop' %}">All Products </a></li>
+                        {% for category in links %}
+                        <li class="widget__tagcloud--list" ><a class="widget__tagcloud--link" href="{{ category.get_url }}">{{ category.name }} </a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End offcanvas filter sidebar -->
+
     <!-- Start header area -->
     <header class="header__section">
         <div class="header__topbar bg__secondary head">
@@ -525,7 +544,7 @@
                                     <div class="product__section--inner product__grid--inner">
                                         <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-2 mb--n30">
                                             {% for product in products %}
-                                            <div class="col mb-30" style=" box-shadow: 5px 5px 5px 5px #e2dede; margin:1%; border: none;padding-bottom: 2%; padding-top: 2%;">
+                                            <div class="col mb-30" style="  box-shadow: 0 2px 22px rgb(0 0 0 / 10%); margin:1%; padding-bottom: 2%; padding-top: 2%;">
                                                 <div class="product__items ">
                                                     <div class="product__items--thumbnail">
                                                         <a class="product__items--link" href="{{ product.get_url }}">
@@ -615,7 +634,7 @@
                                     <div class="product__section--inner">
                                         <div class="row row-cols-1 mb--n30">
                                             {% for product in products %}
-                                            <div class="col mb-30" style="border: .5px solid coral; border-radius: 5px; padding: 1rem;">
+                                            <div class="col mb-30" style="  box-shadow: 0 2px 22px rgb(0 0 0 / 10%); margin:1%; padding-bottom: 2%; padding-top: 2%;">
                                                 <div class="product__items product__list--items d-flex">
                                                     <div class="product__items--thumbnail product__list--items__thumbnail">
                                                         <a class="product__items--link" href="{{ product.get_url }}">
