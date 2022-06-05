@@ -16,6 +16,8 @@ class NewsLetterRecipients(models.Model):
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
     profile_photo = CloudinaryField('image')
     email = models.EmailField(max_length=256, null=True)
     phone = models.CharField(max_length=100)
@@ -65,6 +67,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+ 
+
 
 class VariationManager(models.Manager):
     def colors(self):
@@ -215,3 +220,12 @@ class Account(models.Model):
 
     def __str__(self):
         return self.user
+
+
+class  Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE) 
+
+    def __str__(self):
+        return self.user
+        

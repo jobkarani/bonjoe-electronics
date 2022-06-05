@@ -207,7 +207,7 @@
                                     <a class="header__menu--link text-white" href="{% url 'about' %}">About US </a>
                                 </li>
                                 <li class="header__menu--items style2">
-                                    <a class="header__menu--link text-white" href="contact.html">Contact Us</a>
+                                    <a class="header__menu--link text-white" href="{% url 'contact' %}">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>
@@ -324,7 +324,7 @@
         <div class="offcanvas-header">
             <div class="offcanvas__inner">
                 <div class="offcanvas__logo">
-                    <a class="offcanvas__logo_link" href="index-2.html">
+                    <a class="offcanvas__logo_link" href="{% url 'index' %}">
                         <img src="assets/img/logo/nav-log.png" alt="Grocee Logo" width="158" height="36">
                     </a>
                     <button class="offcanvas__close--btn" data-offcanvas>close</button>
@@ -337,12 +337,12 @@
                         <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="{% url 'shop' %}">Shop</a>
                         </li>
-                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="about.html">About</a></li>
-                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="contact.html">Contact</a>
+                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="{% url 'about' %}">About Us</a></li>
+                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="{% url 'contact' %}">ContactUs</a>
                         </li>
                     </ul>
                     <div class="offcanvas__account--items">
-                        <a class="offcanvas__account--items__btn d-flex align-items-center" href="login.html">
+                        <a class="offcanvas__account--items__btn d-flex align-items-center" href="{% url 'login' %}">
                             <span class="offcanvas__account--items__icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443"
                                     viewBox="0 0 512 512">
@@ -1582,7 +1582,7 @@
                                             Cart</button>
                                     </div>
                                     <div class="quickview__variant--list variant__wishlist mb-15">
-                                        <a class="variant__wishlist--icon" href="wishlist.html" title="Add to wishlist">
+                                        <a class="variant__wishlist--icon" href="{% url 'add_wishlist' %}" title="Add to wishlist">
                                             <svg class="quickview__variant--wishlist__svg"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                                 <path

@@ -7,7 +7,7 @@ from .models import *
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        exclude = ['user', 'email']
+        fields = [ 'firstname','lastname','phone','profile_photo']
 
 
 class UpdateProfileForm(forms.ModelForm):
