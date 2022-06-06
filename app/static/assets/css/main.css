@@ -47,9 +47,9 @@ header .head{
 /* END OF HEADER */
 
 /* SLIDER */
-.slider__content .primary__btn{
+/* .slider__content .primary__btn{
     background: coral;
-}
+} */
 .swiper__nav--btn{
     background: coral;
 }
@@ -201,4 +201,9 @@ header .head{
 .team__content--subtitle{
     padding: 5px 0px;
     border-bottom: 0.5px solid rgb(243, 243, 243);
+}
+.banner__items--thumbnail img{
+    width: 100%;
+    height: 30rem;
+    object-fit: cover;
 }
