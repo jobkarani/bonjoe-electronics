@@ -287,6 +287,8 @@ def cart(request, total=0, quantity=0, cart_items=None):
     return render(request, 'cart.html', ctx)
 
 def search(request):
+    products = 0
+    product_count = 0
     if 'keyword' in request.GET:
         keyword=request.GET['keyword']
         if keyword:

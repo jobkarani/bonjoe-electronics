@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Suruchi - Fashion eCommerce HTML Template</title>
+    <title>Bonjoe-Home</title>
     <meta name="description" content="Morden Bootstrap HTML5 Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
@@ -109,15 +109,15 @@
                         </a>
                     </div>
                     <div class="main__logo">
-                        <h1 class="main__logo--title"><a class="main__logo--link" href="index-2.html"><img
+                        <h1 class="main__logo--title"><a class="main__logo--link" href="{% url 'index' %}"><img
                                     class="main__logo--img" src="assets/img/logo/nav-log.png" alt="logo-img"></a></h1>
                     </div>
                     <div class="header__search--widget header__sticky--none d-none d-lg-block">
-                        <form class="d-flex header__search--form" action="#">
+                        <form class="d-flex header__search--form" action="{% url 'search' %}" method="GET">
 
                             <div class="header__search--box">
                                 <label>
-                                    <input class="header__search--input" placeholder="Keyword here..." type="text">
+                                    <input class="header__search--input" placeholder="Keyword here..." type="text" name="keyword">
                                 </label>
                                 <button class="header__search--button bg__secondary text-white" type="submit"
                                     aria-label="search button">
@@ -528,9 +528,9 @@
         <div class="predictive__search--box ">
             <div class="predictive__search--box__inner">
                 <h2 class="predictive__search--title">Search Products</h2>
-                <form class="predictive__search--form" action="#">
+                <form class="predictive__search--form" action="{% url 'search' %}" method="GET">
                     <label>
-                        <input class="predictive__search--input" placeholder="Search Here" type="text">
+                        <input class="predictive__search--input" placeholder="Search Here" type="text" name="keyword">
                     </label>
                     <button class="predictive__search--button" aria-label="search button" type="submit"><svg
                             class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg" width="30.51"
