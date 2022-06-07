@@ -527,7 +527,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product__media--nav swiper">
+                            <!-- <div class="product__media--nav swiper">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
@@ -562,7 +562,7 @@
                                 </div>
                                 <div class="swiper__nav--btn swiper-button-next"></div>
                                 <div class="swiper__nav--btn swiper-button-prev"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>   
                     <div class="col">
@@ -642,13 +642,19 @@
                                         {% if single_product.stock <= 0 %}
                                         <h5 class="text-danger">Out of Stock</h5>
                                         {% else %}
-                                        <a class="quickview__cart--btn btn primary__btn"  href="{% url 'cart' %}" type="submit">Add To Cart</a>  
+                                        {% if in_cart %}
+                                        <a href="#" class="btn  btn-success"> <span class="text quickview__cart--btn btn primary__btn">Added to Cart</span> <i
+                                          class="fa fa-check"></i> </a>
+                                        {% else %}
+                                        <a href="{% url 'add_cart' single_product.id %}"   class="btn quickview__cart--btn btn primary__btn"> <span class="text">Add to Cart</span> <i
+                                            class="fa fa-shopping-cart"></i> </a>
                                     </div>
                                     <div class="product__variant--list mb-15">
                                         
                                         <button class="variant__buy--now__btn primary__btn" type="submit">Buy it now</button>
                                         
                                     </div>
+                                    {% endif %}
                                     {% endif %}
                                 </div>
                                 

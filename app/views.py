@@ -33,7 +33,7 @@ def contact(request):
     return render (request, 'contact.html')
 
 def privacypolicy(request):
-    
+
     return render (request, 'privacy-policy.html')
 
 @login_required(login_url="/accounts/login/")
@@ -133,7 +133,6 @@ def shop(request, category_slug=None):
     context = {
         'products': paged_product,
         'product_count':product_count,
-        # 'price_filter':price_filter,
     }
     return render(request, 'shop.html', context)
 
@@ -262,7 +261,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
             cart = Cart.objects.get(cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         for cart_item in cart_items:
-            total += (cart_item.product.price * cart_item.quantity)
+            total += (cart_item.product.new_price * cart_item.quantity)
             quantity += cart_item.quantity
             sub_total = total 
     except ObjectDoesNotExist:
@@ -274,17 +273,17 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'cart_items': cart_items,
         'sub_total': sub_total,
     }
-
     try:
+        grand_total =0
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart,is_active=True)
         for cart_item in cart_items:
-            total += (cart_item.product.price*cart_item.quantity)
+            grand_total += (cart_item.product.new_price *cart_item.quantity)
     except ObjectDoesNotExist:
         pass
 
     ctx = {
-        'total':total,
+        'grand_total':grand_total,
         'quantity':quantity,
         'cart_items':cart_items
     }
@@ -311,7 +310,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart,is_active=True)
         for cart_item in cart_items:
-            total += (cart_item.product.price*cart_item.quantity)
+            total += (cart_item.product.new_price*cart_item.quantity)
     except ObjectDoesNotExist:
         pass
 
@@ -338,7 +337,7 @@ def place_order(request,total=0, quantity=0,):
     
     sub_total = 0
     for cart_item in cart_items:
-        total += (cart_item.product.price*cart_item.quantity)
+        total += (cart_item.product.new_price*cart_item.quantity)
         quantity += cart_item.quantity
     sub_total = total
     print(sub_total)
@@ -391,7 +390,7 @@ def place_order(request,total=0, quantity=0,):
 #     quantity = 0
 #     sub_total = 0
 #     for cart_item in cart_items:
-#         total += (cart_item.product.price*cart_item.quantity)
+#         total += (cart_item.product.new_price*cart_item.quantity)
 #         quantity += cart_item.quantity
 #         sub_total = total
     
