@@ -32,6 +32,10 @@ def contact(request):
 
     return render (request, 'contact.html')
 
+def privacypolicy(request):
+    
+    return render (request, 'privacy-policy.html')
+
 @login_required(login_url="/accounts/login/")
 def wishlist(request):
     current_user = request.user
