@@ -407,11 +407,11 @@
             </div>
             <div class="minicart__conditions text-center">
                 <input class="minicart__conditions--input" id="accept" type="checkbox">
-                <label class="minicart__conditions--label" for="accept">I agree with the <a class="minicart__conditions--link" href="privacy-policy.html">Privacy and Policy</a></label>
+                <label class="minicart__conditions--label" for="accept">I agree with the <a class="minicart__conditions--link" href="{% url 'privacypolicy' %}">Privacy and Policy</a></label>
             </div>
             <div class="minicart__button d-flex justify-content-center">
-                <a class="primary__btn minicart__button--link" href="cart.html">View cart</a>
-                <a class="primary__btn minicart__button--link" href="checkout.html">Checkout</a>
+                <a class="primary__btn minicart__button--link" href="{% url 'cart' %}">View cart</a>
+                <a class="primary__btn minicart__button--link" href="{% url 'checkout' %}">Checkout</a>
             </div>
         </div>
         <!-- End offCanvas minicart -->
@@ -612,7 +612,7 @@
                                             </span>
                                         </li>
                                     </ul>
-                                    <span class="product__items--rating__count--number">(24)</span>
+                                    <span class="product__items--rating__count--number">({{reviews.count}})</span>
                                 </div>
                                 <p class="product__details--info__desc mb-15">{{ single_product.description }}</p>
                                 <div class="product__variant">
@@ -621,7 +621,7 @@
                                             <h6>Choose Color</h6>
                                             <select name="flavour" class="form-control" required>
                                               <option value="" disabled selected>Select</option>
-                                              {% for i in single_product.variation_set.color %}
+                                              {% for i in single_product.variation_set.colors %}
                                               <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
                                               {% endfor %}
                                             </select>

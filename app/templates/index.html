@@ -509,13 +509,13 @@
                 </div>
                 <div class="minicart__amount_list d-flex justify-content-between">
                     <span>Total:</span>
-                    <span><b>$240.00</b></span>
+                    <span><b>$0.00</b></span>
                 </div>
             </div>
             <div class="minicart__conditions text-center">
                 <input class="minicart__conditions--input" id="accept" type="checkbox">
                 <label class="minicart__conditions--label" for="accept">I agree with the <a
-                        class="minicart__conditions--link" href="privacy-policy.html">Privacy and Policy</a></label>
+                        class="minicart__conditions--link" href="{% url 'privacypolicy' %}">Privacy and Policy</a></label>
             </div>
             <div class="minicart__button d-flex justify-content-center">
                 <a class="primary__btn minicart__button--link" href="{% url 'cart' %}">View cart</a>
