@@ -121,13 +121,22 @@
                         <h1 class="main__logo--title"><a class="main__logo--link" href="index-2.html"><img class="main__logo--img" src="assets/img/logo/nav-log.png" alt="logo-img"></a></h1>
                     </div>
                     <div class="header__search--widget header__sticky--none d-none d-lg-block">
-                        <form class="d-flex header__search--form" action="#">
+                        <form class="d-flex header__search--form" action="{% url 'search' %}" method="GET">
+
                             <div class="header__search--box">
                                 <label>
-                                    <input class="header__search--input" placeholder="Keyword here..." type="text">
+                                    <input class="header__search--input" placeholder="Keyword here..." type="text" name="keyword">
                                 </label>
-                                <button class="header__search--button bg__secondary text-white" type="submit" aria-label="search button">
-                                    <svg class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg" width="27.51" height="26.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
+                                <button class="header__search--button bg__secondary text-white" type="submit"
+                                    aria-label="search button">
+                                    <svg class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg"
+                                        width="27.51" height="26.443" viewBox="0 0 512 512">
+                                        <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+                                            fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32">
+                                        </path>
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path>
+                                    </svg>
                                 </button>
                             </div>
                         </form>
@@ -428,9 +437,9 @@
         <div class="predictive__search--box ">
             <div class="predictive__search--box__inner">
                 <h2 class="predictive__search--title">Search Products</h2>
-                <form class="predictive__search--form" action="#">
+                <form class="predictive__search--form" action="{% url 'search' %}" method="GET">
                     <label>
-                        <input class="predictive__search--input" placeholder="Search Here" type="text">
+                        <input class="predictive__search--input" placeholder="Search Here" type="text" name="keyword">
                     </label>
                     <button class="predictive__search--button" aria-label="search button" type="submit"><svg class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg" width="30.51" height="25.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/></svg>  </button>
                 </form>
@@ -513,9 +522,9 @@
                        
                     </div>
                     <div class="product__view--mode__list product__view--search d-none d-lg-block">
-                        <form class="product__view--search__form" action="#">
+                        <form class="product__view--search__form" action="{% url 'search' %}" method="GET">
                             <label>
-                                <input class="product__view--search__input border-0" placeholder="Search by" type="text">
+                                <input class="product__view--search__input border-0" placeholder="Search by" type="text" name="keyword">
                             </label>
                             <button class="product__view--search__btn" aria-label="shop button"  type="submit">
                                 <svg class="product__view--search__btn--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/></svg>  
@@ -736,24 +745,49 @@
                             </div>
                             <div class="pagination__area bg__gray--color">
                                 <nav class="pagination">
+                                    {% if products.has_other_pages %}
                                     <ul class="pagination__wrapper d-flex align-items-center justify-content-center">
+                                        {% if products.has_previous %}
                                         <li class="pagination__list">
-                                            <a href="shop.html" class="pagination__item--arrow  link ">
+                                            <a href="?page={{products.previous_page_number}}" class="pagination__item--arrow  link ">
                                                 <svg xmlns="http://www.w3.org/2000/svg"  width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/></svg>
                                                 <span class="visually-hidden">pagination arrow</span>
                                             </a>
                                         <li>
-                                        <li class="pagination__list"><span class="pagination__item pagination__item--current">1</span></li>
-                                        <li class="pagination__list"><a href="shop.html" class="pagination__item link">2</a></li>
-                                        <li class="pagination__list"><a href="shop.html" class="pagination__item link">3</a></li>
-                                        <li class="pagination__list"><a href="shop.html" class="pagination__item link">4</a></li>
+                                        {% else%}
+                                        <li class="pagination__list disabled">
+                                            <a href="#" class="pagination__item--arrow  link ">
+                                                <svg xmlns="http://www.w3.org/2000/svg"  width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/></svg>
+                                                <span class="visually-hidden">pagination arrow</span>
+                                            </a>
+                                        <li>
+                                        {% endif %}
+                                        
+                                        {% for i in products.paginator.page_range %}
+                                            {% if products.number == i %}
+                                                <li class="pagination__list"><a href="#"><span class="pagination__item pagination__item--current">{{i}}</span></a></li>
+                                            {% else %}
+                                                <li class="pagination__list"><a href="?page={{i}}"><span class="pagination__item pagination__item--current" >{{i}}</span></a></li>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {% if products.has_next %}
                                         <li class="pagination__list">
-                                            <a href="shop.html" class="pagination__item--arrow  link ">
+                                            <a href="?page={{products.next_page_number}}" class="pagination__item--arrow  link ">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"/></svg>
                                                 <span class="visually-hidden">pagination arrow</span>
                                             </a>
                                         <li>
+                                        {% else %}
+                                        <li class="pagination__list">
+                                            <a href="#" class="pagination__item--arrow  link ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"/></svg>
+                                                <span class="visually-hidden">pagination arrow</span>
+                                            </a>
+                                        <li>
+                                        {% endif %}
                                     </ul>
+                                    {% endif %}
                                 </nav>
                             </div>
                         </div>

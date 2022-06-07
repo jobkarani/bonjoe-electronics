@@ -48,11 +48,11 @@ class Product(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     image1 = CloudinaryField('image')
-    image2 = CloudinaryField('image')
-    image3 = CloudinaryField('image')
-    image4 = CloudinaryField('image')
-    image5 = CloudinaryField('image')   
-    image6 = CloudinaryField('image')
+    # image2 = CloudinaryField('image')
+    # image3 = CloudinaryField('image')
+    # image4 = CloudinaryField('image')
+    # image5 = CloudinaryField('image')   
+    # image6 = CloudinaryField('image')
     description = models.TextField(max_length=500, blank=True)
     new_price = models.FloatField()
     old_price = models.FloatField()
@@ -96,7 +96,7 @@ class Variation(models.Model):
         return self.variation_value
 
 class Cart(models.Model):
-    cart_id = models.CharField(max_length=250, blank=True)
+    cart_id = models.CharField(max_length=250, blank=True, null=True)
     date_added = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
@@ -111,7 +111,7 @@ class CartItem(models.Model):
     is_active = models.BooleanField(default=True)
 
     def sub_total(self):
-        return self.product.price * self.quantity
+        return self.product.new_price * self.quantity
 
     def __unicode__(self):
         return self.product

@@ -32,6 +32,10 @@ def contact(request):
 
     return render (request, 'contact.html')
 
+def privacypolicy(request):
+
+    return render (request, 'privacy-policy.html')
+
 @login_required(login_url="/accounts/login/")
 def wishlist(request):
     current_user = request.user
@@ -98,10 +102,10 @@ def index(request, category_slug=None):
 
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
-        products = Product.objects.filter(category=categories, is_available=True)
+        products = Product.objects.filter(category=categories, is_available=True)[0:6]
         product_count = products.count()
     else:
-        products = Product.objects.all().filter(is_available=True)
+        products = Product.objects.all().filter(is_available=True)[0:6]
         product_count = products.count()
     context = {
         'products': products,
@@ -113,24 +117,22 @@ def index(request, category_slug=None):
 def shop(request, category_slug=None):
     categories = None
     products = None
-    # price_filter = Product.objects.filter(new_price__level__gte=0)
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=categories, is_available=True)
-        paginator = Paginator(products, 3)
+        paginator = Paginator(products, 9)
         page = request.GET.get('page')
         paged_product = paginator.get_page(page)
         product_count = products.count()
     else:
         products = Product.objects.all().filter(is_available=True)
-        paginator = Paginator(products, 3)
+        paginator = Paginator(products, 9)
         page = request.GET.get('page')
         paged_product = paginator.get_page(page)
         product_count = products.count()
     context = {
         'products': paged_product,
         'product_count':product_count,
-        # 'price_filter':price_filter,
     }
     return render(request, 'shop.html', context)
 
@@ -259,7 +261,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
             cart = Cart.objects.get(cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         for cart_item in cart_items:
-            total += (cart_item.product.price * cart_item.quantity)
+            total += (cart_item.product.new_price * cart_item.quantity)
             quantity += cart_item.quantity
             sub_total = total 
     except ObjectDoesNotExist:
@@ -271,23 +273,25 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'cart_items': cart_items,
         'sub_total': sub_total,
     }
-
     try:
+        grand_total =0
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart,is_active=True)
         for cart_item in cart_items:
-            total += (cart_item.product.price*cart_item.quantity)
+            grand_total += (cart_item.product.new_price *cart_item.quantity)
     except ObjectDoesNotExist:
         pass
 
     ctx = {
-        'total':total,
+        'grand_total':grand_total,
         'quantity':quantity,
         'cart_items':cart_items
     }
     return render(request, 'cart.html', ctx)
 
 def search(request):
+    products = 0
+    product_count = 0
     if 'keyword' in request.GET:
         keyword=request.GET['keyword']
         if keyword:
@@ -306,7 +310,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart,is_active=True)
         for cart_item in cart_items:
-            total += (cart_item.product.price*cart_item.quantity)
+            total += (cart_item.product.new_price*cart_item.quantity)
     except ObjectDoesNotExist:
         pass
 
@@ -333,7 +337,7 @@ def place_order(request,total=0, quantity=0,):
     
     sub_total = 0
     for cart_item in cart_items:
-        total += (cart_item.product.price*cart_item.quantity)
+        total += (cart_item.product.new_price*cart_item.quantity)
         quantity += cart_item.quantity
     sub_total = total
     print(sub_total)
@@ -386,7 +390,7 @@ def place_order(request,total=0, quantity=0,):
 #     quantity = 0
 #     sub_total = 0
 #     for cart_item in cart_items:
-#         total += (cart_item.product.price*cart_item.quantity)
+#         total += (cart_item.product.new_price*cart_item.quantity)
 #         quantity += cart_item.quantity
 #         sub_total = total
     

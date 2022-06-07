@@ -104,13 +104,22 @@
                         <h1 class="main__logo--title"><a class="main__logo--link" href="index-2.html"><img class="main__logo--img" src="assets/img/logo/nav-log.png" alt="logo-img"></a></h1>
                     </div>
                     <div class="header__search--widget header__sticky--none d-none d-lg-block">
-                        <form class="d-flex header__search--form" action="#">
+                        <form class="d-flex header__search--form" action="{% url 'search' %}" method="GET">
+
                             <div class="header__search--box">
                                 <label>
-                                    <input class="header__search--input" placeholder="Keyword here..." type="text">
+                                    <input class="header__search--input" placeholder="Keyword here..." type="text" name="keyword">
                                 </label>
-                                <button class="header__search--button bg__secondary text-white" type="submit" aria-label="search button">
-                                    <svg class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg" width="27.51" height="26.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
+                                <button class="header__search--button bg__secondary text-white" type="submit"
+                                    aria-label="search button">
+                                    <svg class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg"
+                                        width="27.51" height="26.443" viewBox="0 0 512 512">
+                                        <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+                                            fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32">
+                                        </path>
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path>
+                                    </svg>
                                 </button>
                             </div>
                         </form>
@@ -398,11 +407,11 @@
             </div>
             <div class="minicart__conditions text-center">
                 <input class="minicart__conditions--input" id="accept" type="checkbox">
-                <label class="minicart__conditions--label" for="accept">I agree with the <a class="minicart__conditions--link" href="privacy-policy.html">Privacy and Policy</a></label>
+                <label class="minicart__conditions--label" for="accept">I agree with the <a class="minicart__conditions--link" href="{% url 'privacypolicy' %}">Privacy and Policy</a></label>
             </div>
             <div class="minicart__button d-flex justify-content-center">
-                <a class="primary__btn minicart__button--link" href="cart.html">View cart</a>
-                <a class="primary__btn minicart__button--link" href="checkout.html">Checkout</a>
+                <a class="primary__btn minicart__button--link" href="{% url 'cart' %}">View cart</a>
+                <a class="primary__btn minicart__button--link" href="{% url 'checkout' %}">Checkout</a>
             </div>
         </div>
         <!-- End offCanvas minicart -->
@@ -411,9 +420,9 @@
         <div class="predictive__search--box ">
             <div class="predictive__search--box__inner">
                 <h2 class="predictive__search--title">Search Products</h2>
-                <form class="predictive__search--form" action="#">
+                <form class="predictive__search--form"action="{% url 'search' %}" method="GET">
                     <label>
-                        <input class="predictive__search--input" placeholder="Search Here" type="text">
+                        <input class="predictive__search--input" placeholder="Search Here" type="text" name="keyword">
                     </label>
                     <button class="predictive__search--button" aria-label="search button" type="submit"><svg class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg" width="30.51" height="25.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/></svg>  </button>
                 </form>
@@ -518,7 +527,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product__media--nav swiper">
+                            <!-- <div class="product__media--nav swiper">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
@@ -553,7 +562,7 @@
                                 </div>
                                 <div class="swiper__nav--btn swiper-button-next"></div>
                                 <div class="swiper__nav--btn swiper-button-prev"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>   
                     <div class="col">
@@ -603,7 +612,7 @@
                                             </span>
                                         </li>
                                     </ul>
-                                    <span class="product__items--rating__count--number">(24)</span>
+                                    <span class="product__items--rating__count--number">({{reviews.count}})</span>
                                 </div>
                                 <p class="product__details--info__desc mb-15">{{ single_product.description }}</p>
                                 <div class="product__variant">
@@ -612,11 +621,20 @@
                                             <h6>Choose Color</h6>
                                             <select name="flavour" class="form-control" required>
                                               <option value="" disabled selected>Select</option>
-                                              {% for i in single_product.variation_set.color %}
+                                              {% for i in single_product.variation_set.colors %}
                                               <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
                                               {% endfor %}
                                             </select>
-                                          </div>
+                                          </div> <br> <hr>
+                                          <div class="item-option-select">
+                                            <h6>Choose Size</h6>
+                                            <select name="flavour" class="form-control" required>
+                                              <option value="" disabled selected>Select</option>
+                                              {% for i in single_product.variation_set.sizes %}
+                                              <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                                              {% endfor %}
+                                            </select>
+                                          </div> <br> <hr>
                                     </div>
                                   
                                     <div class="product__variant--list quantity d-flex align-items-center mb-20">
@@ -624,13 +642,19 @@
                                         {% if single_product.stock <= 0 %}
                                         <h5 class="text-danger">Out of Stock</h5>
                                         {% else %}
-                                        <a class="quickview__cart--btn btn primary__btn"  href="{% url 'cart' %}" type="submit">Add To Cart</a>  
+                                        {% if in_cart %}
+                                        <a href="#" class="btn  btn-success"> <span class="text quickview__cart--btn btn primary__btn">Added to Cart</span> <i
+                                          class="fa fa-check"></i> </a>
+                                        {% else %}
+                                        <a href="{% url 'add_cart' single_product.id %}"   class="btn quickview__cart--btn btn primary__btn"> <span class="text">Add to Cart</span> <i
+                                            class="fa fa-shopping-cart"></i> </a>
                                     </div>
                                     <div class="product__variant--list mb-15">
                                         
                                         <button class="variant__buy--now__btn primary__btn" type="submit">Buy it now</button>
                                         
                                     </div>
+                                    {% endif %}
                                     {% endif %}
                                 </div>
                                 
@@ -663,57 +687,25 @@
                                         <div class="product__reviews--header">
                                             <h2 class="product__reviews--header__title h3 mb-20">Customer Reviews</h2>
                                             <div class="reviews__ratting d-flex align-items-center">
-                                                <ul class="rating d-flex">
-                                                    <li class="rating__list">
-                                                        <span class="rating__list--icon">
-                                                            <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                            <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                            </svg>
-                                                        </span>
-                                                    </li>
-                                                    <li class="rating__list">
-                                                        <span class="rating__list--icon">
-                                                            <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                            <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                            </svg>
-                                                        </span>
-                                                    </li>
-                                                    <li class="rating__list">
-                                                        <span class="rating__list--icon">
-                                                            <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                            <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                            </svg>
-                                                        </span>
-                                                    </li>
-                                                    <li class="rating__list">
-                                                        <span class="rating__list--icon">
-                                                            <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                            <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                            </svg>
-                                                        </span>
-                                                    </li>
-                                                    <li class="rating__list">
-                                                        <span class="rating__list--icon">
-                                                            <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                            <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                            </svg>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                                <span class="reviews__summary--caption">Based on 2 reviews</span>
+                                                <span class="reviews__summary--caption">Based on {{reviews.count}} reviews</span>
                                             </div>
-                                            <a class="actions__newreviews--btn primary__btn" href="#writereview">Write A Review</a>
                                         </div>
                                         <div class="reviews__comment--area">
                                             <div class="reviews__comment--list d-flex">
-                                                <div class="reviews__comment--thumb">
-                                                    <img src="assets/img/other/comment-thumb1.png" alt="comment-thumb">
-                                                </div>
+                                            {% for review in reviews %}
                                                 <div class="reviews__comment--content">
                                                     <div class="reviews__comment--top d-flex justify-content-between">
                                                         <div class="reviews__comment--top__left">
-                                                            <h3 class="reviews__comment--content__title h4">Richard Smith</h3>
+                                                            <h3 class="reviews__comment--content__title h4">{{review.user}}</h3>
                                                             <ul class="rating reviews__comment--rating d-flex">
+                                                                {{review.rating}} 
+                                                                <li class="rating__list" style="margin-left: 10%;">
+                                                                    <span class="rating__list--icon">
+                                                                        <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
+                                                                        <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
+                                                                        </svg>
+                                                                    </span>
+                                                                </li>
                                                                 <li class="rating__list">
                                                                     <span class="rating__list--icon">
                                                                         <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
@@ -751,11 +743,12 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                        <span class="reviews__comment--content__date">February 18, 2022</span>
+                                                        <span class="reviews__comment--content__date">{{review.created_at}}</span>
                                                     </div>
-                                                    <p class="reviews__comment--content__desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos ex repellat officiis neque. Veniam, rem nesciunt. Assumenda distinctio, autem error repellat eveniet ratione dolor facilis accusantium amet pariatur, non eius!</p>
+                                                    <p class="reviews__comment--content__desc">{{review.review}}</p>
                                                 </div>
                                             </div>
+                                            {% endfor %}
                                             <!--  -->
                                         <div id="writereview" class="reviews__comment--reply__area">
                                             <form action="{% url 'submit_review' single_product.id %}" method="POST">
@@ -785,7 +778,7 @@
                                                 {% if user.is_authenticated %}
                                                 <input class="primary__btn" value="Submit Review" type="submit">
                                                 {% else %}
-                                                <p>You must be logged in to post a review. <span ><a class="btn btn-outline-primary" href="{% url 'login' %}">Login now</a></span></p>
+                                                <p>You must be logged in to post a review. <span><a class="btn btn-outline-primary" href="{% url 'login' %}">Login now</a></span></p>
                                                 {% endif %}
 
                                                 {% include 'alerts.html' %}

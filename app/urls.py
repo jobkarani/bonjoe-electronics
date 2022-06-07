@@ -21,8 +21,10 @@ urlpatterns = [
     path('place_order/', views.place_order, name='place_order'),
     path('payments/', views.payments, name='payments'),
     path('about/', views.about, name='about'),
+    path('search/', views.search, name='search'),
     path('contact/', views.contact, name='contact'),
     path('wishlist/', views.wishlist, name='wishlist'),
     path('add_wishlist/', views.add_wishlist, name='add_wishlist'),
+    path('privacypolicy/', views.privacypolicy, name='privacypolicy'),
     # path('userPayment/', views.userPayment, name='userPayment'),
 ]
