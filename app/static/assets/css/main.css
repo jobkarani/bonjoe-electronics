@@ -222,3 +222,11 @@ header .head{
 .reviews__comment--content__desc{
     overflow-wrap: anywhere;
 }
+.cart__content--title{
+    overflow-wrap: anywhere;
+}
+.cart__thumbnail  > .border-radius-5 {
+    max-height: 15rem;
+    width: 100%;
+    object-fit: cover;
+} 

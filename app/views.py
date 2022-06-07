@@ -381,6 +381,15 @@ def place_order(request,total=0, quantity=0,):
     else:
         return redirect('checkout')
 
+
+def shipping(request):
+
+    return render (request, 'shipping.html')
+
+def receipt(request):
+
+    return render (request, 'receipt.html')
+
 # @login_required
 # def userPayment(request):
 #     current_user = request.user
