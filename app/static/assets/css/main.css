@@ -207,3 +207,9 @@ header .head{
     height: 30rem;
     object-fit: cover;
 }
+.product__items--link > .product__items--img{
+    width: 100%;
+    min-height: 10rem;
+    max-height: 20rem;
+    object-fit: cover;
+}
