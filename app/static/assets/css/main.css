@@ -213,3 +213,12 @@ header .head{
     max-height: 20rem;
     object-fit: cover;
 }
+.product__list--items__content--desc{
+    overflow-wrap: anywhere;
+}
+.product__details--info__desc{
+    overflow-wrap: anywhere;
+}
+.reviews__comment--content__desc{
+    overflow-wrap: anywhere;
+}
