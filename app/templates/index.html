@@ -832,14 +832,14 @@
                         <div class="product__section--inner">
                             <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
                                 {% for prod in products %}
-                                <div class="col mb-30" id="product" style=" box-shadow: 0 2px 22px rgb(0 0 0 / 10%); margin: 5px 5px;">
+                                <div class="col mb-30" id="product" style=" box-shadow: 5px 5px 5px 5px #e2dede;; margin: 5px 5px;">
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="{{ prod.get_url }}">
                                                 <img class="product__items--img product__primary--img"
                                                     src="{{ prod.image1.url }}" alt="product-img" />
                                                 <img class="product__items--img product__secondary--img"
-                                                    src="{{ prod.image3.url }}" alt="product-img" />
+                                                    src="{{ prod.image1.url }}" alt="product-img" />
                                             </a>
                                             <div class="product__badge">
                                                 <span class="product__badge--items sale"

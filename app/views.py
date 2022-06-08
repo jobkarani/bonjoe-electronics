@@ -141,6 +141,7 @@ def product_detail(request, category_slug, product_slug):
     try:
         single_product = Product.objects.get(category__slug=category_slug,slug=product_slug)
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product )
+        products = Product.objects.all().filter(is_available=True)
         reviews = ReviewRating.objects.all()
         review_count = reviews.count()
         
@@ -150,6 +151,7 @@ def product_detail(request, category_slug, product_slug):
     context = {
     'single_product': single_product,
     'in_cart':in_cart,
+    'products':products,
     'reviews':reviews,
     'review_count':review_count,
     }

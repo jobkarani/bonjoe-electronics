@@ -553,12 +553,12 @@
                                     <div class="product__section--inner product__grid--inner">
                                         <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-2 mb--n30">
                                             {% for product in products %}
-                                            <div class="col mb-30" style="  box-shadow: 0 2px 22px rgb(0 0 0 / 10%); margin:1%; padding-bottom: 2%; padding-top: 2%;">
+                                            <div class="col mb-30" style="  box-shadow: 5px 5px 5px 5px #e2dede; margin:1%; padding-bottom: 2%; padding-top: 2%;">
                                                 <div class="product__items ">
                                                     <div class="product__items--thumbnail">
                                                         <a class="product__items--link" href="{{ product.get_url }}">
                                                             <img class="product__items--img product__primary--img" src="{{ product.image1.url }}" alt="product-img">
-                                                            <img class="product__items--img product__secondary--img" src="{{ product.image2.url }}" alt="product-img">
+                                                            <img class="product__items--img product__secondary--img" src="{{ product.image1.url }}" alt="product-img">
                                                         </a>
                                                         <div class="product__badge">
                                                             <span class="product__badge--items sale">Sale</span>
