@@ -619,8 +619,8 @@
                                     <div class="product__variant--list mb-10">
                                         <div class="item-option-select">
                                             <h6>Choose Color</h6>
-                                            <select name="flavour" class="form-control" required>
-                                              <option value="" disabled selected>Select</option>
+                                            <select name="flavour" type="radio" class="form-control" required>
+                                              <option value=""  disabled selected>Select</option>
                                               {% for i in single_product.variation_set.colors %}
                                               <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
                                               {% endfor %}
@@ -628,10 +628,10 @@
                                           </div> <br> <hr>
                                           <div class="item-option-select">
                                             <h6>Choose Size</h6>
-                                            <select name="flavour" class="form-control" required>
+                                            <select  type="radio" name="flavour" class="form-control" required>
                                               <option value="" disabled selected>Select</option>
                                               {% for i in single_product.variation_set.sizes %}
-                                              <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                                              <option type="radio" value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
                                               {% endfor %}
                                             </select>
                                           </div> <br> <hr>
