@@ -259,6 +259,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
         sub_total = 0
         if request.user.is_authenticated:
             cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+            products = Product.objects.all().filter(is_available=True)
         else:
             cart = Cart.objects.get(cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
@@ -274,11 +275,13 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'quantity': quantity,
         'cart_items': cart_items,
         'sub_total': sub_total,
+        'products':products
     }
     try:
         grand_total =0
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart,is_active=True)
+        products = Product.objects.all().filter(is_available=True)
         for cart_item in cart_items:
             grand_total += (cart_item.product.new_price *cart_item.quantity)
     except ObjectDoesNotExist:
@@ -287,7 +290,8 @@ def cart(request, total=0, quantity=0, cart_items=None):
     ctx = {
         'grand_total':grand_total,
         'quantity':quantity,
-        'cart_items':cart_items
+        'cart_items':cart_items,
+        'products':products
     }
     return render(request, 'cart.html', ctx)
 
