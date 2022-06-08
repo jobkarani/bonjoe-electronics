@@ -105,14 +105,7 @@ class Migration(migrations.Migration):
                 'ordering': ('name',),
             },
         ),
-        migrations.CreateModel(
-            name='Wishlist',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.product')),
-                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
+       
         migrations.CreateModel(
             name='Variation',
             fields=[

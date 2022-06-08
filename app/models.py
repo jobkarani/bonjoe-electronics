@@ -222,10 +222,5 @@ class Account(models.Model):
         return self.user
 
 
-class  Wishlist(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE) 
 
-    def __str__(self):
-        return self.user
         

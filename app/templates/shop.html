@@ -226,12 +226,6 @@
                                     <span class="items__count style2">02</span> 
                                 </a>
                             </li>
-                            <li class="header__account--items ">
-                                <a class="header__account--btn" href="{% url 'wishlist' %}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9"/></svg>
-                                    
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -343,7 +337,7 @@
                     </a>
                 </li>
                 <li class="offcanvas__stikcy--toolbar__list">
-                    <a class="offcanvas__stikcy--toolbar__btn" href="{% url 'wishlist' %}">
+                    <a class="offcanvas__stikcy--toolbar__btn" href="{% url 'logout' %}">
                         <span class="offcanvas__stikcy--toolbar__icon"> 
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9"/></svg> 
                         </span>
@@ -636,19 +630,7 @@
                                                                     <span class="add__to--cart__text"> + Add to cart</span>
                                                                 </a>
                                                             </li>
-                                                            <li class="product__items--action__list">
-                                                                <a class="product__items--action__btn" href="{% url 'wishlist' %}">
-                                                                    <svg class="product__items--action__btn--svg"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="25.51"
-                                                                        height="23.443" viewBox="0 0 512 512">
-                                                                        <path
-                                                                            d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z"
-                                                                            fill="none" stroke="currentColor" stroke-linecap="round"
-                                                                            stroke-linejoin="round" stroke-width="32"></path>
-                                                                    </svg>
-                                                                    <span class="visually-hidden">Wishlist</span>
-                                                                </a>
-                                                            </li>
+                                                            
                                                             <li class="product__items--action__list">
                                                                 <a class="product__items--action__btn" data-open="modal1"
                                                                     href="javascript:void(0)">
