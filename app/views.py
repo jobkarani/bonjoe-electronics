@@ -245,6 +245,16 @@ def remove_cart_item(request, product_id, cart_item_id ):
     cart_item.delete()
     return redirect('cart')
 
+def delete_cart(request):
+    cart = Cart.objects.all()
+    cart.delete()
+    products = Product.objects.all().filter(is_available=True)
+    ctx ={
+        'products':products,
+        'cart':cart,
+    }
+    return render(request, 'cart.html',ctx)
+
 @login_required(login_url="/accounts/login/")
 def cart(request, total=0, quantity=0, cart_items=None): 
     try:
