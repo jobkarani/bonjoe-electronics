@@ -903,7 +903,7 @@
                     <div class="swiper-slide" style="box-shadow: 5px 5px 5px 5px #e2dede;padding:2%;">
                         <div class="product__items ">
                             <div class="product__items--thumbnail">
-                                <a class="product__items--link" href="">
+                                <a class="product__items--link" href="{{ product.get_url }}">
                                     <img class="product__items--img product__primary--img" src="{{product.image1.url}}" alt="product-img">
                                     <img class="product__items--img product__secondary--img" src="{{product.image1.url}}" alt="product-img">
                                 </a>
@@ -913,7 +913,7 @@
                             </div>
                             <div class="product__items--content">
                                 <span class="product__items--content__subtitle">{{product.category}}</span>
-                                <h3 class="product__items--content__title h4"><a href="">{{product.name}}</a></h3>
+                                <h3 class="product__items--content__title h4"><a href="{{ product.get_url }}">{{product.name}}</a></h3>
                                 <div class="product__items--price">
                                     <span class="current__price">{{product.new_price}}</span>
                                     <span class="price__divided"></span>

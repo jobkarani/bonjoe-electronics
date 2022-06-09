@@ -593,7 +593,7 @@
                                                             <h4 class="cart__content--title"><a href="{{ cart_item.product.get_url }}">{{ cart_item.product.name }}</a></h4>
                                                             {% if cart_item.variations.all %} 
                                                             {% for item in cart_item.variations.all %}
-                                                            <span class="cart__content--variant">{{ item.variation_category | capfirst }} : {{ item.variation_value | capfirst }}</span>
+                                                            <span class="cart__content--variant">{{ item.variation_category }} : {{ item.variation_value }}</span>
                                                             <br/>
                                                             {% endfor %} 
                                                             {% endif %}
@@ -622,7 +622,6 @@
                                                             {% endfor %}
                                                             <button type="submit" class="quantity__value quickview__value--quantity increase" aria-label="quantity value" value="Increase Value">+</button>
                                                         </form>
-
                                                     </div>
                                                 </td>
                                                 <td class="cart__table--body__list">
@@ -687,7 +686,7 @@
                     <div class="swiper-slide" style="box-shadow: 5px 5px 5px 5px #e2dede;padding:2%;">
                         <div class="product__items ">
                             <div class="product__items--thumbnail">
-                                <a class="product__items--link" href="">
+                                <a class="product__items--link" href="{{ product.get_url }}">
                                     <img class="product__items--img product__primary--img" src="{{product.image1.url}}" alt="product-img">
                                     <img class="product__items--img product__secondary--img" src="{{product.image1.url}}" alt="product-img">
                                 </a>
@@ -697,7 +696,7 @@
                             </div>
                             <div class="product__items--content">
                                 <span class="product__items--content__subtitle">{{product.category}}</span>
-                                <h3 class="product__items--content__title h4"><a href="">{{product.name}}</a></h3>
+                                <h3 class="product__items--content__title h4"><a href="{{ product.get_url }}">{{product.name}}</a></h3>
                                 <div class="product__items--price">
                                     <span class="current__price">{{product.new_price}}</span>
                                     <span class="price__divided"></span>

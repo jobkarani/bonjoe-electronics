@@ -1,6 +1,7 @@
 import datetime
 from math import ceil
 from multiprocessing import context
+from multiprocessing.dummy import Value
 from re import sub
 import time
 from tokenize import Pointfloat
@@ -164,8 +165,10 @@ def add_cart(request, product_id):
             try:
                 variation = Variation.objects.get(product=product, variation_category__iexact=key, variation_value__iexact=value)
                 product_variation.append(variation)
+
             except:
                 pass
+    print(product_variation)
 
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request)) #get cart using cart_id present in the session
@@ -212,7 +215,7 @@ def add_cart(request, product_id):
             cart_item.variations.clear()
             cart_item.variations.add(*product_variation)
         cart_item.save()
-    
+
     return redirect('cart')
 
 @login_required(login_url="/accounts/login/")
