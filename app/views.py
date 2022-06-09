@@ -103,7 +103,7 @@ def index(request, category_slug=None):
     return render(request, 'index.html', context)
 
 
-def shop(request, category_slug=None):
+def shop(request, category_slug=None,product_slug=None):
     categories = None
     products = None
     if category_slug != None:
