@@ -1,6 +1,7 @@
 import datetime
 from math import ceil
 from multiprocessing import context
+from multiprocessing.dummy import Value
 from re import sub
 import time
 from tokenize import Pointfloat
@@ -103,7 +104,7 @@ def index(request, category_slug=None):
     return render(request, 'index.html', context)
 
 
-def shop(request, category_slug=None):
+def shop(request, category_slug=None,product_slug=None):
     categories = None
     products = None
     if category_slug != None:
@@ -164,8 +165,10 @@ def add_cart(request, product_id):
             try:
                 variation = Variation.objects.get(product=product, variation_category__iexact=key, variation_value__iexact=value)
                 product_variation.append(variation)
+
             except:
                 pass
+    print(product_variation)
 
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request)) #get cart using cart_id present in the session
@@ -212,7 +215,7 @@ def add_cart(request, product_id):
             cart_item.variations.clear()
             cart_item.variations.add(*product_variation)
         cart_item.save()
-    
+
     return redirect('cart')
 
 @login_required(login_url="/accounts/login/")
@@ -241,6 +244,16 @@ def remove_cart_item(request, product_id, cart_item_id ):
 
     cart_item.delete()
     return redirect('cart')
+
+def delete_cart(request):
+    cart = Cart.objects.all()
+    cart.delete()
+    products = Product.objects.all().filter(is_available=True)
+    ctx ={
+        'products':products,
+        'cart':cart,
+    }
+    return render(request, 'cart.html',ctx)
 
 @login_required(login_url="/accounts/login/")
 def cart(request, total=0, quantity=0, cart_items=None): 
