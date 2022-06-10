@@ -171,7 +171,7 @@
                                         </g>
                                     </svg>
                                     <span class="header__account--btn__text"> My cart</span>
-                                    <span class="items__count">02</span>
+                                    <span class="items__count">{{ cart_count }}</span>
                                 </a>
                             </li>
                             <li class="header__account--items ">
@@ -263,7 +263,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <span class="items__count style2">02</span>
+                                    <span class="items__count style2">{{ cart_count }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -408,15 +408,15 @@
                             </svg>
                         </span>
                         <span class="offcanvas__stikcy--toolbar__label">Cart</span>
-                        <span class="items__count" style="background: coral;">3</span>
+                        <span class="items__count" style="background: coral;">{{ cart_count }}</span>
                     </a>
                 </li>
             </ul>
         </div>
         <!-- End Offcanvas stikcy toolbar -->
 
-        <!-- Start offCanvas minicart -->
-        <div class="offCanvas__minicart">
+         <!-- Start offCanvas minicart -->
+         <div class="offCanvas__minicart">
             <div class="minicart__header ">
                 <div class="minicart__header--top d-flex justify-content-between align-items-center">
                     <h2 class="minicart__title h3"> Shopping Cart</h2>
@@ -427,69 +427,56 @@
                         </svg>
                     </button>
                 </div>
-                <p class="minicart__header--desc">Clothing and fashion products are limited</p>
+                <p class="minicart__header--desc">Products are limited</p>
             </div>
+            {% if not cart_items %}
+            <h2 class="text-center">Your Shopping Cart is Empty</h2>
+            <br />
+            <div class="text-center">
+                <a href="{% url 'shop' %}" class="btn btn-primary">Continue Shopping</a>
+            </div>
+            {% else %}
             <div class="minicart__product">
+                {% for cart_item in cart_items %}
                 <div class="minicart__product--items d-flex">
                     <div class="minicart__thumb">
-                        <a href="product-details.html"><img src="assets/img/product/product1.png" alt="prduct-img"></a>
+                        <a href="{{ cart_item.product.get_url }}"><img src="{{cart_item.product.image1.url}}" alt="prduct-img"></a>
                     </div>
                     <div class="minicart__text">
-                        <h3 class="minicart__subtitle h4"><a href="product-details.html">Oversize Cotton Dress</a></h3>
-                        <span class="color__variant"><b>Color:</b> Beige</span>
+                        <h3 class="minicart__subtitle h4"><a href="{{ cart_item.product.get_url }}">{{cart_item.product.name}}</a></h3>
+                        {% if cart_item.variations.all %} 
+                        {% for item in cart_item.variations.all %}
+                        <span class="color__variant"><b>{{ item.variation_category }} : </b> {{ item.variation_value }}</span>
+                        {% endfor %} 
+                        {% endif %}
                         <div class="minicart__price">
-                            <span class="current__price">$125.00</span>
-                            <span class="old__price">$140.00</span>
+                            <span class="current__price">Ksh {{cart_item.product.new_price}} -</span>
+                            <span class="old__price">Ksh {{cart_item.product.new_price}}</span>
                         </div>
+                      
                         <div class="minicart__text--footer d-flex align-items-center">
                             <div class="quantity__box minicart__quantity">
-                                <button type="button" class="quantity__value decrease" aria-label="quantity value"
-                                    value="Decrease Value">-</button>
+                                <a type="button" href="{% url 'remove_cart' cart_item.product.id cart_item.id %}" class="quantity__value decrease" aria-label="quantity value"
+                                    value="Decrease Value">-</a>
                                 <label>
-                                    <input type="number" class="quantity__number" value="1" data-counter />
+                                    <input type="number" class="quantity__number" value="{{ cart_item.quantity }}" data-counter />
                                 </label>
-                                <button type="button" class="quantity__value increase" value="Increase Value">+</button>
+                                <form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+                                    {% csrf_token %} 
+                                    {% for item in cart_item.variations.all %}
+                                    <input type="hidden" name="{{ item.variation_category |lower }}" value="{{ item.variation_value | capfirst }}">
+                                    {% endfor %}
+                                    <button type="submit" class="quantity__value" aria-label="quantity value" value="Increase Value">+</button>
+                                </form>
                             </div>
-                            <button class="minicart__product--remove">Remove</button>
+                            <a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id%}" class="minicart__product--remove">Remove</a>
                         </div>
                     </div>
                 </div>
-                <div class="minicart__product--items d-flex">
-                    <div class="minicart__thumb">
-                        <a href="product-details.html"><img src="assets/img/product/product2.png" alt="prduct-img"></a>
-                    </div>
-                    <div class="minicart__text">
-                        <h3 class="minicart__subtitle h4"><a href="product-details.html">Boxy Denim Jacket</a></h3>
-                        <span class="color__variant"><b>Color:</b> Green</span>
-                        <div class="minicart__price">
-                            <span class="current__price">$115.00</span>
-                            <span class="old__price">$130.00</span>
-                        </div>
-                        <div class="minicart__text--footer d-flex align-items-center">
-                            <div class="quantity__box minicart__quantity">
-                                <button type="button" class="quantity__value decrease" aria-label="quantity value"
-                                    value="Decrease Value">-</button>
-                                <label>
-                                    <input type="number" class="quantity__number" value="1" data-counter />
-                                </label>
-                                <button type="button" class="quantity__value increase" aria-label="quantity value"
-                                    value="Increase Value">+</button>
-                            </div>
-                            <button class="minicart__product--remove">Remove</button>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-            <div class="minicart__amount">
-                <div class="minicart__amount_list d-flex justify-content-between">
-                    <span>Sub Total:</span>
-                    <span><b>$240.00</b></span>
-                </div>
-                <div class="minicart__amount_list d-flex justify-content-between">
-                    <span>Total:</span>
-                    <span><b>$0.00</b></span>
-                </div>
-            </div>
+            
+            {% endif %}
             <div class="minicart__conditions text-center">
                 <input class="minicart__conditions--input" id="accept" type="checkbox">
                 <label class="minicart__conditions--label" for="accept">I agree with the <a
@@ -674,41 +661,36 @@
                                     <ul class="rating d-flex justify-content-center">
                                         <li class="rating__list">
                                             <span class="rating__list--icon">
-                                                <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                </svg>
+                                                <i class="fa fa-star{% if single_product.averageReview < 0.5 %}-o{% elif single_product.averageReview >= 0.5 and single_product.averageReview < 1 %}-half-o {% endif %}"
+                                                    aria-hidden="true"></i>
                                             </span>
                                         </li>
                                         <li class="rating__list">
                                             <span class="rating__list--icon">
-                                                <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                </svg>
+                                                <i class="fa fa-star{% if single_product.averageReview < 1.5 %}-o{% elif single_product.averageReview >= 1.5 and single_product.averageReview < 2 %}-half-o {% endif %}"
+                                                    aria-hidden="true"></i>
                                             </span>
                                         </li>
                                         <li class="rating__list">
                                             <span class="rating__list--icon">
-                                                <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                </svg>
+                                                <i class="fa fa-star{% if single_product.averageReview < 2.5 %}-o{% elif single_product.averageReview >= 2.5 and single_product.averageReview < 3 %}-half-o {% endif %}"
+                                                    aria-hidden="true"></i>
                                             </span>
                                         </li>
                                         <li class="rating__list">
                                             <span class="rating__list--icon">
-                                                <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                </svg>
+                                                <i class="fa fa-star{% if single_product.averageReview < 3.5 %}-o{% elif single_product.averageReview >= 3.5 and single_product.averageReview < 4 %}-half-o {% endif %}"
+                                                    aria-hidden="true"></i>
                                             </span>
                                         </li>
                                         <li class="rating__list">
                                             <span class="rating__list--icon">
-                                                <svg class="rating__list--icon__svg" xmlns="http://www.w3.org/2000/svg" width="14.105" height="14.732" viewBox="0 0 10.105 9.732">
-                                                <path data-name="star - Copy" d="M9.837,3.5,6.73,3.039,5.338.179a.335.335,0,0,0-.571,0L3.375,3.039.268,3.5a.3.3,0,0,0-.178.514L2.347,6.242,1.813,9.4a.314.314,0,0,0,.464.316L5.052,8.232,7.827,9.712A.314.314,0,0,0,8.292,9.4L7.758,6.242l2.257-2.231A.3.3,0,0,0,9.837,3.5Z" transform="translate(0 -0.018)" fill="currentColor"></path>
-                                                </svg>
+                                                <i class="fa fa-star{% if single_product.averageReview < 4.5 %}-o{% elif single_product.averageReview >= 4.5 and single_product.averageReview < 5 %}-half-o {% endif %}"
+                                                    aria-hidden="true"></i>
                                             </span>
                                         </li>
                                     </ul>
-                                    <span class="product__items--rating__count--number">({{reviews.count}})</span>
+                                    <span class="product__items--rating__count--number">({{reviews.count}}) Reviews</span>
                                 </div>
                                 <p class="product__details--info__desc mb-15">{{ single_product.description }}</p>
                                 <div class="product__variant">
@@ -746,6 +728,8 @@
                                         {% else %}
                                         <a href="{% url 'add_cart' single_product.id %}"   class="btn quickview__cart--btn btn primary__btn"> <span class="text">Add to Cart</span> <i
                                             class="fa fa-shopping-cart"></i> </a>
+                                            <a href="{% url  'cart' %}" class="btn  btn-success"> <span class="text quickview__cart--btn btn primary__btn">View Cart  <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg"  width="25.51" height="23.443" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg></span> <i
+                                                class="fa fa-check"></i> </a>    
                                     </div>
                                     <div class="product__variant--list mb-15">
                                         
@@ -899,10 +883,10 @@
             <div class="section__heading text-center mb-50">
                 <h2 class="section__heading--maintitle">You may also like</h2>
             </div>
-            <div class="product__section--inner product__swiper--column4__activation swiper">
+            <div class="product__section--inner product__swiper--column4__activation swiper" >
                 <div class="swiper-wrapper">
                     {% for product in products %}
-                    <div class="swiper-slide" style="box-shadow: 5px 5px 5px 5px #e2dede;padding:2%;">
+                    <div class="swiper-slide" style="box-shadow: 5px 5px 5px 5px #e2dede;padding:2%;" >
                         <div class="product__items ">
                             <div class="product__items--thumbnail">
                                 <a class="product__items--link" href="{{ product.get_url }}">

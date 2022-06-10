@@ -26,16 +26,40 @@ from .models import MpesaPayment
 
 # auth 
 def about(request):
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_count = cart_items.count()
 
-    return render(request, 'about.html')
+    ctx={
+     'cart':cart,
+     'cart_items':cart_items,
+     'cart_count':cart_count
+    }
+    return render(request, 'about.html',ctx)
 
 def contact(request):
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_count = cart_items.count()
 
-    return render (request, 'contact.html')
+    ctx={
+     'cart':cart,
+     'cart_items':cart_items,
+     'cart_count':cart_count
+    }
+    return render (request, 'contact.html',ctx)
 
-def privacypolicy(request):
+def privacypolicy(request ):
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_count = cart_items.count()
 
-    return render (request, 'privacy-policy.html')
+    ctx={
+     'cart':cart,
+     'cart_items':cart_items,
+     'cart_count':cart_count
+    }
+    return render (request, 'privacy-policy.html',ctx)
 
 
 @login_required(login_url="/accounts/login/")
@@ -59,8 +83,19 @@ def profile(request):
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()
     product = Product.objects.filter(id=current_user.id).all()
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_count = cart_items.count()
 
-    return render(request, "profile.html", { "profile":profile, "product": product})
+    ctx={
+        'product':product,
+        'profile':profile,
+        'cart':cart,
+        'cart_items':cart_items,
+        'cart_count':cart_count
+    }
+
+    return render(request, "profile.html", ctx)
 
 
 def update_profile(request, id):
@@ -89,6 +124,9 @@ def update_profile(request, id):
 def index(request, category_slug=None):
     categories = None
     products = None
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_count = cart_items.count()
 
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
@@ -100,6 +138,9 @@ def index(request, category_slug=None):
     context = {
         'products': products,
         'product_count':product_count,
+        'cart':cart,
+        'cart_items':cart_items,
+        'cart_count':cart_count
     }
     return render(request, 'index.html', context)
 
@@ -107,6 +148,9 @@ def index(request, category_slug=None):
 def shop(request, category_slug=None,product_slug=None):
     categories = None
     products = None
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_count = cart_items.count()
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=categories, is_available=True)
@@ -123,6 +167,9 @@ def shop(request, category_slug=None,product_slug=None):
     context = {
         'products': paged_product,
         'product_count':product_count,
+        'cart':cart,
+        'cart_items':cart_items,
+        'cart_count':cart_count
     }
     return render(request, 'shop.html', context)
 
@@ -132,8 +179,11 @@ def product_detail(request, category_slug, product_slug):
         single_product = Product.objects.get(category__slug=category_slug,slug=product_slug)
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product )
         products = Product.objects.all().filter(is_available=True)
-        reviews = ReviewRating.objects.all()
+        reviews = ReviewRating.objects.all().filter(product_id=single_product)
         review_count = reviews.count()
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        cart_count = cart_items.count()
         
     except Exception as e:
         raise e
@@ -144,6 +194,9 @@ def product_detail(request, category_slug, product_slug):
     'products':products,
     'reviews':reviews,
     'review_count':review_count,
+    'cart':cart,
+    'cart_items':cart_items,
+    'cart_count':cart_count
     }
     return render(request, 'product-details.html',context)
 
@@ -153,6 +206,7 @@ def _cart_id(request):
         cart = request.session.create()
         return cart
 
+
 @login_required(login_url="/accounts/login/")
 def add_cart(request, product_id):
     product = Product.objects.get(id = product_id) 
@@ -161,14 +215,11 @@ def add_cart(request, product_id):
         for item in request.POST:
             key = item
             value =request.POST[key]
-
             try:
                 variation = Variation.objects.get(product=product, variation_category__iexact=key, variation_value__iexact=value)
                 product_variation.append(variation)
-
             except:
                 pass
-    print(product_variation)
 
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request)) #get cart using cart_id present in the session
@@ -189,7 +240,7 @@ def add_cart(request, product_id):
             id.append(item.id)
 
         print(ex_var_list)
-
+        
         if product_variation in ex_var_list:
             # increase CartItem qty
             index = ex_var_list.index(product_variation)
@@ -216,7 +267,74 @@ def add_cart(request, product_id):
             cart_item.variations.add(*product_variation)
         cart_item.save()
 
+    print(product_variation)
+
     return redirect('cart')
+
+# @login_required(login_url="/accounts/login/")
+# def add_cart(request, product_id):
+#     product = Product.objects.get(id = product_id) 
+#     product_variation = []
+#     if request.method == 'POST':
+#         for item in request.POST:
+#             key = item
+#             value =request.POST[key]
+
+#             try:
+#                 variation = Variation.objects.get(product=product, variation_category__iexact=key, variation_value__iexact=value)
+#                 product_variation.append(variation)
+#                 print(product_variation)
+
+#             except:
+#                 pass
+
+#     try:
+#         cart = Cart.objects.get(cart_id=_cart_id(request)) #get cart using cart_id present in the session
+#     except Cart.DoesNotExist:
+#         cart = Cart.objects.create(
+#             cart_id = _cart_id(request)
+#         )
+#     cart.save()
+
+#     is_cart_item_exists = CartItem.objects.filter(product=product, cart=cart).exists()
+#     if is_cart_item_exists:
+#         cart_item = CartItem.objects.filter(product=product, cart=cart)
+#         ex_var_list = []
+#         id = []
+#         for item in cart_item:
+#             existing_variation = item.variations.all()
+#             ex_var_list.append(list(existing_variation))
+#             id.append(item.id)
+
+#         print(ex_var_list)
+        
+#         if product_variation in ex_var_list:
+#             # increase CartItem qty
+#             index = ex_var_list.index(product_variation)
+#             item_id = id[index]
+#             item = CartItem.objects.get(product=product, id=item_id)
+#             item.quantity += 1
+#             item.save()
+#         else:
+#             # add a new cartitem
+#             item = CartItem.objects.create(product=product, quantity=1, cart=cart, user=request.user)
+#             if len(product_variation) > 0:
+#                 item.variations.clear()
+#                 item.variations.add(*product_variation)
+#             item.save()
+#     else:
+#         cart_item = CartItem.objects.create(
+#             product = product,
+#             quantity = 1,
+#             cart = cart,
+#             user=request.user,
+#         )
+#         if len(product_variation) > 0:
+#             cart_item.variations.clear()
+#             cart_item.variations.add(*product_variation)
+#         cart_item.save()
+
+#     return redirect('cart')
 
 @login_required(login_url="/accounts/login/")
 def remove_cart(request, product_id,cart_item_id):
@@ -244,7 +362,8 @@ def remove_cart_item(request, product_id, cart_item_id ):
 
     cart_item.delete()
     return redirect('cart')
-
+    
+@login_required(login_url="/accounts/login/")
 def delete_cart(request):
     cart = Cart.objects.all()
     cart.delete()
@@ -262,9 +381,11 @@ def cart(request, total=0, quantity=0, cart_items=None):
         if request.user.is_authenticated:
             cart_items = CartItem.objects.filter(user=request.user, is_active=True)
             products = Product.objects.all().filter(is_available=True)
+            # cart_count = cart_items.count()
         else:
             cart = Cart.objects.get(cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+            # cart_count = cart_items.count()
         for cart_item in cart_items:
             total += (cart_item.product.new_price * cart_item.quantity)
             quantity += cart_item.quantity
@@ -277,23 +398,27 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'quantity': quantity,
         'cart_items': cart_items,
         'sub_total': sub_total,
-        'products':products
+        'products':products,
+        # 'cart_count':cart_count,
     }
     try:
         grand_total =0
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart,is_active=True)
         products = Product.objects.all().filter(is_available=True)
+        
         for cart_item in cart_items:
             grand_total += (cart_item.product.new_price *cart_item.quantity)
     except ObjectDoesNotExist:
         pass
-
+    cart_count = cart_items.count()
+    print(cart_items)
     ctx = {
         'grand_total':grand_total,
         'quantity':quantity,
         'cart_items':cart_items,
-        'products':products
+        'products':products,
+        'cart_count':cart_count,
     }
     return render(request, 'cart.html', ctx)
 
