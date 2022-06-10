@@ -415,67 +415,79 @@
         </div>
         <!-- End Offcanvas stikcy toolbar -->
 
-        <!-- Start offCanvas minicart -->
-        <div class="offCanvas__minicart">
-            <div class="minicart__header ">
-                <div class="minicart__header--top d-flex justify-content-between align-items-center">
-                    <h2 class="minicart__title h3"> Shopping Cart</h2>
-                    <button class="minicart__close--btn" aria-label="minicart close button" data-offcanvas>
-                        <svg class="minicart__close--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path fill="currentColor" stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368" />
-                        </svg>
-                    </button>
-                </div>
-                <p class="minicart__header--desc">Products are limited</p>
+       <!-- Start offCanvas minicart -->
+       <div class="offCanvas__minicart">
+        <div class="minicart__header ">
+            <div class="minicart__header--top d-flex justify-content-between align-items-center">
+                <h2 class="minicart__title h3"> Shopping Cart</h2>
+                <button class="minicart__close--btn" aria-label="minicart close button" data-offcanvas>
+                    <svg class="minicart__close--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368" />
+                    </svg>
+                </button>
             </div>
-            <div class="minicart__product">
-                <div class="minicart__product--items d-flex">
-                    <div class="minicart__thumb">
-                        <a href="product-details.html"><img src="assets/img/product/product1.png" alt="prduct-img"></a>
-                    </div>
-                    <div class="minicart__text">
-                        <h3 class="minicart__subtitle h4"><a href="product-details.html">Oversize Cotton Dress</a></h3>
-                        <span class="color__variant"><b>Color:</b> Beige</span>
-                        <div class="minicart__price">
-                            <span class="current__price">$125.00</span>
-                            <span class="old__price">$140.00</span>
-                        </div>
-                        <div class="minicart__text--footer d-flex align-items-center">
-                            <div class="quantity__box minicart__quantity">
-                                <button type="button" class="quantity__value decrease" aria-label="quantity value"
-                                    value="Decrease Value">-</button>
-                                <label>
-                                    <input type="number" class="quantity__number" value="1" data-counter />
-                                </label>
-                                <button type="button" class="quantity__value increase" value="Increase Value">+</button>
-                            </div>
-                            <button class="minicart__product--remove">Remove</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="minicart__amount">
-                <div class="minicart__amount_list d-flex justify-content-between">
-                    <span>Sub Total:</span>
-                    <span><b>$240.00</b></span>
-                </div>
-                <div class="minicart__amount_list d-flex justify-content-between">
-                    <span>Total:</span>
-                    <span><b>$0.00</b></span>
-                </div>
-            </div>
-            <div class="minicart__conditions text-center">
-                <input class="minicart__conditions--input" id="accept" type="checkbox">
-                <label class="minicart__conditions--label" for="accept">I agree with the <a
-                        class="minicart__conditions--link" href="{% url 'privacypolicy' %}">Privacy and Policy</a></label>
-            </div>
-            <div class="minicart__button d-flex justify-content-center">
-                <a class="primary__btn minicart__button--link" href="{% url 'cart' %}">View cart</a>
-                <a class="primary__btn minicart__button--link" href="{% url 'checkout' %}">Checkout</a>
-            </div>
+            <p class="minicart__header--desc">Products are limited</p>
         </div>
-        <!-- End offCanvas minicart -->
+        {% if not cart_items %}
+        <h2 class="text-center">Your Shopping Cart is Empty</h2>
+        <br />
+        <div class="text-center">
+            <a href="{% url 'shop' %}" class="btn btn-primary">Continue Shopping</a>
+        </div>
+        {% else %}
+        <div class="minicart__product">
+            {% for cart_item in cart_items %}
+            <div class="minicart__product--items d-flex">
+                <div class="minicart__thumb">
+                    <a href="{{ cart_item.product.get_url }}"><img src="{{cart_item.product.image1.url}}" alt="prduct-img"></a>
+                </div>
+                <div class="minicart__text">
+                    <h3 class="minicart__subtitle h4"><a href="{{ cart_item.product.get_url }}">{{cart_item.product.name}}</a></h3>
+                    {% if cart_item.variations.all %} 
+                    {% for item in cart_item.variations.all %}
+                    <span class="color__variant"><b>{{ item.variation_category }} : </b> {{ item.variation_value }}</span>
+                    {% endfor %} 
+                    {% endif %}
+                    <div class="minicart__price">
+                        <span class="current__price">Ksh {{cart_item.product.new_price}} -</span>
+                        <span class="old__price">Ksh {{cart_item.product.new_price}}</span>
+                    </div>
+                  
+                    <div class="minicart__text--footer d-flex align-items-center">
+                        <div class="quantity__box minicart__quantity">
+                            <a type="button" href="{% url 'remove_cart' cart_item.product.id cart_item.id %}" class="quantity__value decrease" aria-label="quantity value"
+                                value="Decrease Value">-</a>
+                            <label>
+                                <input type="number" class="quantity__number" value="{{ cart_item.quantity }}" data-counter />
+                            </label>
+                            <form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+                                {% csrf_token %} 
+                                {% for item in cart_item.variations.all %}
+                                <input type="hidden" name="{{ item.variation_category |lower }}" value="{{ item.variation_value | capfirst }}">
+                                {% endfor %}
+                                <button type="submit" class="quantity__value" aria-label="quantity value" value="Increase Value">+</button>
+                            </form>
+                        </div>
+                        <a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id%}" class="minicart__product--remove">Remove</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% endif %}
+        <div class="minicart__conditions text-center">
+            <input class="minicart__conditions--input" id="accept" type="checkbox">
+            <label class="minicart__conditions--label" for="accept">I agree with the <a
+                    class="minicart__conditions--link" href="{% url 'privacypolicy' %}">Privacy and Policy</a></label>
+        </div>
+        <div class="minicart__button d-flex justify-content-center">
+            <a class="primary__btn minicart__button--link" href="{% url 'cart' %}">View cart</a>
+            <a class="primary__btn minicart__button--link" href="{% url 'checkout' %}">Checkout</a>
+        </div>
+    </div>
+    <!-- End offCanvas minicart -->
 
         <!-- Start serch box area -->
         <div class="predictive__search--box ">
