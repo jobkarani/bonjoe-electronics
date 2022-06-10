@@ -36,17 +36,6 @@ def privacypolicy(request):
 
     return render (request, 'privacy-policy.html')
 
-@login_required(login_url="/accounts/login/")
-def wishlist(request):
-    current_user = request.user
-    product = Product.objects.filter(id=current_user.id).all()
-
-    return render (request, 'wishlist.html', {"product": product,})
-
-def add_wishlist(request, product_id):
-    product = Product.objects.get(id = product_id)
-     
-    return redirect('shop')
 
 @login_required(login_url="/accounts/login/")
 def create_profile(request):
@@ -141,6 +130,7 @@ def product_detail(request, category_slug, product_slug):
     try:
         single_product = Product.objects.get(category__slug=category_slug,slug=product_slug)
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product )
+        products = Product.objects.all().filter(is_available=True)
         reviews = ReviewRating.objects.all()
         review_count = reviews.count()
         
@@ -150,6 +140,7 @@ def product_detail(request, category_slug, product_slug):
     context = {
     'single_product': single_product,
     'in_cart':in_cart,
+    'products':products,
     'reviews':reviews,
     'review_count':review_count,
     }
@@ -257,6 +248,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
         sub_total = 0
         if request.user.is_authenticated:
             cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+            products = Product.objects.all().filter(is_available=True)
         else:
             cart = Cart.objects.get(cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
@@ -272,11 +264,13 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'quantity': quantity,
         'cart_items': cart_items,
         'sub_total': sub_total,
+        'products':products
     }
     try:
         grand_total =0
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart,is_active=True)
+        products = Product.objects.all().filter(is_available=True)
         for cart_item in cart_items:
             grand_total += (cart_item.product.new_price *cart_item.quantity)
     except ObjectDoesNotExist:
@@ -285,7 +279,8 @@ def cart(request, total=0, quantity=0, cart_items=None):
     ctx = {
         'grand_total':grand_total,
         'quantity':quantity,
-        'cart_items':cart_items
+        'cart_items':cart_items,
+        'products':products
     }
     return render(request, 'cart.html', ctx)
 

@@ -77,7 +77,7 @@
                 <div class="header__topbar--inner d-flex align-items-center justify-content-between">
                     <div class="header__shipping">
                         <ul class="header__shipping--wrapper d-flex">
-                            <li class="header__shipping--text text-white">Welcome to Netmark online Store</li>
+                            <li class="header__shipping--text text-white">Welcome to Bonjoe online Store</li>
 
                         </ul>
                     </div>
@@ -89,7 +89,7 @@
                             <li class="header__shipping--text text-white d-sm-2-none"><img
                                     class="header__shipping--text__icon" src="{% static 'assets/img/icon/email.png' %}"
                                     alt="email-icon"> <a class="header__shipping--text__link"
-                                    href="mailto:demo@gmail.com">demo@gmail.com</a></li>
+                                    href="bonjoeectronics@gmail.com">bonjoeectronics@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -109,8 +109,7 @@
                         </a>
                     </div>
                     <div class="main__logo">
-                        <h1 class="main__logo--title"><a class="main__logo--link" href="{% url 'index' %}"><img
-                                    class="main__logo--img" src="assets/img/logo/nav-log.png" alt="logo-img"></a></h1>
+                        <h1 class="main__logo--title"><a class="main__logo--link" href="{% url 'index' %}"><p style="font-style: italic;font-size:xx-large;font-weight:900;">Bonjoe</p></a></h1>
                     </div>
                     <div class="header__search--widget header__sticky--none d-none d-lg-block">
                         <form class="d-flex header__search--form" action="{% url 'search' %}" method="GET">
@@ -267,16 +266,6 @@
                                     <span class="items__count style2">02</span>
                                 </a>
                             </li>
-                            <li class="header__account--items ">
-                                <a class="header__account--btn" href="wishlist.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9" />
-                                    </svg>
-
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -315,7 +304,7 @@
                         </nav>
                     </div>
                     <p class="header__discount--text"><img class="header__discount--icon__img"
-                            src="assets/img/icon/lamp.png" alt="lamp-img"> Special up to 60% Off all item</p>
+                            src="{% static 'assets/img/icon/lamp.png' %}" style="color: coral;" alt="lamp-img"> Special up to 60% Off all item</p>
                 </div>
             </div>
         </div>
@@ -421,17 +410,6 @@
                         <span class="offcanvas__stikcy--toolbar__label">Cart</span>
                         <span class="items__count" style="background: coral;">3</span>
                     </a>
-                </li>
-                <li class="offcanvas__stikcy--toolbar__list">
-                    <a class="offcanvas__stikcy--toolbar__btn" href="wishlist.html">
-                        <span class="offcanvas__stikcy--toolbar__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9" />
-                            </svg>
-                        </span>
-                        <span class="offcanvas__stikcy--toolbar__label">Logout</span> </a>
                 </li>
             </ul>
         </div>
@@ -551,7 +529,6 @@
             </button>
         </div>
         <!-- End serch box area -->
-
     </header>
     <!-- End header area -->
 
@@ -569,8 +546,8 @@
                                             <div class="slider__content">
                                                 <p class="slider__content--desc desc1 mb-15"><img
                                                         class="slider__text--shape__icon"
-                                                        src="assets/img/icon/text-shape-icon.png" alt="text-shape-icon">
-                                                    New Mobile Phones</p>
+                                                        src="{% static 'assets/img/icon/text-shape-icon.png' %}" alt="text-shape-icon">
+                                                    New Head Phones</p>
                                                 <h2 class="slider__content--maintitle h1">The Best Electronics  <br>
                                                     Products </h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40">Up To 40% Off
@@ -601,8 +578,8 @@
                                             <div class="slider__content">
                                                 <p class="slider__content--desc desc1 mb-15"><img
                                                         class="slider__text--shape__icon"
-                                                        src="assets/img/icon/text-shape-icon.png" alt="text-shape-icon">
-                                                    New Collection</p>
+                                                        src="{% static 'assets/img/icon/text-shape-icon.png' %}" alt="text-shape-icon">
+                                                    New Mobile Phones</p>
                                                 <h2 class="slider__content--maintitle h1">Get The Deals <br>
                                                     At Affordable Price</h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40 ">Up To 40% Off
@@ -633,8 +610,8 @@
                                             <div class="slider__content text-center">
                                                 <p class="slider__content--desc desc1 mb-15"><img
                                                         class="slider__text--shape__icon"
-                                                        src="assets/img/icon/text-shape-icon.png" alt="text-shape-icon">
-                                                    New Collection</p>
+                                                        src="{% static 'assets/img/icon/text-shape-icon.png' %}" alt="text-shape-icon">
+                                                    New Electronics </p>
                                                 <h2 class="slider__content--maintitle h1">24 Hour Delivery <br>
                                                     At a Cheap Price</h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40">Up To 40% Off
@@ -833,14 +810,14 @@
                         <div class="product__section--inner">
                             <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
                                 {% for prod in products %}
-                                <div class="col mb-30" id="product" style=" box-shadow: 0 2px 22px rgb(0 0 0 / 10%); margin: 5px 5px;">
+                                <div class="col mb-30" id="product" style=" box-shadow: 5px 5px 5px 5px #e2dede;; margin: 5px 5px;">
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="{{ prod.get_url }}">
                                                 <img class="product__items--img product__primary--img"
                                                     src="{{ prod.image1.url }}" alt="product-img" />
                                                 <img class="product__items--img product__secondary--img"
-                                                    src="{{ prod.image3.url }}" alt="product-img" />
+                                                    src="{{ prod.image1.url }}" alt="product-img" />
                                             </a>
                                             <div class="product__badge">
                                                 <span class="product__badge--items sale"
@@ -944,19 +921,6 @@
                                                             </g>
                                                         </svg>
                                                         <span class="add__to--cart__text"> + Add to cart</span>
-                                                    </a>
-                                                </li>
-                                                <li class="product__items--action__list">
-                                                    <a class="product__items--action__btn" href="{% url 'wishlist' %}">
-                                                        <svg class="product__items--action__btn--svg"
-                                                            xmlns="http://www.w3.org/2000/svg" width="25.51"
-                                                            height="23.443" viewBox="0 0 512 512">
-                                                            <path
-                                                                d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z"
-                                                                fill="none" stroke="currentColor" stroke-linecap="round"
-                                                                stroke-linejoin="round" stroke-width="32"></path>
-                                                        </svg>
-                                                        <span class="visually-hidden">Wishlist</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1127,8 +1091,6 @@
                                     href="login.html">Register</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
                                     href="checkout.html">Checkout</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="wishlist.html">Wishlist</a></li>
                         </ul>
                     </div>
                     <div class="footer__widget">
@@ -1579,18 +1541,6 @@
                                         </div>
                                         <button class="primary__btn quickview__cart--btn" type="submit">Add To
                                             Cart</button>
-                                    </div>
-                                    <div class="quickview__variant--list variant__wishlist mb-15">
-                                        <a class="variant__wishlist--icon" href="{% url 'add_wishlist' %}" title="Add to wishlist">
-                                            <svg class="quickview__variant--wishlist__svg"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                                <path
-                                                    d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z"
-                                                    fill="none" stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="32" />
-                                            </svg>
-                                            Add to Wishlist
-                                        </a>
                                     </div>
                                 </div>
                                 <div class="quickview__social d-flex align-items-center">

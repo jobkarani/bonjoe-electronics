@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Suruchi - Fashion eCommerce HTML Template</title>
+    <title>Bonjoe-Home</title>
     <meta name="description" content="Morden Bootstrap HTML5 Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
@@ -77,7 +77,7 @@
                 <div class="header__topbar--inner d-flex align-items-center justify-content-between">
                     <div class="header__shipping">
                         <ul class="header__shipping--wrapper d-flex">
-                            <li class="header__shipping--text text-white">Welcome to Netmark online Store</li>
+                            <li class="header__shipping--text text-white">Welcome to Bonjoe online Store</li>
 
                         </ul>
                     </div>
@@ -89,7 +89,7 @@
                             <li class="header__shipping--text text-white d-sm-2-none"><img
                                     class="header__shipping--text__icon" src="{% static 'assets/img/icon/email.png' %}"
                                     alt="email-icon"> <a class="header__shipping--text__link"
-                                    href="mailto:demo@gmail.com">demo@gmail.com</a></li>
+                                    href="bonjoeectronics@gmail.com">bonjoeectronics@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -109,8 +109,7 @@
                         </a>
                     </div>
                     <div class="main__logo">
-                        <h1 class="main__logo--title"><a class="main__logo--link" href="index-2.html"><img
-                                    class="main__logo--img" src="assets/img/logo/nav-log.png" alt="logo-img"></a></h1>
+                        <h1 class="main__logo--title"><a class="main__logo--link" href="{% url 'index' %}"><p style="font-style: italic;font-size:xx-large;font-weight:900;">Bonjoe</p></a></h1>
                     </div>
                     <div class="header__search--widget header__sticky--none d-none d-lg-block">
                         <form class="d-flex header__search--form" action="{% url 'search' %}" method="GET">
@@ -207,7 +206,7 @@
                                     <a class="header__menu--link text-white" href="{% url 'about' %}">About US </a>
                                 </li>
                                 <li class="header__menu--items style2">
-                                    <a class="header__menu--link text-white" href="contact.html">Contact Us</a>
+                                    <a class="header__menu--link text-white" href="{% url 'contact' %}">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>
@@ -267,16 +266,6 @@
                                     <span class="items__count style2">02</span>
                                 </a>
                             </li>
-                            <li class="header__account--items ">
-                                <a class="header__account--btn" href="wishlist.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9" />
-                                    </svg>
-
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -315,7 +304,7 @@
                         </nav>
                     </div>
                     <p class="header__discount--text"><img class="header__discount--icon__img"
-                            src="assets/img/icon/lamp.png" alt="lamp-img"> Special up to 60% Off all item</p>
+                            src="{% static 'assets/img/icon/lamp.png' %}" style="color: coral;" alt="lamp-img"> Special up to 60% Off all item</p>
                 </div>
             </div>
         </div>
@@ -324,7 +313,7 @@
         <div class="offcanvas-header">
             <div class="offcanvas__inner">
                 <div class="offcanvas__logo">
-                    <a class="offcanvas__logo_link" href="index-2.html">
+                    <a class="offcanvas__logo_link" href="{% url 'index' %}">
                         <img src="assets/img/logo/nav-log.png" alt="Grocee Logo" width="158" height="36">
                     </a>
                     <button class="offcanvas__close--btn" data-offcanvas>close</button>
@@ -337,12 +326,12 @@
                         <li class="offcanvas__menu_li">
                             <a class="offcanvas__menu_item" href="{% url 'shop' %}">Shop</a>
                         </li>
-                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="about.html">About</a></li>
-                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="contact.html">Contact</a>
+                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="{% url 'about' %}">About Us</a></li>
+                        <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="{% url 'contact' %}">ContactUs</a>
                         </li>
                     </ul>
                     <div class="offcanvas__account--items">
-                        <a class="offcanvas__account--items__btn d-flex align-items-center" href="login.html">
+                        <a class="offcanvas__account--items__btn d-flex align-items-center" href="{% url 'login' %}">
                             <span class="offcanvas__account--items__icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443"
                                     viewBox="0 0 512 512">
@@ -422,17 +411,6 @@
                         <span class="items__count" style="background: coral;">3</span>
                     </a>
                 </li>
-                <li class="offcanvas__stikcy--toolbar__list">
-                    <a class="offcanvas__stikcy--toolbar__btn" href="wishlist.html">
-                        <span class="offcanvas__stikcy--toolbar__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9" />
-                            </svg>
-                        </span>
-                        <span class="offcanvas__stikcy--toolbar__label">Logout</span> </a>
-                </li>
             </ul>
         </div>
         <!-- End Offcanvas stikcy toolbar -->
@@ -509,17 +487,17 @@
                 </div>
                 <div class="minicart__amount_list d-flex justify-content-between">
                     <span>Total:</span>
-                    <span><b>$240.00</b></span>
+                    <span><b>$0.00</b></span>
                 </div>
             </div>
             <div class="minicart__conditions text-center">
                 <input class="minicart__conditions--input" id="accept" type="checkbox">
                 <label class="minicart__conditions--label" for="accept">I agree with the <a
-                        class="minicart__conditions--link" href="privacy-policy.html">Privacy and Policy</a></label>
+                        class="minicart__conditions--link" href="{% url 'privacypolicy' %}">Privacy and Policy</a></label>
             </div>
             <div class="minicart__button d-flex justify-content-center">
-                <a class="primary__btn minicart__button--link" href="cart.html">View cart</a>
-                <a class="primary__btn minicart__button--link" href="checkout.html">Checkout</a>
+                <a class="primary__btn minicart__button--link" href="{% url 'cart' %}">View cart</a>
+                <a class="primary__btn minicart__button--link" href="{% url 'checkout' %}">Checkout</a>
             </div>
         </div>
         <!-- End offCanvas minicart -->
@@ -551,7 +529,6 @@
             </button>
         </div>
         <!-- End serch box area -->
-
     </header>
     <!-- End header area -->
 
@@ -900,8 +877,6 @@
                                     href="login.html">Register</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
                                     href="checkout.html">Checkout</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="wishlist.html">Wishlist</a></li>
                         </ul>
                     </div>
                     <div class="footer__widget">
