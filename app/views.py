@@ -179,7 +179,7 @@ def product_detail(request, category_slug, product_slug):
         single_product = Product.objects.get(category__slug=category_slug,slug=product_slug)
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product )
         products = Product.objects.all().filter(is_available=True)
-        reviews = ReviewRating.objects.all()
+        reviews = ReviewRating.objects.all().filter(product_id=single_product)
         review_count = reviews.count()
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
