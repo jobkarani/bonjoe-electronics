@@ -583,12 +583,14 @@
                                                         </div>
                                                         <div class="cart__content">
                                                             <h4 class="cart__content--title"><a href="{{ cart_item.product.get_url }}">{{ cart_item.product.name }}</a></h4>
+                                                            <span class="cart__content--variant">
                                                             {% if cart_item.variations.all %} 
                                                             {% for item in cart_item.variations.all %}
-                                                            <span class="cart__content--variant">{{ item.variation_category }} : {{ item.variation_value }}</span>
+                                                           {{ item.variation_category }}: {{ item.variation_value }}
                                                             <br/>
                                                             {% endfor %} 
                                                             {% endif %}
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </td>
