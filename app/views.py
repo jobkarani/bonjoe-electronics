@@ -455,7 +455,19 @@ def checkout(request, total=0, quantity=0, cart_items=None):
     return render(request, 'checkout.html',ctx)
 
 def payments(request,total=0, quantity=0, cart_items=None):
-    
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart,is_active=True)
+        for cart_item in cart_items:
+            total += (cart_item.product.new_price*cart_item.quantity)
+    except ObjectDoesNotExist:
+        pass
+
+    ctx = {
+        'total':total,
+        'quantity':quantity,
+        'cart_items':cart_items
+    }
     return render(request, 'payments.html', ctx)
 
 @login_required(login_url="/accounts/login/")
