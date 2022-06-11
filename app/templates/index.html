@@ -9,7 +9,8 @@
     <title>Bonjoe-Home</title>
     <meta name="description" content="Morden Bootstrap HTML5 Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" >
+
 
     <!-- ======= All CSS Plugins here ======== -->
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
@@ -357,7 +358,7 @@
         <div class="offcanvas__stikcy--toolbar">
             <ul class="d-flex justify-content-between">
                 <li class="offcanvas__stikcy--toolbar__list">
-                    <a class="offcanvas__stikcy--toolbar__btn" href="index-2.html">
+                    <a class="offcanvas__stikcy--toolbar__btn" href="/">
                         <span class="offcanvas__stikcy--toolbar__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="21.51" height="21.443"
                                 viewBox="0 0 22 17">
@@ -370,7 +371,7 @@
                     </a>
                 </li>
                 <li class="offcanvas__stikcy--toolbar__list">
-                    <a class="offcanvas__stikcy--toolbar__btn" href="shop.html">
+                    <a class="offcanvas__stikcy--toolbar__btn" href="{% url 'shop' %}">
                         <span class="offcanvas__stikcy--toolbar__icon">
                             <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="18.51" height="17.443"
                                 viewBox="0 0 448 512">
@@ -1000,53 +1001,6 @@
                     </div>
                 </div>
                 <div class="footer__widget footer__widget--width">
-                    <h2 class="footer__widget--title text-ofwhite h3">Instagram
-                        <button class="footer__widget--button" aria-label="footer widget button">
-                            <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
-                                width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
-                                <path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
-                                    transform="translate(-6 -8.59)" fill="currentColor"></path>
-                            </svg>
-                        </button>
-                    </h2>
-                    <div class="footer__instagram footer__widget--inner">
-                        <div class="footer__instagram--list d-flex">
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkF3TLBTT7"><img
-                                        src="assets/img/other/instagram1.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkF60sBxhN"><img
-                                        src="assets/img/other/instagram2.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkF90ZB6HG"><img
-                                        src="assets/img/other/instagram3.webp" alt="instagram"></a>
-                            </div>
-                        </div>
-                        <div class="footer__instagram--list d-flex">
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkGAe6BQeu"><img
-                                        src="assets/img/other/instagram4.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkGCWcBbv9"><img
-                                        src="assets/img/other/instagram5.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkGFDMhoid"><img
-                                        src="assets/img/other/instagram6.webp" alt="instagram"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer__widget footer__widget--width">
                     <h2 class="footer__widget--title text-ofwhite h3">Newsletter
                         <button class="footer__widget--button" aria-label="footer widget button">
                             <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
@@ -1073,9 +1027,9 @@
             </div>
             <div class="footer__bottom d-flex justify-content-between align-items-center">
                 <p class="copyright__content text-ofwhite m-0">Copyright © 2022 <a class="copyright__content--link"
-                        href="index-2.html">Suruchi</a> . All Rights Reserved.Design By Suruchi</p>
+                        href="/">Bonjoe</a> . All Rights Reserved</p>
                 <div class="footer__payment text-right">
-                    <img class="display-block" src="assets/img/other/payment-visa-card.png" alt="visa-card">
+                    <img class="display-block" src=" {% static 'assets/img/other/payment-visa-card.png' %}" alt="visa-card">
                 </div>
             </div>
         </div>
@@ -1540,6 +1494,7 @@
 
     <!-- Customscript js -->
     <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
 
 </body>
 
