@@ -184,15 +184,15 @@
                         <nav>
                             <ol class="breadcrumb checkout__breadcrumb d-flex">
                                 <li class="breadcrumb__item breadcrumb__item--completed d-flex align-items-center">
-                                    <a class="breadcrumb__link" href="cart.html">Cart</a>
+                                    <a class="breadcrumb__link" href="{% url 'cart' %}">Cart</a>
                                     <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
                                 </li>
                                 <li class="breadcrumb__item breadcrumb__item--current d-flex align-items-center">
-                                    <a class="breadcrumb__link" href="cart.html">Information</a>
+                                    <a class="breadcrumb__link" href="{% url 'checkout' %}">Information</a>
                                     <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
                                 </li>
                                 <li class="breadcrumb__item breadcrumb__item--blank d-flex align-items-center">
-                                    <a class="breadcrumb__link" href="cart.html">Shipping</a>
+                                    <a class="breadcrumb__link" href="{% url 'place_order' %}">Shipping</a>
                                     <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
                                 </li>
                                     <li class="breadcrumb__item breadcrumb__item--blank">

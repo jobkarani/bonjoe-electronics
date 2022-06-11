@@ -6168,7 +6168,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 .copyright__content--link:hover {
-  text-decoration: underline;
+  color:coral;
 }
 .footer__payment {
   line-height: 1;
