@@ -9331,7 +9331,7 @@ input.quickview__value--number {
 }
 .breadcrumb__link {
   font-size: 1.3rem;
-  color: var(--secondary-color);
+  color: coral;
 }
 .readcrumb__chevron-icon {
   color: #737373;
@@ -9546,7 +9546,7 @@ details > summary::-webkit-details-marker {
 }
 .previous__link--content {
   margin-left: 2rem;
-  color: var(--secondary-color);
+  color: coral;
 }
 .checkout__footer {
   border: 0;

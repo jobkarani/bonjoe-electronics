@@ -454,9 +454,9 @@ def checkout(request, total=0, quantity=0, cart_items=None):
     }
     return render(request, 'checkout.html',ctx)
 
-def payments(request):
+def payments(request,total=0, quantity=0, cart_items=None):
     
-    return render(request, 'payments.html')
+    return render(request, 'payments.html', ctx)
 
 @login_required(login_url="/accounts/login/")
 def place_order(request,total=0, quantity=0,):
@@ -466,8 +466,6 @@ def place_order(request,total=0, quantity=0,):
     cart_count = cart_items.count()
     if cart_count <= 0:
         return redirect('shop')
-
-    
     sub_total = 0
     for cart_item in cart_items:
         total += (cart_item.product.new_price*cart_item.quantity)
@@ -507,17 +505,18 @@ def place_order(request,total=0, quantity=0,):
                 'order':order,
                 'cart_items':cart_items,
                 'sub_total':sub_total,
+                'cart':cart,
             }
-            return render(request, 'shipping.html',ctx)
+            return render(request, 'payment.html',ctx)
         
 
     else:
         return redirect('checkout')
 
 
-def shipping(request):
+# def shipping(request):
 
-    return render (request, 'shipping.html')
+#     return render (request, 'shipping.html')
 
 def receipt(request):
 

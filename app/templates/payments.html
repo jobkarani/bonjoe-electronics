@@ -191,10 +191,7 @@
                                     <a class="breadcrumb__link" href="{% url 'checkout' %}">Information</a>
                                     <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
                                 </li>
-                                <li class="breadcrumb__item breadcrumb__item--blank d-flex align-items-center">
-                                    <a class="breadcrumb__link" href="{% url 'place_order' %}">Shipping</a>
-                                    <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
-                                </li>
+                               
                                     <li class="breadcrumb__item breadcrumb__item--blank">
                                     <span class="breadcrumb__text current">Payment</span>
                                 </li>
@@ -383,74 +380,35 @@
                     <div class="cart__table checkout__product--table">
                         <table class="cart__table--inner">
                             <tbody class="cart__table--body">
+                                {% for cart_item in cart_items %}
                                 <tr class="cart__table--body__items">
                                     <td class="cart__table--body__list">
                                         <div class="product__image two  d-flex align-items-center">
                                             <div class="product__thumbnail border-radius-5">
-                                                <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/small-product7.png" alt="cart-product"></a>
+                                                <a href="{{ cart_item.product.get_url }}"><img class="border-radius-5" src="a{{cart_item.product.image1.url}}" alt="cart-product"></a>
                                                 <span class="product__thumbnail--quantity">1</span>
                                             </div>
                                             <div class="product__description">
-                                                <h3 class="product__description--name h4"><a href="product-details.html">Fresh-whole-fish</a></h3>
+                                                <h3 class="product__description--name h4"><a href="{{ cart_item.product.get_url }}">{{cart_item.product.name}}</a></h3>
                                                 <span class="product__description--variant">COLOR: Blue</span>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="cart__table--body__list">
-                                        <span class="cart__price">£65.00</span>
-                                    </td>
-                                </tr>
-                                <tr class="cart__table--body__items">
-                                    <td class="cart__table--body__list">
-                                        <div class="cart__product d-flex align-items-center">
-                                            <div class="product__thumbnail border-radius-5">
-                                                <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/small-product2.png" alt="cart-product"></a>
-                                                <span class="product__thumbnail--quantity">1</span>
-                                            </div>
-                                            <div class="product__description">
-                                                <h3 class="product__description--name h4"><a href="product-details.html">Vegetable-healthy</a></h3>
-                                                <span class="product__description--variant">COLOR: Green</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__table--body__list">
-                                        <span class="cart__price">£82.00</span>
-                                    </td>
-                                </tr>
-                                <tr class="cart__table--body__items">
-                                    <td class="cart__table--body__list">
-                                        <div class="cart__product d-flex align-items-center">
-                                            <div class="product__thumbnail border-radius-5">
-                                                <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/small-product4.png" alt="cart-product"></a>
-                                                <span class="product__thumbnail--quantity">1</span>
-                                            </div>
-                                            <div class="product__description">
-                                                <h3 class="product__description--name h4"><a href="product-details.html">Raw-onions-surface</a></h3>
-                                                <span class="product__description--variant">COLOR: White</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__table--body__list">
-                                        <span class="cart__price">£78.00</span>
+                                        <span class="cart__price">Ksh {{cart_item.product.new_price}}</span>
                                     </td>
                                 </tr>
                             </tbody>
+                            {% endfor %}
                         </table> 
                     </div>
-                    <div class="checkout__discount--code">
-                        <form class="d-flex" action="#">
-                            <label>
-                                <input class="checkout__discount--code__input--field border-radius-5" placeholder="Gift card or discount code"  type="text">
-                            </label>
-                            <button class="checkout__discount--code__btn primary__btn border-radius-5" type="submit">Apply</button>
-                        </form>
-                    </div>
+   
                     <div class="checkout__total">
                         <table class="checkout__total--table">
                             <tbody class="checkout__total--body">
                                 <tr class="checkout__total--items">
                                     <td class="checkout__total--title text-left">Subtotal </td>
-                                    <td class="checkout__total--amount text-right">$860.00</td>
+                                    <td class="checkout__total--amount text-right">Ksh {{sub_total}}</td>
                                 </tr>
                                 <tr class="checkout__total--items">
                                     <td class="checkout__total--title text-left">Shipping</td>
@@ -460,7 +418,7 @@
                             <tfoot class="checkout__total--footer">
                                 <tr class="checkout__total--footer__items">
                                     <td class="checkout__total--footer__title checkout__total--footer__list text-left">Total </td>
-                                    <td class="checkout__total--footer__amount checkout__total--footer__list text-right">$860.00</td>
+                                    <td class="checkout__total--footer__amount checkout__total--footer__list text-right">Ksh {{sub_total}}</td>
                                 </tr>
                             </tfoot>
                         </table>
