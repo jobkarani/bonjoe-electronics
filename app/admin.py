@@ -16,7 +16,7 @@ class VariationAdmin(admin.ModelAdmin):
     list_filter = ('product','variation_category','variation_value')
 
 class CartAdmin(admin.ModelAdmin):
-    list_display = ('cart_id', 'date_added')
+    list_display = ('user','cart_id', 'date_added')
 
 class CartItenAdmin(admin.ModelAdmin):
     list_display = ('product', 'cart', 'quantity', 'is_active')
