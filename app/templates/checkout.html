@@ -189,14 +189,10 @@
                                 </li>
                         
                                 <li class="breadcrumb__item breadcrumb__item--current d-flex align-items-center">
-                                    <a class="breadcrumb__text current" >Information</a>
+                                    <a class="breadcrumb__text current" href="{% url 'checkout'%}" >Information</a>
                                     <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
                                 </li>
-                                <li class="breadcrumb__item breadcrumb__item--blank d-flex align-items-center">
-                                    <span class="breadcrumb__text">Shipping</span>
-                                    <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
-                                </li>
-                                    <li class="breadcrumb__item breadcrumb__item--blank">
+                                <li class="breadcrumb__item breadcrumb__item--blank">
                                     <span class="breadcrumb__text">Payment</span>
                                 </li>
                             </ol>
@@ -213,19 +209,7 @@
                                         <a class="layout__flex--item__link" href="{% url 'login' %}">Log in</a>  
                                     </p>
                                 </div>
-                                <div class="customer__information">
-                                    <div class="checkout__email--phone mb-12">
-                                       <label>
-                                            <input class="checkout__input--field border-radius-5" placeholder="Email or mobile phone mumber"  type="text">
-                                       </label>
-                                    </div>
-                                    <div class="checkout__checkbox">
-                                        <input class="checkout__checkbox--input" id="check1" type="checkbox">
-                                        <span class="checkout__checkbox--checkmark"></span>
-                                        <label class="checkout__checkbox--label" for="check1">
-                                            Email me with news and offers</label>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="checkout__content--step section__shipping--address">
                                 <div class="section__header mb-25">
@@ -249,54 +233,41 @@
                                         </div>
                                         <div class="col-6 mb-12">
                                             <div class="checkout__input--list">
-                                                <label>
+                                                <label for="">
                                                     <input class="checkout__input--field border-radius-5 form-control" placeholder="Email" name="email" type="email"  required>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-12">
                                             <div class="checkout__input--list">
-                                                <label>
+                                                <label for="">
                                                     <input class="checkout__input--field border-radius-5 form-control" placeholder="Phone Number" name="phone"  type="text"  required>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-12 mb-12">
                                             <div class="checkout__input--list">
-                                                <label>
+                                                <label for="">
                                                     <input class="checkout__input--field border-radius-5 form-control" placeholder="County" name="county" type="text" required >
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-12 mb-12">
                                             <div class="checkout__input--list">
-                                                <label>
+                                                <label for="">
                                                     <input class="checkout__input--field border-radius-5 form-control" placeholder="Town" name="town"  type="text" required>
                                                 </label>
                                             </div>
                                         </div>
-                                       
                                         <div class="col-12 mb-12">
                                             <div class="checkout__input--list">
-                                                <label for="">
-                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Apartment, suite, etc. (optional)"  required>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mb-12">
-                                            <div class="checkout__input--list">
-                                                <label>
-                                                    <textarea class="checkout__input--field border-radius-5 form-control" placeholder="Order Note" rows="2" name="order_note"  type="text" ></textarea>
+                                                <p class="cart__note--desc">Add special instructions for your seller...</p>
+                                                <label for="">  
+                                                    <textarea class="checkout__input--field cart__note--title border-radius-5 form-control" placeholder="Order Note" rows="2" name="order_note"  type="text" ></textarea>
                                                 </label>
                                             </div>
                                         </div>
              
-                                    </div>
-                                    <div class="checkout__checkbox">
-                                        <input class="checkout__checkbox--input" id="check2" type="checkbox">
-                                        <span class="checkout__checkbox--checkmark"></span>
-                                        <label class="checkout__checkbox--label" for="check2">
-                                            Save this information for next time</label>
                                     </div>
                                 </div>
                             </div>
