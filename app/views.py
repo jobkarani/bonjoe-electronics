@@ -26,9 +26,16 @@ from .models import MpesaPayment
 
 # auth 
 def about(request):
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-    cart_count = cart_items.count()
+    current_user = request.user
+    cart = 0
+    cart_items = 0
+    cart_count = 0
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        cart_count = cart_items.count()
+    except:   
+        pass
 
     ctx={
      'cart':cart,
@@ -38,9 +45,15 @@ def about(request):
     return render(request, 'about.html',ctx)
 
 def contact(request):
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-    cart_count = cart_items.count()
+    cart = 0
+    cart_items = 0
+    cart_count = 0
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        cart_count = cart_items.count()
+    except:   
+        pass
 
     ctx={
      'cart':cart,
@@ -50,9 +63,15 @@ def contact(request):
     return render (request, 'contact.html',ctx)
 
 def privacypolicy(request ):
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-    cart_count = cart_items.count()
+    cart = 0
+    cart_items = 0
+    cart_count = 0
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        cart_count = cart_items.count()
+    except:   
+        pass
 
     ctx={
      'cart':cart,
@@ -124,9 +143,15 @@ def update_profile(request, id):
 def index(request, category_slug=None):
     categories = None
     products = None
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-    cart_count = cart_items.count()
+    cart = 0
+    cart_items = 0
+    cart_count = 0
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        cart_count = cart_items.count()
+    except:   
+        pass
 
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
@@ -148,9 +173,15 @@ def index(request, category_slug=None):
 def shop(request, category_slug=None,product_slug=None):
     categories = None
     products = None
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-    cart_count = cart_items.count()
+    cart = 0
+    cart_items = 0
+    cart_count = 0
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        cart_count = cart_items.count()
+    except:   
+        pass
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=categories, is_available=True)
@@ -181,12 +212,20 @@ def product_detail(request, category_slug, product_slug):
         products = Product.objects.all().filter(is_available=True)
         reviews = ReviewRating.objects.all().filter(product_id=single_product)
         review_count = reviews.count()
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-        cart_count = cart_items.count()
+        
         
     except Exception as e:
         raise e
+
+    cart = 0
+    cart_items = 0
+    cart_count = 0
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        cart_count = cart_items.count()
+    except:   
+        pass
 
     context = {
     'single_product': single_product,
