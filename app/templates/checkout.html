@@ -189,7 +189,7 @@
                                 </li>
                         
                                 <li class="breadcrumb__item breadcrumb__item--current d-flex align-items-center">
-                                    <span class="breadcrumb__text current">Information</span>
+                                    <a class="breadcrumb__text current" >Information</a>
                                     <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
                                 </li>
                                 <li class="breadcrumb__item breadcrumb__item--blank d-flex align-items-center">
@@ -203,7 +203,8 @@
                             </nav>
                     </header>
                     <main class="main__content_wrapper">
-                        <form action="#">
+                        <form action="{% url 'place_order' %}">
+                            {% csrf_token %}
                             <div class="checkout__content--step section__contact--information">
                                 <div class="section__header checkout__section--header d-flex align-items-center justify-content-between mb-25">
                                     <h2 class="section__header--title h3">Contact information</h2>
@@ -234,67 +235,62 @@
                                     <div class="row">
                                         <div class="col-lg-6 mb-12">
                                             <div class="checkout__input--list ">
-                                                <label>
-                                                    <input class="checkout__input--field border-radius-5" placeholder="First name (optional)"  type="text">
+                                                <label for="">
+                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="First name" name="first_name" type="text" required>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 mb-12">
                                             <div class="checkout__input--list">
+                                                <label for="">
+                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Last name"  name="last_name"  type="text" required>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-12">
+                                            <div class="checkout__input--list">
                                                 <label>
-                                                    <input class="checkout__input--field border-radius-5" placeholder="Last name"  type="text">
+                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Email" name="email" type="email"  required>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-12">
+                                            <div class="checkout__input--list">
+                                                <label>
+                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Phone Number" name="phone"  type="text"  required>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-12 mb-12">
                                             <div class="checkout__input--list">
                                                 <label>
-                                                    <input class="checkout__input--field border-radius-5" placeholder="Company (optional)"  type="text">
+                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="County" name="county" type="text" required >
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-12 mb-12">
                                             <div class="checkout__input--list">
                                                 <label>
-                                                    <input class="checkout__input--field border-radius-5" placeholder="Address1"  type="text">
+                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Town" name="town"  type="text" required>
+                                                </label>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="col-12 mb-12">
+                                            <div class="checkout__input--list">
+                                                <label for="">
+                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Apartment, suite, etc. (optional)"  required>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-12 mb-12">
                                             <div class="checkout__input--list">
                                                 <label>
-                                                    <input class="checkout__input--field border-radius-5" placeholder="Apartment, suite, etc. (optional)"  type="text">
+                                                    <textarea class="checkout__input--field border-radius-5 form-control" placeholder="Order Note" rows="2" name="order_note"  type="text" ></textarea>
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="col-12 mb-12">
-                                            <div class="checkout__input--list">
-                                                <label>
-                                                    <input class="checkout__input--field border-radius-5" placeholder="City"  type="text">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 mb-12">
-                                            <div class="checkout__input--list checkout__input--select select">
-                                                <label class="checkout__select--label" for="country">Country/region</label>
-                                                <select class="checkout__input--select__field border-radius-5" id="country">
-                                                    <option value="1">India</option>
-                                                    <option value="2">United States</option>
-                                                    <option value="3">Netherlands</option>
-                                                    <option value="4">Afghanistan</option>
-                                                    <option value="5">Islands</option>
-                                                    <option value="6">Albania</option>
-                                                    <option value="7">Antigua Barbuda</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 mb-12">
-                                            <div class="checkout__input--list">
-                                                <label>
-                                                    <input class="checkout__input--field border-radius-5" placeholder="Postal code"  type="text">
-                                                </label>
-                                            </div>
-                                        </div>
+             
                                     </div>
                                     <div class="checkout__checkbox">
                                         <input class="checkout__checkbox--input" id="check2" type="checkbox">
@@ -305,87 +301,48 @@
                                 </div>
                             </div>
                             <div class="checkout__content--step__footer d-flex align-items-center">
-                                <a class="continue__shipping--btn primary__btn border-radius-5" href="{% url 'shipping' %}">Continue To Shipping</a>
-                                <a class="previous__link--content" href="{% url 'cart' %}">Return to cart</a>
+                                <a class="continue__shipping--btn primary__btn border-radius-5" href="{% url 'payments' %}">Continue To Payment</a>
+                                <a class="previous__link--content" href="{% url 'cart' %}">Continue Shopping</a>
                             </div>
                         </form>
                     </main>
                     <footer class="main__footer checkout__footer">
-                        <p class="copyright__content">Copyright © 2022 <a class="copyright__content--link text__primary" href="index-2.html">Suruchi</a> . All Rights Reserved.Design By Suruchi</p>
+                        <p class="copyright__content">Copyright © 2022 <a class="copyright__content--link text__primary" href="{% url 'index' %}">Bonjoe</a> . All Rights Reserved.</p>
                     </footer>
                 </div>
                 <aside class="checkout__sidebar sidebar">
                     <div class="cart__table checkout__product--table">
                         <table class="cart__table--inner">
                             <tbody class="cart__table--body">
-                                <tr class="cart__table--body__items">
-                                    <td class="cart__table--body__list">
-                                        <div class="product__image two  d-flex align-items-center">
-                                            <div class="product__thumbnail border-radius-5">
-                                                <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/small-product7.png" alt="cart-product"></a>
-                                                <span class="product__thumbnail--quantity">1</span>
-                                            </div>
-                                            <div class="product__description">
-                                                <h3 class="product__description--name h4"><a href="product-details.html">Fresh-whole-fish</a></h3>
-                                                <span class="product__description--variant">COLOR: Blue</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__table--body__list">
-                                        <span class="cart__price">£65.00</span>
-                                    </td>
-                                </tr>
+                                {% for cart_item in cart_items %}
                                 <tr class="cart__table--body__items">
                                     <td class="cart__table--body__list">
                                         <div class="cart__product d-flex align-items-center">
                                             <div class="product__thumbnail border-radius-5">
-                                                <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/small-product2.png" alt="cart-product"></a>
+                                                <a href="{{ cart_item.product.get_url }}"><img class="border-radius-5" src="{{cart_item.product.image1.url}}" alt="cart-product"></a>
                                                 <span class="product__thumbnail--quantity">1</span>
                                             </div>
                                             <div class="product__description">
-                                                <h3 class="product__description--name h4"><a href="product-details.html">Vegetable-healthy</a></h3>
-                                                <span class="product__description--variant">COLOR: Green</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__table--body__list">
-                                        <span class="cart__price">£82.00</span>
-                                    </td>
-                                </tr>
-                                <tr class="cart__table--body__items">
-                                    <td class="cart__table--body__list">
-                                        <div class="cart__product d-flex align-items-center">
-                                            <div class="product__thumbnail border-radius-5">
-                                                <a href="product-details.html"><img class="border-radius-5" src="assets/img/product/small-product4.png" alt="cart-product"></a>
-                                                <span class="product__thumbnail--quantity">1</span>
-                                            </div>
-                                            <div class="product__description">
-                                                <h3 class="product__description--name h4"><a href="product-details.html">Raw-onions-surface</a></h3>
+                                                <h3 class="product__description--name h4"><a href="{{ cart_item.product.get_url }}">{{cart_item.product.name}}</a></h3>
                                                 <span class="product__description--variant">COLOR: White</span>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="cart__table--body__list">
-                                        <span class="cart__price">£78.00</span>
+                                        <span class="cart__price">Ksh {{cart_item.product.new_price}}</span>
                                     </td>
                                 </tr>
+                                {% endfor %}
                             </tbody>
                         </table> 
                     </div>
-                    <div class="checkout__discount--code">
-                        <form class="d-flex" action="#">
-                            <label>
-                                <input class="checkout__discount--code__input--field border-radius-5" placeholder="Gift card or discount code"  type="text">
-                            </label>
-                            <button class="checkout__discount--code__btn primary__btn border-radius-5" type="submit">Apply</button>
-                        </form>
-                    </div>
+                   
                     <div class="checkout__total">
                         <table class="checkout__total--table">
                             <tbody class="checkout__total--body">
                                 <tr class="checkout__total--items">
                                     <td class="checkout__total--title text-left">Subtotal </td>
-                                    <td class="checkout__total--amount text-right">$860.00</td>
+                                    <td class="checkout__total--amount text-right">Ksh {{total}}</td>
                                 </tr>
                                 <tr class="checkout__total--items">
                                     <td class="checkout__total--title text-left">Shipping</td>
@@ -395,7 +352,7 @@
                             <tfoot class="checkout__total--footer">
                                 <tr class="checkout__total--footer__items">
                                     <td class="checkout__total--footer__title checkout__total--footer__list text-left">Total </td>
-                                    <td class="checkout__total--footer__amount checkout__total--footer__list text-right">$860.00</td>
+                                    <td class="checkout__total--footer__amount checkout__total--footer__list text-right">Ksh {{total}}</td>
                                 </tr>
                             </tfoot>
                         </table>
