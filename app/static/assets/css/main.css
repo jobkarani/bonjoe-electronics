@@ -245,3 +245,12 @@ header .head{
 .copyright__content > .copyright__content--link:hover{
     color: coral;
 }
+.footer__bottom > .copyright__content{
+    text-align: center;
+}
+.product__items--link > .product__items--img {
+    width: 100%;
+    min-height: 13rem;
+    max-height: 15rem;
+    object-fit: cover;
+}
