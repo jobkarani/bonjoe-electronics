@@ -556,9 +556,9 @@
                     <div class="account__wrapper">
                         <div class="account__content">
                             <div class="row">
-                                {% if profile.profile_photo %}
+                                {% if  profile.profile_photo %}
                                 <div class="team__thumb col-lg-6 col-md-6 col-sm-12 custom-col">
-                                    <img class="team__thumb--img border-radius-50" src="{{ profile.profile_photo.url }}" alt="profilepic">
+                                    <img class="team__thumb--img border-radius-50" src="{{  profile.profile_photo.url }}" alt="profilepic">
                                 </div>
                                 {%else%}
                                 <div class="team__thumb col-lg-6 col-md-6 col-sm-12 custom-col">
@@ -567,8 +567,8 @@
                                 {% endif %}
                                 <div class="team__content col-lg-6 col-md-6 col-sm-12 custom-col text-center">
                                     <h2 class="account__content--title h3 mb-20" style="color: coral;">Profile Details</h2>
-                                    {% if profile.firstname and profile.lastname  %}
-                                    <h3 class="shipping__items2--content__title">Full Name: {{ profile.firstname }} {{ profile.lastname }} </h3>
+                                    {% if  profile.firstname and  profile.lastname  %}
+                                    <h3 class="shipping__items2--content__title">Full Name: {{  profile.firstname }} {{  profile.lastname }} </h3>
                                     {% else %}
                                     <span class="shipping__items2--content__title">No full name</span>
                                     {% endif %}

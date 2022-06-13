@@ -104,7 +104,7 @@ def create_profile(request):
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
-            profile.user = current_user
+            profile.request.user = current_user
             profile.save()
         return HttpResponseRedirect('/')
 
