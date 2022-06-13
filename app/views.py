@@ -25,6 +25,7 @@ from django.http.response import Http404
 from .models import MpesaPayment
 
 # auth 
+@login_required(login_url="/accounts/login/")
 def _cart_id(request):
     if request.user.is_authenticated and request.user.id:
         cart = request.session.session_key
@@ -114,6 +115,7 @@ def create_profile(request):
 
 @login_required(login_url="/accounts/login/")
 def profile(request):
+    cart = 0
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()
     product = Product.objects.filter(id=current_user.id).all()
@@ -391,7 +393,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
         except ObjectDoesNotExist:
             pass #just ignore
     else:
-            cart = Cart.objects.get(id=_cart_id(request))
+            cart = Cart.objects.get(cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
             # cart_count = cart_items.count()
 

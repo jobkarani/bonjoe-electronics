@@ -19,7 +19,7 @@ class CartAdmin(admin.ModelAdmin):
     list_display = ('user','cart_id', 'date_added')
 
 class CartItenAdmin(admin.ModelAdmin):
-    list_display = ('product', 'cart', 'quantity', 'is_active')
+    list_display = ('product', 'cart', 'quantity','user', 'is_active')
 
 admin.site.register(Profile)
 admin.site.register(Product, ProductAdmin )
