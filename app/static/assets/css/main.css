@@ -254,3 +254,24 @@ header .head{
     max-height: 15rem;
     object-fit: cover;
 }
+.banner__bideo--play__icon {
+    background: coral;
+    color: var(--white-color);
+
+}
+
+.counterup__banner__bg2 {
+    background: url(../img/banner/banner-bg4.png);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+.team__items:hover .team__thumb {
+    border-color: coral;
+}
+.team__social--icon {
+    background: coral;
+    color: var(--white-color);
+}
