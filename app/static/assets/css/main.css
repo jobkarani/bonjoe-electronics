@@ -230,3 +230,27 @@ header .head{
     width: 100%;
     object-fit: cover;
 } 
+.product__items--content__title > a {
+    overflow-wrap: anywhere;
+}
+.tab_pane .product__items--content__title > a{
+    overflow-wrap: anywhere;
+}
+.social__shear--list >.social__shear--list__icon:hover{
+    color: coral;
+}
+.footer__widget--menu__list > .footer__widget--menu__text:hover{
+    color: coral;
+}
+.copyright__content > .copyright__content--link:hover{
+    color: coral;
+}
+.footer__bottom > .copyright__content{
+    text-align: center;
+}
+.product__items--link > .product__items--img {
+    width: 100%;
+    min-height: 13rem;
+    max-height: 15rem;
+    object-fit: cover;
+}

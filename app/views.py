@@ -432,6 +432,9 @@ def cart(request, total=0, quantity=0, cart_items=None):
 def search(request):
     products = 0
     product_count = 0
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    cart_count = cart_items.count()
     if 'keyword' in request.GET:
         keyword=request.GET['keyword']
         if keyword:
@@ -440,6 +443,9 @@ def search(request):
     ctx={
         'products':products,
         'product_count':product_count,
+        'cart':cart,
+        'cart_items':cart_items,
+        'cart_count':cart_count
     }
     return render(request, 'shop.html', ctx)
 

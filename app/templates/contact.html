@@ -721,7 +721,7 @@
                         </div>
                         <div class="shipping__style3--content">
                             <h2 class="shipping__style3--content__title">ACCEPT PAYMENT</h2>
-                            <p class="shipping__style3--content__desc">Visa, Paypal, Master</p>
+                            <p class="shipping__style3--content__desc">Mpesa, Visa, Paypal</p>
                         </div>
                     </div>
                     <div class="shipping__style3--items d-flex align-items-center">
@@ -770,8 +770,8 @@
         <!-- End shipping section -->
     </main>
 
-      <!-- Start footer section -->
-      <footer class="footer__section bg__black">
+    <!-- Start footer section -->
+    <footer class="footer__section bg__black">
         <div class="container-fluid">
             <div class="main__footer d-flex justify-content-between">
                 <div class="footer__widget footer__widget--width">
@@ -855,15 +855,15 @@
                         </h2>
                         <ul class="footer__widget--menu footer__widget--inner">
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="my-account.html">My Account</a></li>
+                                    href="{% url 'profile' %}">My Account</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="cart.html">Shopping Cart</a></li>
+                                    href="{% url 'cart' %}">Shopping Cart</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="login.html">Login</a></li>
+                                    href="{% url 'login' %}">Login</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="login.html">Register</a></li>
+                                    href="/accounts/register/">Register</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="checkout.html">Checkout</a></li>
+                                    href="{% url 'checkout' %}">Checkout</a></li>
                         </ul>
                     </div>
                     <div class="footer__widget">
@@ -878,67 +878,17 @@
                         </h2>
                         <ul class="footer__widget--menu footer__widget--inner">
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="about.html">About Us</a></li>
+                                    href="{% url 'about' %}">About Us</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="contact.html">Contact Us</a></li>
+                                    href="{% url 'contact' %}">Contact Us</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="portfolio.html">Portfolio</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="privacy-policy.html">Privacy Policy</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="compare.html">Compare</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
-                                    href="faq.html">Frequently</a></li>
+                                    href="{% url 'privacypolicy' %}">Privacy Policy</a></li>
+                            <!-- <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="faq.html">Frequently</a></li> -->
                         </ul>
                     </div>
                 </div>
-                <div class="footer__widget footer__widget--width">
-                    <h2 class="footer__widget--title text-ofwhite h3">Instagram
-                        <button class="footer__widget--button" aria-label="footer widget button">
-                            <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
-                                width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
-                                <path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
-                                    transform="translate(-6 -8.59)" fill="currentColor"></path>
-                            </svg>
-                        </button>
-                    </h2>
-                    <div class="footer__instagram footer__widget--inner">
-                        <div class="footer__instagram--list d-flex">
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkF3TLBTT7"><img
-                                        src="assets/img/other/instagram1.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkF60sBxhN"><img
-                                        src="assets/img/other/instagram2.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkF90ZB6HG"><img
-                                        src="assets/img/other/instagram3.webp" alt="instagram"></a>
-                            </div>
-                        </div>
-                        <div class="footer__instagram--list d-flex">
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkGAe6BQeu"><img
-                                        src="assets/img/other/instagram4.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkGCWcBbv9"><img
-                                        src="assets/img/other/instagram5.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank"
-                                    href="https://www.instagram.com/p/CZkGFDMhoid"><img
-                                        src="assets/img/other/instagram6.webp" alt="instagram"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="footer__widget footer__widget--width">
                     <h2 class="footer__widget--title text-ofwhite h3">Newsletter
                         <button class="footer__widget--button" aria-label="footer widget button">
@@ -966,10 +916,8 @@
             </div>
             <div class="footer__bottom d-flex justify-content-between align-items-center">
                 <p class="copyright__content text-ofwhite m-0">Copyright © 2022 <a class="copyright__content--link"
-                        href="index-2.html">Suruchi</a> . All Rights Reserved.Design By Suruchi</p>
-                <div class="footer__payment text-right">
-                    <img class="display-block" src="assets/img/other/payment-visa-card.png" alt="visa-card">
-                </div>
+                        href="/">Bonjoe</a> . All Rights Reserved.</p>
+                
             </div>
         </div>
     </footer>

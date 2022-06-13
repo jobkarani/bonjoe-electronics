@@ -73,6 +73,7 @@
     </div>
     <!-- End preloader -->
 
+
     <!-- Start header area -->
     <header class="header__section">
         <div class="header__topbar bg__secondary head">
@@ -154,6 +155,29 @@
                                 </a>
                             </li>
 
+                            <li class="header__account--items">
+                                <a class="header__account--btn minicart__open--btn" href="javascript:void(0)"
+                                    data-offcanvas>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26.51" height="23.443"
+                                        viewBox="0 0 14.706 13.534">
+                                        <g transform="translate(0 0)">
+                                            <g>
+                                                <path data-name="Path 16787"
+                                                    d="M4.738,472.271h7.814a.434.434,0,0,0,.414-.328l1.723-6.316a.466.466,0,0,0-.071-.4.424.424,0,0,0-.344-.179H3.745L3.437,463.6a.435.435,0,0,0-.421-.353H.431a.451.451,0,0,0,0,.9h2.24c.054.257,1.474,6.946,1.555,7.33a1.36,1.36,0,0,0-.779,1.242,1.326,1.326,0,0,0,1.293,1.354h7.812a.452.452,0,0,0,0-.9H4.74a.451.451,0,0,1,0-.9Zm8.966-6.317-1.477,5.414H5.085l-1.149-5.414Z"
+                                                    transform="translate(0 -463.248)" fill="currentColor" />
+                                                <path data-name="Path 16788"
+                                                    d="M5.5,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,5.5,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,6.793,478.352Z"
+                                                    transform="translate(-1.191 -466.622)" fill="currentColor" />
+                                                <path data-name="Path 16789"
+                                                    d="M13.273,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,13.273,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,14.566,478.352Z"
+                                                    transform="translate(-2.875 -466.622)" fill="currentColor" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span class="header__account--btn__text"> My cart</span>
+                                    <span class="items__count">{{ cart_count }}</span>
+                                </a>
+                            </li>
                             <li class="header__account--items ">
                                 <a class="header__account--btn" href="{%url 'logout' %}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -222,6 +246,37 @@
                                             stroke-width="32" />
                                     </svg>
                                     <span class="visually-hidden">My Account</span>
+                                </a>
+                            </li>
+                            <li class="header__account--items header__account2--items">
+                                <a class="header__account--btn minicart__open--btn" href="javascript:void(0)"
+                                    data-offcanvas>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26.51" height="23.443"
+                                        viewBox="0 0 14.706 13.534">
+                                        <g transform="translate(0 0)">
+                                            <g>
+                                                <path data-name="Path 16787"
+                                                    d="M4.738,472.271h7.814a.434.434,0,0,0,.414-.328l1.723-6.316a.466.466,0,0,0-.071-.4.424.424,0,0,0-.344-.179H3.745L3.437,463.6a.435.435,0,0,0-.421-.353H.431a.451.451,0,0,0,0,.9h2.24c.054.257,1.474,6.946,1.555,7.33a1.36,1.36,0,0,0-.779,1.242,1.326,1.326,0,0,0,1.293,1.354h7.812a.452.452,0,0,0,0-.9H4.74a.451.451,0,0,1,0-.9Zm8.966-6.317-1.477,5.414H5.085l-1.149-5.414Z"
+                                                    transform="translate(0 -463.248)" fill="currentColor" />
+                                                <path data-name="Path 16788"
+                                                    d="M5.5,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,5.5,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,6.793,478.352Z"
+                                                    transform="translate(-1.191 -466.622)" fill="currentColor" />
+                                                <path data-name="Path 16789"
+                                                    d="M13.273,478.8a1.294,1.294,0,1,0,1.293-1.353A1.325,1.325,0,0,0,13.273,478.8Zm1.293-.451a.452.452,0,1,1-.431.451A.442.442,0,0,1,14.566,478.352Z"
+                                                    transform="translate(-2.875 -466.622)" fill="currentColor" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span class="items__count style2">{{cart_count}}</span>
+                                </a>
+                            </li>
+                            <li class="header__account--items header__account2--items">
+                                <a class="header__account--btn" href="{%url 'logout' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9" />
+                                    </svg>
                                 </a>
                             </li>
                         </ul>
@@ -354,84 +409,98 @@
                         <span class="offcanvas__stikcy--toolbar__label">Search</span>
                     </a>
                 </li>
-               
+                <li class="offcanvas__stikcy--toolbar__list">
+                    <a class="offcanvas__stikcy--toolbar__btn minicart__open--btn" href="javascript:void(0)"
+                        data-offcanvas>
+                        <span class="offcanvas__stikcy--toolbar__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18.51" height="15.443"
+                                viewBox="0 0 18.51 15.443">
+                                <path
+                                    d="M79.963,138.379l-13.358,0-.56-1.927a.871.871,0,0,0-.6-.592l-1.961-.529a.91.91,0,0,0-.226-.03.864.864,0,0,0-.226,1.7l1.491.4,3.026,10.919a1.277,1.277,0,1,0,1.844,1.144.358.358,0,0,0,0-.049h6.163c0,.017,0,.034,0,.049a1.277,1.277,0,1,0,1.434-1.267c-1.531-.247-7.783-.55-7.783-.55l-.205-.8h7.8a.9.9,0,0,0,.863-.651l1.688-5.943h.62a.936.936,0,1,0,0-1.872Zm-9.934,6.474H68.568c-.04,0-.1.008-.125-.085-.034-.118-.082-.283-.082-.283l-1.146-4.037a.061.061,0,0,1,.011-.057.064.064,0,0,1,.053-.025h1.777a.064.064,0,0,1,.063.051l.969,4.34,0,.013a.058.058,0,0,1,0,.019A.063.063,0,0,1,70.03,144.853Zm3.731-4.41-.789,4.359a.066.066,0,0,1-.063.051h-1.1a.064.064,0,0,1-.063-.051l-.789-4.357a.064.064,0,0,1,.013-.055.07.07,0,0,1,.051-.025H73.7a.06.06,0,0,1,.051.025A.064.064,0,0,1,73.76,140.443Zm3.737,0L76.26,144.8a.068.068,0,0,1-.063.049H74.684a.063.063,0,0,1-.051-.025.064.064,0,0,1-.013-.055l.973-4.357a.066.066,0,0,1,.063-.051h1.777a.071.071,0,0,1,.053.025A.076.076,0,0,1,77.5,140.448Z"
+                                    transform="translate(-62.393 -135.3)" fill="currentColor" />
+                            </svg>
+                        </span>
+                        <span class="offcanvas__stikcy--toolbar__label">Cart</span>
+                        <span class="items__count" style="background: coral;">{{ cart_count }}</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- End Offcanvas stikcy toolbar -->
 
-         <!-- Start offCanvas minicart -->
-         <div class="offCanvas__minicart">
-            <div class="minicart__header ">
-                <div class="minicart__header--top d-flex justify-content-between align-items-center">
-                    <h2 class="minicart__title h3"> Shopping Cart</h2>
-                    <button class="minicart__close--btn" aria-label="minicart close button" data-offcanvas>
-                        <svg class="minicart__close--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path fill="currentColor" stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368" />
-                        </svg>
-                    </button>
-                </div>
-                <p class="minicart__header--desc">Products are limited</p>
+       <!-- Start offCanvas minicart -->
+       <div class="offCanvas__minicart">
+        <div class="minicart__header ">
+            <div class="minicart__header--top d-flex justify-content-between align-items-center">
+                <h2 class="minicart__title h3"> Shopping Cart</h2>
+                <button class="minicart__close--btn" aria-label="minicart close button" data-offcanvas>
+                    <svg class="minicart__close--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368" />
+                    </svg>
+                </button>
             </div>
-            {% if not cart_items %}
-            <h2 class="text-center">Your Shopping Cart is Empty</h2>
-            <br />
-            <div class="text-center">
-                <a href="{% url 'shop' %}" class="btn btn-primary">Continue Shopping</a>
-            </div>
-            {% else %}
-            <div class="minicart__product">
-                {% for cart_item in cart_items %}
-                <div class="minicart__product--items d-flex">
-                    <div class="minicart__thumb">
-                        <a href="{{ cart_item.product.get_url }}"><img src="{{cart_item.product.image1.url}}" alt="prduct-img"></a>
-                    </div>
-                    <div class="minicart__text">
-                        <h3 class="minicart__subtitle h4"><a href="{{ cart_item.product.get_url }}">{{cart_item.product.name}}</a></h3>
-                        {% if cart_item.variations.all %} 
-                        {% for item in cart_item.variations.all %}
-                        <span class="color__variant"><b>{{ item.variation_category }} : </b> {{ item.variation_value }}</span>
-                        {% endfor %} 
-                        {% endif %}
-                        <div class="minicart__price">
-                            <span class="current__price">Ksh {{cart_item.product.new_price}} -</span>
-                            <span class="old__price">Ksh {{cart_item.product.new_price}}</span>
-                        </div>
-                      
-                        <div class="minicart__text--footer d-flex align-items-center">
-                            <div class="quantity__box minicart__quantity">
-                                <a type="button" href="{% url 'remove_cart' cart_item.product.id cart_item.id %}" class="quantity__value decrease" aria-label="quantity value"
-                                    value="Decrease Value">-</a>
-                                <label>
-                                    <input type="number" class="quantity__number" value="{{ cart_item.quantity }}" data-counter />
-                                </label>
-                                <form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
-                                    {% csrf_token %} 
-                                    {% for item in cart_item.variations.all %}
-                                    <input type="hidden" name="{{ item.variation_category |lower }}" value="{{ item.variation_value | capfirst }}">
-                                    {% endfor %}
-                                    <button type="submit" class="quantity__value" aria-label="quantity value" value="Increase Value">+</button>
-                                </form>
-                            </div>
-                            <a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id%}" class="minicart__product--remove">Remove</a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            
-            {% endif %}
-            <div class="minicart__conditions text-center">
-                <input class="minicart__conditions--input" id="accept" type="checkbox">
-                <label class="minicart__conditions--label" for="accept">I agree with the <a
-                        class="minicart__conditions--link" href="{% url 'privacypolicy' %}">Privacy and Policy</a></label>
-            </div>
-            <div class="minicart__button d-flex justify-content-center">
-                <a class="primary__btn minicart__button--link" href="{% url 'cart' %}">View cart</a>
-                <a class="primary__btn minicart__button--link" href="{% url 'checkout' %}">Checkout</a>
-            </div>
+            <p class="minicart__header--desc">Products are limited</p>
         </div>
-        <!-- End offCanvas minicart -->
+        {% if not cart_items %}
+        <h2 class="text-center">Your Shopping Cart is Empty</h2>
+        <br />
+        <div class="text-center">
+            <a href="{% url 'shop' %}" class="btn btn-primary">Continue Shopping</a>
+        </div>
+        {% else %}
+        <div class="minicart__product">
+            {% for cart_item in cart_items %}
+            <div class="minicart__product--items d-flex">
+                <div class="minicart__thumb">
+                    <a href="{{ cart_item.product.get_url }}"><img src="{{cart_item.product.image1.url}}" alt="prduct-img"></a>
+                </div>
+                <div class="minicart__text">
+                    <h3 class="minicart__subtitle h4"><a href="{{ cart_item.product.get_url }}">{{cart_item.product.name}}</a></h3>
+                    {% if cart_item.variations.all %} 
+                    {% for item in cart_item.variations.all %}
+                    <span class="color__variant"><b>{{ item.variation_category }} : </b> {{ item.variation_value }}</span>
+                    {% endfor %} 
+                    {% endif %}
+                    <div class="minicart__price">
+                        <span class="current__price">Ksh {{cart_item.product.new_price}} -</span>
+                        <span class="old__price">Ksh {{cart_item.product.new_price}}</span>
+                    </div>
+                  
+                    <div class="minicart__text--footer d-flex align-items-center">
+                        <div class="quantity__box minicart__quantity">
+                            <a type="button" href="{% url 'remove_cart' cart_item.product.id cart_item.id %}" class="quantity__value decrease" aria-label="quantity value"
+                                value="Decrease Value">-</a>
+                            <label>
+                                <input type="number" class="quantity__number" value="{{ cart_item.quantity }}" data-counter />
+                            </label>
+                            <form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+                                {% csrf_token %} 
+                                {% for item in cart_item.variations.all %}
+                                <input type="hidden" name="{{ item.variation_category |lower }}" value="{{ item.variation_value | capfirst }}">
+                                {% endfor %}
+                                <button type="submit" class="quantity__value" aria-label="quantity value" value="Increase Value">+</button>
+                            </form>
+                        </div>
+                        <a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id%}" class="minicart__product--remove">Remove</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% endif %}
+        <div class="minicart__conditions text-center">
+            <input class="minicart__conditions--input" id="accept" type="checkbox">
+            <label class="minicart__conditions--label" for="accept">I agree with the <a
+                    class="minicart__conditions--link" href="{% url 'privacypolicy' %}">Privacy and Policy</a></label>
+        </div>
+        <div class="minicart__button d-flex justify-content-center">
+            <a class="primary__btn minicart__button--link" href="{% url 'cart' %}">View cart</a>
+            <a class="primary__btn minicart__button--link" href="{% url 'checkout' %}">Checkout</a>
+        </div>
+    </div>
+    <!-- End offCanvas minicart -->
 
         <!-- Start serch box area -->
         <div class="predictive__search--box ">
@@ -641,8 +710,8 @@
                                     <div class="product__variant--list mb-10">
                                         <div class="item-option-select">
                                             <h6>Choose Color</h6>
-                                            <select name="flavour" class="form-control" required>
-                                              <option value="" disabled selected>Select</option>
+                                            <select name="flavour" type="radio" class="form-control" required>
+                                              <option value=""  disabled selected>Select</option>
                                               {% for i in single_product.variation_set.colors %}
                                               <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
                                               {% endfor %}
@@ -650,10 +719,10 @@
                                           </div> <br> <hr>
                                           <div class="item-option-select">
                                             <h6>Choose Size</h6>
-                                            <select name="flavour" class="form-control" required>
+                                            <select  type="radio" name="flavour" class="form-control" required>
                                               <option value="" disabled selected>Select</option>
                                               {% for i in single_product.variation_set.sizes %}
-                                              <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                                              <option type="radio" value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
                                               {% endfor %}
                                             </select>
                                           </div> <br> <hr>
@@ -872,7 +941,7 @@
                         </div>
                         <div class="shipping__items2--content">
                             <h2 class="shipping__items2--content__title h3">Payment</h2>
-                            <p class="shipping__items2--content__desc">From handpicked sellers</p>
+                            <p class="shipping__items2--content__desc">Lipa na Mpesa </p>
                         </div>
                     </div>
                     <div class="shipping__items2 d-flex align-items-center">
@@ -898,52 +967,70 @@
         </section>
         <!-- End shipping section -->
     </main>
-
     <!-- Start footer section -->
     <footer class="footer__section bg__black">
         <div class="container-fluid">
             <div class="main__footer d-flex justify-content-between">
                 <div class="footer__widget footer__widget--width">
-                    <h2 class="footer__widget--title text-ofwhite h3">About Us 
+                    <h2 class="footer__widget--title text-ofwhite h3">About Us
                         <button class="footer__widget--button" aria-label="footer widget button">
-                            <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
-                                <path  d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"></path>
+                            <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
+                                width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
+                                <path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
+                                    transform="translate(-6 -8.59)" fill="currentColor"></path>
                             </svg>
                         </button>
                     </h2>
                     <div class="footer__widget--inner">
-                        <p class="footer__widget--desc text-ofwhite mb-20">Lorem ipsum dolor sit amet, consectetur adipisici ti elit <br> seddo eiusmod tempor incididunt utlabore et dolore <br> magna aliqua  enim ad minim veniam quisnostrud <br> exercitation ullamco</p>
+                        <p class="footer__widget--desc text-ofwhite mb-20">Lorem ipsum dolor sit amet, consectetur
+                            adipisici ti elit <br> seddo eiusmod tempor incididunt utlabore et dolore <br> magna aliqua
+                            enim ad minim veniam quisnostrud <br> exercitation ullamco</p>
                         <div class="footer__social">
                             <h3 class="social__title text-ofwhite h4 mb-15">Follow Us</h3>
                             <ul class="social__shear d-flex">
                                 <li class="social__shear--list">
-                                    <a class="social__shear--list__icon" target="_blank" href="https://www.facebook.com/">
-                                        <svg  xmlns="http://www.w3.org/2000/svg" width="7.667" height="16.524" viewBox="0 0 7.667 16.524">
-                                            <path  data-name="Path 237" d="M967.495,353.678h-2.3v8.253h-3.437v-8.253H960.13V350.77h1.624v-1.888a4.087,4.087,0,0,1,.264-1.492,2.9,2.9,0,0,1,1.039-1.379,3.626,3.626,0,0,1,2.153-.6l2.549.019v2.833h-1.851a.732.732,0,0,0-.472.151.8.8,0,0,0-.246.642v1.719H967.8Z" transform="translate(-960.13 -345.407)" fill="currentColor"/>
+                                    <a class="social__shear--list__icon" target="_blank"
+                                        href="https://www.facebook.com/">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7.667" height="16.524"
+                                            viewBox="0 0 7.667 16.524">
+                                            <path data-name="Path 237"
+                                                d="M967.495,353.678h-2.3v8.253h-3.437v-8.253H960.13V350.77h1.624v-1.888a4.087,4.087,0,0,1,.264-1.492,2.9,2.9,0,0,1,1.039-1.379,3.626,3.626,0,0,1,2.153-.6l2.549.019v2.833h-1.851a.732.732,0,0,0-.472.151.8.8,0,0,0-.246.642v1.719H967.8Z"
+                                                transform="translate(-960.13 -345.407)" fill="currentColor" />
                                         </svg>
                                         <span class="visually-hidden">Facebook</span>
                                     </a>
                                 </li>
                                 <li class="social__shear--list">
                                     <a class="social__shear--list__icon" target="_blank" href="https://twitter.com/">
-                                        <svg  xmlns="http://www.w3.org/2000/svg" width="16.489" height="13.384" viewBox="0 0 16.489 13.384">
-                                            <path  data-name="Path 303" d="M966.025,1144.2v.433a9.783,9.783,0,0,1-.621,3.388,10.1,10.1,0,0,1-1.845,3.087,9.153,9.153,0,0,1-3.012,2.259,9.825,9.825,0,0,1-4.122.866,9.632,9.632,0,0,1-2.748-.4,9.346,9.346,0,0,1-2.447-1.11q.4.038.809.038a6.723,6.723,0,0,0,2.24-.376,7.022,7.022,0,0,0,1.958-1.054,3.379,3.379,0,0,1-1.958-.687,3.259,3.259,0,0,1-1.186-1.666,3.364,3.364,0,0,0,.621.056,3.488,3.488,0,0,0,.885-.113,3.267,3.267,0,0,1-1.374-.631,3.356,3.356,0,0,1-.969-1.186,3.524,3.524,0,0,1-.367-1.5v-.057a3.172,3.172,0,0,0,1.544.433,3.407,3.407,0,0,1-1.1-1.214,3.308,3.308,0,0,1-.4-1.609,3.362,3.362,0,0,1,.452-1.694,9.652,9.652,0,0,0,6.964,3.538,3.911,3.911,0,0,1-.075-.772,3.293,3.293,0,0,1,.452-1.694,3.409,3.409,0,0,1,1.233-1.233,3.257,3.257,0,0,1,1.685-.461,3.351,3.351,0,0,1,2.466,1.073,6.572,6.572,0,0,0,2.146-.828,3.272,3.272,0,0,1-.574,1.083,3.477,3.477,0,0,1-.913.8,6.869,6.869,0,0,0,1.958-.546A7.074,7.074,0,0,1,966.025,1144.2Z" transform="translate(-951.23 -1140.849)" fill="currentColor"/>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.489" height="13.384"
+                                            viewBox="0 0 16.489 13.384">
+                                            <path data-name="Path 303"
+                                                d="M966.025,1144.2v.433a9.783,9.783,0,0,1-.621,3.388,10.1,10.1,0,0,1-1.845,3.087,9.153,9.153,0,0,1-3.012,2.259,9.825,9.825,0,0,1-4.122.866,9.632,9.632,0,0,1-2.748-.4,9.346,9.346,0,0,1-2.447-1.11q.4.038.809.038a6.723,6.723,0,0,0,2.24-.376,7.022,7.022,0,0,0,1.958-1.054,3.379,3.379,0,0,1-1.958-.687,3.259,3.259,0,0,1-1.186-1.666,3.364,3.364,0,0,0,.621.056,3.488,3.488,0,0,0,.885-.113,3.267,3.267,0,0,1-1.374-.631,3.356,3.356,0,0,1-.969-1.186,3.524,3.524,0,0,1-.367-1.5v-.057a3.172,3.172,0,0,0,1.544.433,3.407,3.407,0,0,1-1.1-1.214,3.308,3.308,0,0,1-.4-1.609,3.362,3.362,0,0,1,.452-1.694,9.652,9.652,0,0,0,6.964,3.538,3.911,3.911,0,0,1-.075-.772,3.293,3.293,0,0,1,.452-1.694,3.409,3.409,0,0,1,1.233-1.233,3.257,3.257,0,0,1,1.685-.461,3.351,3.351,0,0,1,2.466,1.073,6.572,6.572,0,0,0,2.146-.828,3.272,3.272,0,0,1-.574,1.083,3.477,3.477,0,0,1-.913.8,6.869,6.869,0,0,0,1.958-.546A7.074,7.074,0,0,1,966.025,1144.2Z"
+                                                transform="translate(-951.23 -1140.849)" fill="currentColor" />
                                         </svg>
                                         <span class="visually-hidden">Twitter</span>
                                     </a>
                                 </li>
                                 <li class="social__shear--list">
-                                    <a class="social__shear--list__icon" target="_blank" href="https://www.instagram.com/">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.497" height="16.492" viewBox="0 0 19.497 19.492">
-                                            <path  data-name="Icon awesome-instagram" d="M9.747,6.24a5,5,0,1,0,5,5A4.99,4.99,0,0,0,9.747,6.24Zm0,8.247A3.249,3.249,0,1,1,13,11.238a3.255,3.255,0,0,1-3.249,3.249Zm6.368-8.451A1.166,1.166,0,1,1,14.949,4.87,1.163,1.163,0,0,1,16.115,6.036Zm3.31,1.183A5.769,5.769,0,0,0,17.85,3.135,5.807,5.807,0,0,0,13.766,1.56c-1.609-.091-6.433-.091-8.042,0A5.8,5.8,0,0,0,1.64,3.13,5.788,5.788,0,0,0,.065,7.215c-.091,1.609-.091,6.433,0,8.042A5.769,5.769,0,0,0,1.64,19.341a5.814,5.814,0,0,0,4.084,1.575c1.609.091,6.433.091,8.042,0a5.769,5.769,0,0,0,4.084-1.575,5.807,5.807,0,0,0,1.575-4.084c.091-1.609.091-6.429,0-8.038Zm-2.079,9.765a3.289,3.289,0,0,1-1.853,1.853c-1.283.509-4.328.391-5.746.391S5.28,19.341,4,18.837a3.289,3.289,0,0,1-1.853-1.853c-.509-1.283-.391-4.328-.391-5.746s-.113-4.467.391-5.746A3.289,3.289,0,0,1,4,3.639c1.283-.509,4.328-.391,5.746-.391s4.467-.113,5.746.391a3.289,3.289,0,0,1,1.853,1.853c.509,1.283.391,4.328.391,5.746S17.855,15.705,17.346,16.984Z" transform="translate(0.004 -1.492)" fill="currentColor"/>
+                                    <a class="social__shear--list__icon" target="_blank"
+                                        href="https://www.instagram.com/">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.497" height="16.492"
+                                            viewBox="0 0 19.497 19.492">
+                                            <path data-name="Icon awesome-instagram"
+                                                d="M9.747,6.24a5,5,0,1,0,5,5A4.99,4.99,0,0,0,9.747,6.24Zm0,8.247A3.249,3.249,0,1,1,13,11.238a3.255,3.255,0,0,1-3.249,3.249Zm6.368-8.451A1.166,1.166,0,1,1,14.949,4.87,1.163,1.163,0,0,1,16.115,6.036Zm3.31,1.183A5.769,5.769,0,0,0,17.85,3.135,5.807,5.807,0,0,0,13.766,1.56c-1.609-.091-6.433-.091-8.042,0A5.8,5.8,0,0,0,1.64,3.13,5.788,5.788,0,0,0,.065,7.215c-.091,1.609-.091,6.433,0,8.042A5.769,5.769,0,0,0,1.64,19.341a5.814,5.814,0,0,0,4.084,1.575c1.609.091,6.433.091,8.042,0a5.769,5.769,0,0,0,4.084-1.575,5.807,5.807,0,0,0,1.575-4.084c.091-1.609.091-6.429,0-8.038Zm-2.079,9.765a3.289,3.289,0,0,1-1.853,1.853c-1.283.509-4.328.391-5.746.391S5.28,19.341,4,18.837a3.289,3.289,0,0,1-1.853-1.853c-.509-1.283-.391-4.328-.391-5.746s-.113-4.467.391-5.746A3.289,3.289,0,0,1,4,3.639c1.283-.509,4.328-.391,5.746-.391s4.467-.113,5.746.391a3.289,3.289,0,0,1,1.853,1.853c.509,1.283.391,4.328.391,5.746S17.855,15.705,17.346,16.984Z"
+                                                transform="translate(0.004 -1.492)" fill="currentColor" />
                                         </svg>
                                         <span class="visually-hidden">Instagram</span>
                                     </a>
                                 </li>
                                 <li class="social__shear--list">
-                                    <a class="social__shear--list__icon" target="_blank" href="https://www.youtube.com/">
-                                        <svg  xmlns="http://www.w3.org/2000/svg" width="16.49" height="11.582" viewBox="0 0 16.49 11.582">
-                                            <path  data-name="Path 321" d="M967.759,1365.592q0,1.377-.019,1.717-.076,1.114-.151,1.622a3.981,3.981,0,0,1-.245.925,1.847,1.847,0,0,1-.453.717,2.171,2.171,0,0,1-1.151.6q-3.585.265-7.641.189-2.377-.038-3.387-.085a11.337,11.337,0,0,1-1.5-.142,2.206,2.206,0,0,1-1.113-.585,2.562,2.562,0,0,1-.528-1.037,3.523,3.523,0,0,1-.141-.585c-.032-.2-.06-.5-.085-.906a38.894,38.894,0,0,1,0-4.867l.113-.925a4.382,4.382,0,0,1,.208-.906,2.069,2.069,0,0,1,.491-.755,2.409,2.409,0,0,1,1.113-.566,19.2,19.2,0,0,1,2.292-.151q1.82-.056,3.953-.056t3.952.066q1.821.067,2.311.142a2.3,2.3,0,0,1,.726.283,1.865,1.865,0,0,1,.557.49,3.425,3.425,0,0,1,.434,1.019,5.72,5.72,0,0,1,.189,1.075q0,.095.057,1C967.752,1364.1,967.759,1364.677,967.759,1365.592Zm-7.6.925q1.49-.754,2.113-1.094l-4.434-2.339v4.66Q958.609,1367.311,960.156,1366.517Z" transform="translate(-951.269 -1359.8)" fill="currentColor"/>
+                                    <a class="social__shear--list__icon" target="_blank"
+                                        href="https://www.youtube.com/">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.49" height="11.582"
+                                            viewBox="0 0 16.49 11.582">
+                                            <path data-name="Path 321"
+                                                d="M967.759,1365.592q0,1.377-.019,1.717-.076,1.114-.151,1.622a3.981,3.981,0,0,1-.245.925,1.847,1.847,0,0,1-.453.717,2.171,2.171,0,0,1-1.151.6q-3.585.265-7.641.189-2.377-.038-3.387-.085a11.337,11.337,0,0,1-1.5-.142,2.206,2.206,0,0,1-1.113-.585,2.562,2.562,0,0,1-.528-1.037,3.523,3.523,0,0,1-.141-.585c-.032-.2-.06-.5-.085-.906a38.894,38.894,0,0,1,0-4.867l.113-.925a4.382,4.382,0,0,1,.208-.906,2.069,2.069,0,0,1,.491-.755,2.409,2.409,0,0,1,1.113-.566,19.2,19.2,0,0,1,2.292-.151q1.82-.056,3.953-.056t3.952.066q1.821.067,2.311.142a2.3,2.3,0,0,1,.726.283,1.865,1.865,0,0,1,.557.49,3.425,3.425,0,0,1,.434,1.019,5.72,5.72,0,0,1,.189,1.075q0,.095.057,1C967.752,1364.1,967.759,1364.677,967.759,1365.592Zm-7.6.925q1.49-.754,2.113-1.094l-4.434-2.339v4.66Q958.609,1367.311,960.156,1366.517Z"
+                                                transform="translate(-951.269 -1359.8)" fill="currentColor" />
                                         </svg>
                                         <span class="visually-hidden">Youtube</span>
                                     </a>
@@ -954,117 +1041,105 @@
                 </div>
                 <div class="footer__widget--menu__wrapper d-flex footer__widget--width">
                     <div class="footer__widget">
-                        <h2 class="footer__widget--title text-ofwhite h3">My Account 
+                        <h2 class="footer__widget--title text-ofwhite h3">My Account
                             <button class="footer__widget--button" aria-label="footer widget button">
-                                <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
-                                    <path  d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"></path>
+                                <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
+                                    width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
+                                    <path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
+                                        transform="translate(-6 -8.59)" fill="currentColor"></path>
                                 </svg>
                             </button>
                         </h2>
                         <ul class="footer__widget--menu footer__widget--inner">
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="my-account.html">My Account</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="cart.html">Shopping Cart</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="login.html">Login</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="login.html">Register</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="checkout.html">Checkout</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="{% url 'profile' %}">My Account</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="{% url 'cart' %}">Shopping Cart</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="{% url 'login' %}">Login</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="/accounts/register/">Register</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="{% url 'checkout' %}">Checkout</a></li>
                         </ul>
                     </div>
                     <div class="footer__widget">
-                        <h2 class="footer__widget--title text-ofwhite h3">Categories 
+                        <h2 class="footer__widget--title text-ofwhite h3">Categories
                             <button class="footer__widget--button" aria-label="footer widget button">
-                                <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
-                                    <path  d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"></path>
+                                <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
+                                    width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
+                                    <path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
+                                        transform="translate(-6 -8.59)" fill="currentColor"></path>
                                 </svg>
                             </button>
                         </h2>
                         <ul class="footer__widget--menu footer__widget--inner">
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="about.html">About Us</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="contact.html">Contact Us</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="portfolio.html">Portfolio</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="privacy-policy.html">Privacy Policy</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="compare.html">Compare</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="faq.html">Frequently</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="{% url 'about' %}">About Us</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="{% url 'contact' %}">Contact Us</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="{% url 'privacypolicy' %}">Privacy Policy</a></li>
+                            <!-- <li class="footer__widget--menu__list"><a class="footer__widget--menu__text"
+                                    href="faq.html">Frequently</a></li> -->
                         </ul>
                     </div>
                 </div>
+
                 <div class="footer__widget footer__widget--width">
-                    <h2 class="footer__widget--title text-ofwhite h3">Instagram 
+                    <h2 class="footer__widget--title text-ofwhite h3">Newsletter
                         <button class="footer__widget--button" aria-label="footer widget button">
-                            <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
-                                <path  d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"></path>
-                            </svg>
-                        </button>
-                    </h2>
-                    <div class="footer__instagram footer__widget--inner">
-                        <div class="footer__instagram--list d-flex">
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank" href="https://www.instagram.com/p/CZkF3TLBTT7"><img src="assets/img/other/instagram1.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank" href="https://www.instagram.com/p/CZkF60sBxhN"><img src="assets/img/other/instagram2.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank" href="https://www.instagram.com/p/CZkF90ZB6HG"><img src="assets/img/other/instagram3.webp" alt="instagram"></a>
-                            </div>
-                        </div>
-                        <div class="footer__instagram--list d-flex">
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank" href="https://www.instagram.com/p/CZkGAe6BQeu"><img src="assets/img/other/instagram4.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank" href="https://www.instagram.com/p/CZkGCWcBbv9"><img src="assets/img/other/instagram5.webp" alt="instagram"></a>
-                            </div>
-                            <div class="instagram__thumbnail">
-                                <a class="instagram__thumbnail--img" target="_blank" href="https://www.instagram.com/p/CZkGFDMhoid"><img src="assets/img/other/instagram6.webp" alt="instagram"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer__widget footer__widget--width">
-                    <h2 class="footer__widget--title text-ofwhite h3">Newsletter 
-                        <button class="footer__widget--button" aria-label="footer widget button">
-                            <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
-                                <path  d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"></path>
+                            <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg"
+                                width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
+                                <path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z"
+                                    transform="translate(-6 -8.59)" fill="currentColor"></path>
                             </svg>
                         </button>
                     </h2>
                     <div class="footer__widget--inner">
-                        <p class="footer__widget--desc text-ofwhite m-0">Fill their seed open meat. Sea you <br> great Saw image stl</p> 
+                        <p class="footer__widget--desc text-ofwhite m-0">Fill their seed open meat. Sea you <br> great
+                            Saw image stl</p>
                         <div class="newsletter__subscribe">
                             <form class="newsletter__subscribe--form" action="#">
                                 <label>
-                                    <input class="newsletter__subscribe--input" placeholder="Email Address" type="email">
+                                    <input class="newsletter__subscribe--input" placeholder="Email Address"
+                                        type="email">
                                 </label>
                                 <button class="newsletter__subscribe--button" type="submit">Subscribe</button>
-                            </form>   
-                        </div> 
-                    </div> 
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="footer__bottom d-flex justify-content-between align-items-center">
-                <p class="copyright__content text-ofwhite m-0">Copyright © 2022 <a class="copyright__content--link" href="index-2.html">Suruchi</a> . All Rights Reserved.Design By Suruchi</p>
-                <div class="footer__payment text-right">
-                    <img class="display-block" src="assets/img/other/payment-visa-card.png" alt="visa-card">
-                </div>
+                <p class="copyright__content text-ofwhite m-0">Copyright © 2022 <a class="copyright__content--link"
+                        href="/">Bonjoe</a> . All Rights Reserved.</p>
+                
             </div>
         </div>
     </footer>
     <!-- End footer section -->
 
     
-<!-- Scroll top bar -->
-<button id="scroll__top"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 244l144-144 144 144M256 120v292"/></svg></button>
+    <!-- Scroll top bar -->
+    <button id="scroll__top"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"
+            d="M112 244l144-144 144 144M256 120v292" />
+    </svg></button>
 
-<!-- All Script JS Plugins here  -->
-<!-- <script src="assets/js/vendor/popper.js" defer="defer"></script> -->
-<!-- <script src="assets/js/vendor/bootstrap.min.js" defer="defer"></script> -->
+    <!-- All Script JS Plugins here  -->
+    <!-- <script src="assets/js/vendor/popper.js" defer="defer"></script> -->
+    <!-- <script src="assets/js/vendor/bootstrap.min.js" defer="defer"></script> -->
+
+    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/glightbox.min.js' %}"></script>
 
 <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
 <script src="{% static 'assets/js/plugins/glightbox.min.js' %}"></script>
 <script src="https://kit.fontawesome.com/3af6dccc22.js" crossorigin="anonymous"></script>
+    <!-- Customscript js -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
 
-<!-- Customscript js -->
-<script src="{% static 'assets/js/script.js' %}"></script>
   
 </body>
 
