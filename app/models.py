@@ -98,7 +98,7 @@ class Cart(models.Model):
     date_added = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
-        return self.cart_id
+        return self.user
 
 class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)

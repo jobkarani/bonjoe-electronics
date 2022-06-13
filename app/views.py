@@ -27,11 +27,10 @@ from .models import MpesaPayment
 # auth 
 @login_required(login_url="/accounts/login/")
 def _cart_id(request):
-    if request.user.is_authenticated and request.user.id:
-        cart = request.session.session_key
-        if not cart:
-            cart = request.session.create()
-            return cart
+    cart = request.session.session_key
+    if not cart:
+        cart = request.session.create()
+        return cart
 
 def about(request):
     cart = 0
@@ -286,10 +285,10 @@ def add_cart(request, product_id):
                     pass
 
         try:
-            cart = Cart.objects.get(cart_id=_cart_id(request)) #get cart using cart_id present in the session
+            cart = Cart.objects.get(user=request.user,cart_id=_cart_id(request)) #get cart using cart_id present in the session
         except Cart.DoesNotExist:
             cart = Cart.objects.create(
-               cart_id = _cart_id(request)
+              user=request.user, cart_id = _cart_id(request)
             )
         cart.save()
     if request.user.is_authenticated and request.user.id:
@@ -368,7 +367,7 @@ def remove_cart_item(request, product_id, cart_item_id ):
 @login_required(login_url="/accounts/login/")
 def delete_cart(request):
     if request.user.is_authenticated and request.user.id:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart = Cart.objects.get(user=request.user,cart_id=_cart_id(request))
         products = Product.objects.all().filter(is_available=True)
         cart.delete()
     ctx ={
@@ -408,7 +407,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
     try:
         grand_total =0
         if request.user.is_authenticated and request.user.id:
-            cart = Cart.objects.get(cart_id=_cart_id(request))
+            cart = Cart.objects.get(user=request.user,cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(user=request.user,cart=cart,is_active=True)
             products = Product.objects.all().filter(is_available=True)
         
