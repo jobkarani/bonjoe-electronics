@@ -417,23 +417,23 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'products':products,
         # 'cart_count':cart_count,
     }
-    # try:
-    #     grand_total =0
-    #     if request.user.is_authenticated and request.user.id:
-    #         cart = Cart.objects.get(user=request.user,cart_id=_cart_id(request))
-    #         cart_items = CartItem.objects.filter(user=request.user,cart=cart,is_active=True)
-    #         products = Product.objects.all().filter(is_available=True)
+    try:
+        grand_total =0
+        if request.user.is_authenticated and request.user.id:
+            cart = Cart.objects.get(user=request.user,cart_id=_cart_id(request))
+            cart_items = CartItem.objects.filter(user=request.user,cart=cart,is_active=True)
+            products = Product.objects.all().filter(is_available=True)
         
-    #         for cart_item in cart_items:
-    #             grand_total += (cart_item.product.new_price *cart_item.quantity)
+            for cart_item in cart_items:
+                grand_total += (cart_item.product.new_price *cart_item.quantity)
             
        
-    # except ObjectDoesNotExist:
-    #     pass
+    except ObjectDoesNotExist:
+        pass
     cart_count = cart_items.count()
     print(cart_items)
     ctx = {
-    # 'grand_total':grand_total,
+        'grand_total':grand_total,
         'quantity':quantity,
         'cart_items':cart_items,
         'products':products,
@@ -468,10 +468,14 @@ def checkout(request, total=0, quantity=0, cart_items=None):
             cart_items = CartItem.objects.filter(user=request.user, is_active=True)
             products = Product.objects.all().filter(is_available=True)
             cart_count = cart_items.count()
+            for cart_item in cart_items:
+                total += (cart_item.product.new_price*cart_item.quantity)
     else:
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         cart_count = cart_items.count()
+        for cart_item in cart_items:
+            total += (cart_item.product.new_price*cart_item.quantity)
 
     ctx = {
         'total':total,
