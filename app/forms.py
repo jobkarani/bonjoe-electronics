@@ -4,11 +4,10 @@ from django.forms import ModelForm
 from .models import *
 
 
-class ProfileForm(forms.ModelForm):
+class ProfileForm(ModelForm):
     class Meta:
         model = Profile
         exclude = ['user', 'email']
-
 
 class UpdateProfileForm(forms.ModelForm):
     class Meta:

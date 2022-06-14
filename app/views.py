@@ -3,23 +3,20 @@ from math import ceil
 from multiprocessing import context
 from multiprocessing.dummy import Value
 from re import sub
-import time
 from tokenize import Pointfloat
 from django.contrib import messages
 from django.db.models import Q
-from django.forms import SlugField
-import requests
 
 from .models import *
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.http import  HttpResponseRedirect
 from .email import send_welcome_email
 from .forms import *
-from django.core.paginator import PageNotAnInteger,EmptyPage,Paginator
+from django.core.paginator import Paginator
 from django.core.exceptions import ObjectDoesNotExist
-from decouple import config, Csv
-from django.http.response import Http404
+from decouple import config
 
 # from .mpesa_credentials import MpesaAccessToken, LipaNaMpesaPassword
 from .models import MpesaPayment
@@ -93,7 +90,7 @@ def privacypolicy(request ):
      'cart_count':cart_count,
      'products':products
     }
-    return render (request, 'privacy-policy.html',ctx)
+    return render (request,'privacy-policy.html',ctx)
 
 
 @login_required(login_url="/accounts/login/")
@@ -112,11 +109,14 @@ def create_profile(request):
         form = ProfileForm()
     return render(request, 'create_profile.html', {"form": form, "title": title})
 
+            
+
 @login_required(login_url="/accounts/login/")
 def profile(request):
     cart = 0
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()
+    print(profile)
     product = Product.objects.filter(id=current_user.id).all()
     
     if request.user.is_authenticated and request.user.id:
@@ -130,6 +130,7 @@ def profile(request):
 
     ctx={
         'product':product,
+        'products':products,
         'profile':profile,
         'cart':cart,
         'cart_items':cart_items,

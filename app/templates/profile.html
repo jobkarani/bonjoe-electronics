@@ -547,7 +547,7 @@
                 <p class="account__welcome--text">Hello <strong>{{ user.username }} </strong>welcome to your dashboard!</p>
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__left--sidebar">
-                        <h2 class="account__content--title h3 mb-20">My Profile</h2>
+                        <h2 class="account__content--title h3 mb-20" style="font-weight: 900;font-size: x-large;">My Profile</h2>
                         <ul class="account__menu">
                             <li class="account__menu--list active"><a href="#">Dashboard</a></li>
                             <li class="account__menu--list"><a href="{% url 'logout' %}">Log Out</a></li>
@@ -562,34 +562,34 @@
                                 </div>
                                 {%else%}
                                 <div class="team__thumb col-lg-6 col-md-6 col-sm-12 custom-col">
-                                    <img class="team__thumb--img border-radius-50" style="width: 30%; " src="https://cdn.pixabay.com/photo/2012/04/01/18/02/golf-23794__340.png"  alt="profilepic">
+                                    <img class="team__thumb--img border-radius-50" style="width: 50%;" src="https://cdn.pixabay.com/photo/2012/04/01/18/02/golf-23794__340.png"  alt="profilepic">
                                 </div>
                                 {% endif %}
                                 <div class="team__content col-lg-6 col-md-6 col-sm-12 custom-col text-center">
-                                    <h2 class="account__content--title h3 mb-20" style="color: coral;">Profile Details</h2>
+                                    <h2 class="account__content--title h3 mb-20" style="color: coral; font-weight: 900;font-size: x-large;">Profile Details</h2>
                                     {% if  profile.firstname and  profile.lastname  %}
                                     <h3 class="shipping__items2--content__title">First Name: <span class="team__content--subtitle">{{  profile.firstname }}</span> </h3>
                                     <h3 class="shipping__items2--content__title">Last Name:  <span class="team__content--subtitle">{{  profile.lastname }}</span> </h3>
                                     {% else %}
-                                    <span class="shipping__items2--content__title">No first and last name</span>
+                                    <span class="shipping__items2--content__title" style="color:coral;text-decoration: line-through;">No first and last name</span>
                                     {% endif %}
                                     <h4 class="shipping__items2--content__title">Username:  <span class="team__content--subtitle">{{ user.username }}</span></h4>
                                     <h4 class="shipping__items2--content__title ">Email:  <span class="team__content--subtitle">{{ user.email }}</span></h4>
+                                    
                                     {% if profile.phone %}
                                     <h5 class="shipping__items2--content__title">Contact: <span class="team__content--subtitle">{{ profile.phone }}</span></h5>
                                     {% else %}
-                                    <span class="shipping__items2--content__title">No contact</span>
+                                    <span class="shipping__items2--content__title" style="color:coral;text-decoration: line-through;">No contact</span>
                                     {% endif %}
-                                </div>
-                            </div>
-                            <div class="deets">
+                                    <br>
                                     {% if request.user is user %}
                                     <button style="background-color: coral;border:none; border-radius: 5px 5px 5px 5px;">
-                                        <a class="account__content--title h3 mb-20" style="color: white; margin-top: 10%;" href="{%url 'update_profile' user.id %}">
+                                        <a class="account__content--title h4 mb-20" style="color: white; margin-top: 5%; text-align: center;" href="{%url 'update_profile' user.id %}">
                                             Edit Profile
                                         </a>
                                     </button>
                                     {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
