@@ -17,15 +17,18 @@ class VariationAdmin(admin.ModelAdmin):
 
 class CartAdmin(admin.ModelAdmin):
     list_display = ('user','cart_id', 'date_added')
-
-class CartItenAdmin(admin.ModelAdmin):
+    
+class CartItemAdmin(admin.ModelAdmin):
     list_display = ('product', 'cart', 'quantity', 'user', 'is_active')
 
-admin.site.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user','firstname','lastname','phone')
+
+admin.site.register(Profile,ProfileAdmin)
 admin.site.register(Product, ProductAdmin )
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Cart, CartAdmin)
-admin.site.register(CartItem, CartItenAdmin)
+admin.site.register(CartItem, CartItemAdmin)
 admin.site.register(Variation, VariationAdmin)
 admin.site.register(Payment)
 admin.site.register(Order)

@@ -104,7 +104,7 @@ def create_profile(request):
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
-            profile.request.user = current_user
+            profile.user = current_user
             profile.save()
         return HttpResponseRedirect('/')
 
@@ -291,6 +291,10 @@ def add_cart(request, product_id):
               user=request.user, cart_id = _cart_id(request)
             )
         cart.save()
+        print(product_variation)
+
+
+
     if request.user.is_authenticated and request.user.id:
         is_cart_item_exists = CartItem.objects.filter(user=request.user,product=product, cart=cart).exists()
         if is_cart_item_exists:
@@ -333,6 +337,15 @@ def add_cart(request, product_id):
     print(product_variation)
 
     return redirect('cart')
+
+
+
+
+
+
+
+
+
 
 
 @login_required(login_url="/accounts/login/")
@@ -404,23 +417,23 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'products':products,
         # 'cart_count':cart_count,
     }
-    try:
-        grand_total =0
-        if request.user.is_authenticated and request.user.id:
-            cart = Cart.objects.get(user=request.user,cart_id=_cart_id(request))
-            cart_items = CartItem.objects.filter(user=request.user,cart=cart,is_active=True)
-            products = Product.objects.all().filter(is_available=True)
+    # try:
+    #     grand_total =0
+    #     if request.user.is_authenticated and request.user.id:
+    #         cart = Cart.objects.get(user=request.user,cart_id=_cart_id(request))
+    #         cart_items = CartItem.objects.filter(user=request.user,cart=cart,is_active=True)
+    #         products = Product.objects.all().filter(is_available=True)
         
-            for cart_item in cart_items:
-                grand_total += (cart_item.product.new_price *cart_item.quantity)
+    #         for cart_item in cart_items:
+    #             grand_total += (cart_item.product.new_price *cart_item.quantity)
             
        
-    except ObjectDoesNotExist:
-        pass
+    # except ObjectDoesNotExist:
+    #     pass
     cart_count = cart_items.count()
     print(cart_items)
     ctx = {
-        'grand_total':grand_total,
+    # 'grand_total':grand_total,
         'quantity':quantity,
         'cart_items':cart_items,
         'products':products,

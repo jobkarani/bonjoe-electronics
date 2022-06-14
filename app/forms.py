@@ -7,13 +7,13 @@ from .models import *
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = [ 'firstname','lastname','phone','profile_photo']
+        exclude = ['user', 'email']
 
 
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['profile_photo', 'email', 'phone']
+        fields = ['firstname','lastname','phone','profile_photo']
         
 class OrderForm(forms.ModelForm):
     class Meta:
