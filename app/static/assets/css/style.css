@@ -1593,10 +1593,10 @@ select {
   color: var(--primary-color);
 }
 .text__secondary {
-  color: var(--secondary-color);
+  color: coral;
 }
 .text__secondary2 {
-  color: var(--secondary-color);
+  color: coral;
 }
 .position__relative {
   position: relative;
@@ -4652,7 +4652,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .banner__bideo--play__icon {
   width: 5rem;
   height: 5rem;
-  background: var(--secondary-color);
+  background: coral;
   color: var(--white-color);
   border-radius: 50%;
   display: -webkit-box;
