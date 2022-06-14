@@ -9902,10 +9902,10 @@ details > summary::-webkit-details-marker {
   margin-bottom: 0;
 }
 .account__menu--list:hover {
-  color: var(--secondary-color);
+  color: coral;
 }
 .account__menu--list.active {
-  color: var(--secondary-color);
+  color: coral;
 }
 @media only screen and (min-width: 992px) {
   .account__menu--list {
@@ -9983,6 +9983,7 @@ details > summary::-webkit-details-marker {
 }
 .account__content--title {
   font-weight: 600;
+  color: coral;
 }
 .account__table {
   width: 100%;
