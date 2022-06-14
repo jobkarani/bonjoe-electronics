@@ -568,15 +568,15 @@
                                 <div class="team__content col-lg-6 col-md-6 col-sm-12 custom-col text-center">
                                     <h2 class="account__content--title h3 mb-20" style="color: coral;">Profile Details</h2>
                                     {% if  profile.firstname and  profile.lastname  %}
-                                    <h3 class="shipping__items2--content__title">Full Name: {{  profile.firstname }} {{  profile.lastname }} </h3>
+                                    <h3 class="shipping__items2--content__title">First Name: <span class="team__content--subtitle">{{  profile.firstname }}</span> </h3>
+                                    <h3 class="shipping__items2--content__title">Last Name:  <span class="team__content--subtitle">{{  profile.lastname }}</span> </h3>
                                     {% else %}
-                                    <span class="shipping__items2--content__title">No full name</span>
+                                    <span class="shipping__items2--content__title">No first and last name</span>
                                     {% endif %}
                                     <h4 class="shipping__items2--content__title">Username:  <span class="team__content--subtitle">{{ user.username }}</span></h4>
                                     <h4 class="shipping__items2--content__title ">Email:  <span class="team__content--subtitle">{{ user.email }}</span></h4>
-                                    <br>
                                     {% if profile.phone %}
-                                    <span class="shipping__items2--content__title">Contact: {{ profile.phone }}</span>
+                                    <h5 class="shipping__items2--content__title">Contact: <span class="team__content--subtitle">{{ profile.phone }}</span></h5>
                                     {% else %}
                                     <span class="shipping__items2--content__title">No contact</span>
                                     {% endif %}
