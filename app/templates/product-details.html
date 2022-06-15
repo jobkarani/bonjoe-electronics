@@ -10,9 +10,9 @@
     <meta name="description" content="Morden Bootstrap HTML5 Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Shalimar&display=swap"
-    rel="stylesheet">                   
+    rel="stylesheet">                    -->
 
     <!-- ======= All CSS Plugins here ======== -->
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
@@ -32,46 +32,46 @@
 
 <body>
 
-    <!-- Start preloader -->
-    <div id="preloader">
-        <div id="ctn-preloader" class="ctn-preloader">
-            <div class="animation-preloader">
-                <div class="spinner"></div>
-                <div class="txt-loading">
-                    <span data-text-preloader="L" class="letters-loading">
-                        L
-                    </span>
+   <!-- Start preloader -->
+   <div id="preloader">
+    <div id="ctn-preloader" class="ctn-preloader">
+        <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+                <span data-text-preloader="L" class="letters-loading">
+                    L
+                </span>
 
-                    <span data-text-preloader="O" class="letters-loading">
-                        O
-                    </span>
+                <span data-text-preloader="O" class="letters-loading">
+                    O
+                </span>
 
-                    <span data-text-preloader="A" class="letters-loading">
-                        A
-                    </span>
+                <span data-text-preloader="A" class="letters-loading">
+                    A
+                </span>
 
-                    <span data-text-preloader="D" class="letters-loading">
-                        D
-                    </span>
+                <span data-text-preloader="D" class="letters-loading">
+                    D
+                </span>
 
-                    <span data-text-preloader="I" class="letters-loading">
-                        I
-                    </span>
+                <span data-text-preloader="I" class="letters-loading">
+                    I
+                </span>
 
-                    <span data-text-preloader="N" class="letters-loading">
-                        N
-                    </span>
+                <span data-text-preloader="N" class="letters-loading">
+                    N
+                </span>
 
-                    <span data-text-preloader="G" class="letters-loading">
-                        G
-                    </span>
-                </div>
+                <span data-text-preloader="G" class="letters-loading">
+                    G
+                </span>
             </div>
-            <div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
         </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
     </div>
-    <!-- End preloader -->
+</div>
+<!-- End preloader -->
 
 
     <!-- Start header area -->
@@ -175,7 +175,7 @@
                                         </g>
                                     </svg>
                                     <span class="header__account--btn__text"> My cart</span>
-                                    <span class="items__count">{{ cart_count }}</span>
+                                    <span class="items__count">{{  cart_count }}</span>
                                 </a>
                             </li>
                             <li class="header__account--items ">
@@ -267,7 +267,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <span class="items__count style2">{{cart_count}}</span>
+                                    <span class="items__count style2">{{ cart_count}}</span>
                                 </a>
                             </li>
                             <li class="header__account--items header__account2--items">
@@ -1121,25 +1121,22 @@
     <!-- End footer section -->
 
     
+   
     <!-- Scroll top bar -->
     <button id="scroll__top"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"
             d="M112 244l144-144 144 144M256 120v292" />
     </svg></button>
 
-    <!-- All Script JS Plugins here  -->
-    <!-- <script src="assets/js/vendor/popper.js" defer="defer"></script> -->
-    <!-- <script src="assets/js/vendor/bootstrap.min.js" defer="defer"></script> -->
-
-    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'assets/js/plugins/glightbox.min.js' %}"></script>
+<!-- All Script JS Plugins here  -->
+<!-- <script src="assets/js/vendor/popper.js" defer="defer"></script> -->
+<!-- <script src="assets/js/vendor/bootstrap.min.js" defer="defer"></script> -->
 
 <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
 <script src="{% static 'assets/js/plugins/glightbox.min.js' %}"></script>
-<script src="https://kit.fontawesome.com/3af6dccc22.js" crossorigin="anonymous"></script>
-    <!-- Customscript js -->
-    <script src="{% static 'assets/js/script.js' %}"></script>
 
+<!-- Customscript js -->
+<script src="{% static 'assets/js/script.js' %}"></script>
   
 </body>
 
