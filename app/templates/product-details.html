@@ -6,10 +6,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Bonjoe-Home</title>
+    <title>Bonjoe - Product Details</title>
     <meta name="description" content="Morden Bootstrap HTML5 Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Shalimar&display=swap"
+    rel="stylesheet">                    -->
 
     <!-- ======= All CSS Plugins here ======== -->
     <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}">
@@ -29,46 +32,46 @@
 
 <body>
 
-    <!-- Start preloader -->
-    <div id="preloader">
-        <div id="ctn-preloader" class="ctn-preloader">
-            <div class="animation-preloader">
-                <div class="spinner"></div>
-                <div class="txt-loading">
-                    <span data-text-preloader="L" class="letters-loading">
-                        L
-                    </span>
+   <!-- Start preloader -->
+   <div id="preloader">
+    <div id="ctn-preloader" class="ctn-preloader">
+        <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+                <span data-text-preloader="L" class="letters-loading">
+                    L
+                </span>
 
-                    <span data-text-preloader="O" class="letters-loading">
-                        O
-                    </span>
+                <span data-text-preloader="O" class="letters-loading">
+                    O
+                </span>
 
-                    <span data-text-preloader="A" class="letters-loading">
-                        A
-                    </span>
+                <span data-text-preloader="A" class="letters-loading">
+                    A
+                </span>
 
-                    <span data-text-preloader="D" class="letters-loading">
-                        D
-                    </span>
+                <span data-text-preloader="D" class="letters-loading">
+                    D
+                </span>
 
-                    <span data-text-preloader="I" class="letters-loading">
-                        I
-                    </span>
+                <span data-text-preloader="I" class="letters-loading">
+                    I
+                </span>
 
-                    <span data-text-preloader="N" class="letters-loading">
-                        N
-                    </span>
+                <span data-text-preloader="N" class="letters-loading">
+                    N
+                </span>
 
-                    <span data-text-preloader="G" class="letters-loading">
-                        G
-                    </span>
-                </div>
+                <span data-text-preloader="G" class="letters-loading">
+                    G
+                </span>
             </div>
-            <div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
         </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
     </div>
-    <!-- End preloader -->
+</div>
+<!-- End preloader -->
 
 
     <!-- Start header area -->
@@ -172,7 +175,7 @@
                                         </g>
                                     </svg>
                                     <span class="header__account--btn__text"> My cart</span>
-                                    <span class="items__count">{{ cart_count }}</span>
+                                    <span class="items__count">{{  cart_count }}</span>
                                 </a>
                             </li>
                             <li class="header__account--items ">
@@ -264,7 +267,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <span class="items__count style2">{{cart_count}}</span>
+                                    <span class="items__count style2">{{ cart_count}}</span>
                                 </a>
                             </li>
                             <li class="header__account--items header__account2--items">
@@ -700,7 +703,7 @@
                                             </span>
                                         </li>
                                     </ul>
-                                    <span class="product__items--rating__count--number">({{reviews.count}}) Reviews</span>
+                                    <span class="product__items--rating__count--number">({{reviews.count}}) Verified Reviews</span>
                                 </div>
                                 <p class="product__details--info__desc mb-15">{{ single_product.description }}</p>
                                 <div class="product__variant">
@@ -730,7 +733,7 @@
                                         {% if single_product.stock <= 0 %}
                                         <h5 class="text-danger">Out of Stock</h5>
                                         {% else %}
-                                        {% if in_cart %}
+                                        {% if request.user.id.is_authenticated and in_cart %}
                                         <a href="#" class="btn  btn-success"> <span class="text quickview__cart--btn btn primary__btn">Added to Cart</span> <i
                                           class="fa fa-check"></i> </a>
                                         <a href="{% url  'cart' %}" class="btn  btn-success"> <span class="text quickview__cart--btn btn primary__btn">View Cart  <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg"  width="25.51" height="23.443" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg></span> <i
@@ -741,18 +744,9 @@
                                             <a href="{% url  'cart' %}" class="btn  btn-success"> <span class="text quickview__cart--btn btn primary__btn">View Cart  <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg"  width="25.51" height="23.443" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg></span> <i
                                                 class="fa fa-check"></i> </a>    
                                     </div>
-                                    <div class="product__variant--list mb-15">
-                                        
-                                        <button class="variant__buy--now__btn primary__btn" type="submit">Buy it now</button>
-                                        
-                                    </div>
+                                    
                                     {% endif %}
                                     {% endif %}
-                                </div>
-                                
-                                <div class="guarantee__safe--checkout">
-                                    <h5 class="guarantee__safe--checkout__title">Guaranteed Safe Checkout</h5>
-                                    <img class="guarantee__safe--checkout__img" src="{% static 'assets/img/other/safe-checkout.png' %}" alt="Payment Image">
                                 </div>
                             </form>
                         </div>
@@ -841,7 +835,7 @@
                                                 </div>
                                             </div>
                                             {% endfor %}
-                                            <!--  -->
+                                        
                                         <div id="writereview" class="reviews__comment--reply__area">
                                             <form action="{% url 'submit_review' single_product.id %}" method="POST">
                                                  {% csrf_token%}
@@ -1127,22 +1121,22 @@
     <!-- End footer section -->
 
     
+   
     <!-- Scroll top bar -->
     <button id="scroll__top"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"
             d="M112 244l144-144 144 144M256 120v292" />
     </svg></button>
 
-    <!-- All Script JS Plugins here  -->
-    <!-- <script src="assets/js/vendor/popper.js" defer="defer"></script> -->
-    <!-- <script src="assets/js/vendor/bootstrap.min.js" defer="defer"></script> -->
+<!-- All Script JS Plugins here  -->
+<!-- <script src="assets/js/vendor/popper.js" defer="defer"></script> -->
+<!-- <script src="assets/js/vendor/bootstrap.min.js" defer="defer"></script> -->
 
-    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'assets/js/plugins/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/glightbox.min.js' %}"></script>
 
-    <!-- Customscript js -->
-    <script src="{% static 'assets/js/script.js' %}"></script>
-
+<!-- Customscript js -->
+<script src="{% static 'assets/js/script.js' %}"></script>
   
 </body>
 

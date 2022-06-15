@@ -1593,10 +1593,10 @@ select {
   color: var(--primary-color);
 }
 .text__secondary {
-  color: var(--secondary-color);
+  color: coral;
 }
 .text__secondary2 {
-  color: var(--secondary-color);
+  color: coral;
 }
 .position__relative {
   position: relative;
@@ -4652,7 +4652,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .banner__bideo--play__icon {
   width: 5rem;
   height: 5rem;
-  background: var(--secondary-color);
+  background: coral;
   color: var(--white-color);
   border-radius: 50%;
   display: -webkit-box;
@@ -9902,10 +9902,10 @@ details > summary::-webkit-details-marker {
   margin-bottom: 0;
 }
 .account__menu--list:hover {
-  color: var(--secondary-color);
+  color: coral;
 }
 .account__menu--list.active {
-  color: var(--secondary-color);
+  color: coral;
 }
 @media only screen and (min-width: 992px) {
   .account__menu--list {
@@ -9983,6 +9983,7 @@ details > summary::-webkit-details-marker {
 }
 .account__content--title {
   font-weight: 600;
+  color: coral;
 }
 .account__table {
   width: 100%;

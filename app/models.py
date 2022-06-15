@@ -15,7 +15,7 @@ class NewsLetterRecipients(models.Model):
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    user = models.OneToOneField(User,related_name="prof", on_delete=models.PROTECT)
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
     profile_photo = CloudinaryField('image')
@@ -23,8 +23,11 @@ class Profile(models.Model):
     phone = models.CharField(max_length=100)
     date_joined = models.DateTimeField(auto_now_add=True)
 
-    def __str___(self):
-        return self.phone
+    def save_profile(self):
+        self.save()
+
+    def update(self):
+        self.save()
 
     def __str__(self):
         return self.user.username
@@ -93,11 +96,12 @@ class Variation(models.Model):
         return self.variation_value
 
 class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     cart_id = models.CharField(max_length=250, blank=True, null=True)
     date_added = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
-        return self.cart_id
+        return self.user
 
 class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)

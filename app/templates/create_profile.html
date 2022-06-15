@@ -41,7 +41,7 @@
 					<img src="{% static 'assets/img/prof1.svg' %}" alt="sing up image">
 				</div>
 
-				<form  method="post"  class="login100-form validate-form">
+				<form action="{%url 'create_profile'%}" method="post"  class="login100-form validate-form">
 					<span class="login100-form-title">
 						Create Your Profile
 					</span>
@@ -52,6 +52,7 @@
 					<div class="container-login100-form-btn">
 						<div class="container-login100-form-btn">
 							<button class="login100-form-btn" type="submit">Create Profile</button>
+							<a  style="color: coral;" href="{% url 'index' %}" type="submit">Skip</a>
 						</div>
 						
 					</div>
