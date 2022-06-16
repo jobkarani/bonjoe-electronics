@@ -4,7 +4,9 @@
 .form-group label{
     display: none;
 }
-/* HEADER */
+
+
+
 header .head{
     background: coral;
 }
@@ -44,17 +46,15 @@ header .head{
 .predictive__search--button{
     background: coral;
 }
-/* END OF HEADER */
 
-/* SLIDER */
-/* .slider__content .primary__btn{
-    background: coral;
-} */
+
+
 .swiper__nav--btn{
     background: coral;
 }
-/* END OF SLIDER */
-/* SHIPPING */
+
+
+
 .shipping__style3--icon svg{
     color: coral;
 }
@@ -64,8 +64,9 @@ header .head{
 .readcrumb__content--menu__items span:hover{
     color: coral;
 }
-/* END OF SHIPPING */
-/* NEW PRODUCTS */
+
+
+
 .section__heading--maintitle::before{
     color: coral;
 }
@@ -108,8 +109,9 @@ header .head{
 .product__list--items__content--title .prod-details:hover{
     color: coral;
 }
-/* END OF NEW PRODUCTS */
-/* NEW COLLECTION */
+
+
+
 .btn__style3{
     background: coral;
 }
@@ -119,30 +121,35 @@ header .head{
 .new__product--thumbnail__link .new__product--thumbnail__img:hover{
     color: coral;
 }
-/* END OF NEW PRODUCTS */
-/* BANNER  */
+
+
+
 .banner__items--content .banner__items--content__link:hover{
     color: coral;
 }
-/* END OF BANNER */
-/* FOOTER */
+
+
+
 .newsletter__subscribe--button{
     background: coral;
 }
-/* END OF FOOTER */
-/* NEWSLETTER */
+
+
+
 .newsletter__popup--close__btn{
     background: coral;
 }
 .newsletter__popup--subscribe__btn{
     background: coral;
 }
-/* END OF NEWSLETTER */
-/* SCROLLTOP */
+
+
+
 #scroll__top{
     background: coral;
 }
-/* END OF SCROLLTOP */
+
+
 
 
 .product__media--preview__items--link .product__media--preview__items--img{
@@ -192,17 +199,16 @@ header .head{
 .continue__shopping .continue__shopping--clear{
     color: coral;
 }
-.product__section--inner .mb-30{
+/* .product__section--inner .mb-30{
     padding: 1rem;
     border-radius: 5px;
-    /* border: 1px solid coral; */
     margin: 0px 10px 0px 10px;
-}
+} */
 .team__content--subtitle{
     padding: 5px 0px;
     border-bottom: 0.5px solid rgb(243, 243, 243);
 }
-.banner__items--thumbnail img{
+ .banner__items--thumbnail img{
     width: 100%;
     height: 30rem;
     object-fit: cover;
@@ -275,3 +281,43 @@ header .head{
     background: coral;
     color: var(--white-color);
 }
+.item-option-select > input > span{
+    
+    padding: 2px 10px;
+}
+
+.mb--n30 > .mb-30 {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 507px){
+    .row > * {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .row-cols-2 > * {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: 90%;
+        height: auto;
+    }
+}
+@media only screen and (max-width: 767px){
+    .row {
+        margin-right: -10px;
+        margin-left: -10px;
+    }
+    .row {
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .mb--n30 > .mb-30 {
+        margin: 15px auto;
+        gap: 1px;
+        
+    }
+} 

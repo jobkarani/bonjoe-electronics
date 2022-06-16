@@ -709,25 +709,26 @@
                                 <div class="product__variant">
                                     <div class="product__variant--list mb-10">
                                         <div class="item-option-select">
-                                            <h6>Choose Color</h6>
-                                            <select name="flavour" type="radio" class="form-control" required>
-                                              <option value=""  disabled selected>Select</option>
+                                            <h4>Choose Color</h4>
+                                            <form class="form-radio" name="flavour" required>
                                               {% for i in single_product.variation_set.colors %}
-                                              <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                                                <input value="{{ i.variation_value | lower }}" type="radio" name="radAnswer"><span>{{ i.variation_value | capfirst }}</span>
                                               {% endfor %}
-                                            </select>
-                                          </div> <br> <hr>
+                                            </form>
+                                          </div> <br>
                                           <div class="item-option-select">
-                                            <h6>Choose Size</h6>
-                                            <select  type="radio" name="flavour" class="form-control" required>
-                                              <option value="" disabled selected>Select</option>
+                                            <h4>Choose Size</h4>
+                                            <form class="form-radio" required>
                                               {% for i in single_product.variation_set.sizes %}
-                                              <option type="radio" value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                                              <input type="radio" value="{{ i.variation_value | lower }}" name="radAnswer">{{ i.variation_value | capfirst }}
                                               {% endfor %}
-                                            </select>
-                                          </div> <br> <hr>
+                                            </form>
+                                          </div>
+                                          <br>
                                     </div>
-                                  
+                                    
+
+
                                     <div class="product__variant--list quantity d-flex align-items-center mb-20">
                                         
                                         {% if single_product.stock <= 0 %}

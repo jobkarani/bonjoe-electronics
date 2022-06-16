@@ -97,7 +97,7 @@ class Variation(models.Model):
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    cart_id = models.CharField(max_length=250, blank=True, null=True)
+    cart_id = models.CharField(max_length=250, blank=False, null=True)
     date_added = models.DateField(auto_now_add=True)
 
     def __unicode__(self):

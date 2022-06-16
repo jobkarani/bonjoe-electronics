@@ -802,9 +802,9 @@
                     </li>
                 </ul>
                 <div class="tab_content">
-                    <div id="featured" class="tab_pane active show">
+                    <!-- <div id="featured" class="tab_pane active show">
                         <div class="product__section--inner">
-                            <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
+                            <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30 cols-sm-12">
                                 {% for prod in products %}
                                 <div class="col mb-30" id="product" style=" box-shadow: 5px 5px 5px 5px #e2dede;; margin: 5px 5px;">
                                     <div class="product__items ">
@@ -837,13 +837,54 @@
                                 
                             </div>
                         </div>
+                    </div> -->
+
+                    <div id="featured" class="tab_pane active show">
+                        <div class="product__section--inner">
+                            <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
+                                {% for prod in products %}
+                                <div class="col mb-30" id="product" style=" box-shadow: 3px 3px 3px 3px #e2dede;">
+                                    <div class="product__items ">
+                                        <div class="product__items--thumbnail">
+                                            <a class="product__items--link" href="{{ prod.get_url }}">
+                                                <img class="product__items--img product__primary--img"
+                                                    src="{{ prod.image1.url }}" alt="product-img" />
+                                                <img class="product__items--img product__secondary--img"
+                                                    src="{{ prod.image1.url }}" alt="product-img" />
+                                            </a>
+                                            <div class="product__badge">
+                                                <span class="product__badge--items sale" style="background: coral;">Sale</span>
+                                            </div>
+                                        </div>
+                                        <div class="product__items--content">
+                                            <span class="product__items--content__subtitle">{{ prod.category }}</span>
+                                            <h4 class="product__items--content__title"><a href="{{ prod.get_url }}">{{ prod.name }}</a></h4>
+                                            <div class="product__items--price">
+                                                <span class="current__price">Ksh {{ prod.new_price }}</span>
+                                                <span class="price__divided"></span>
+                                                <span class="old__price">Ksh {{ prod.old_price }}</span>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+    
+                            </div>
+                        </div>
                     </div>
 
                 </div>
+
+
+                
+
             </div>
-            </div>
-            </div>
+
         </section>
+
+
+
 
 
 
