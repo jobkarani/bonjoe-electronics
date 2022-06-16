@@ -22,7 +22,6 @@ from decouple import config
 from .models import MpesaPayment
 
 # auth 
-@login_required(login_url="/accounts/login/")
 def _cart_id(request):
     cart = request.session.session_key
     if not cart:
@@ -372,10 +371,10 @@ def remove_cart_item(request, product_id, cart_item_id ):
     if request.user.is_authenticated and request.user.id:
         cart = Cart.objects.get(cart_id=_cart_id(request))
         product = get_object_or_404(Product, id=product_id)
-        
         cart_item = CartItem.objects.get(product=product, cart=cart, id= cart_item_id)
-
-    cart_item.delete()
+        cart_item.delete()
+    else:
+        return redirect('login')
     return redirect('cart')
     
 @login_required(login_url="/accounts/login/")
