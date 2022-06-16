@@ -291,9 +291,6 @@ def add_cart(request, product_id):
               user=request.user, cart_id = _cart_id(request)
             )
         cart.save()
-        print(product_variation)
-
-
 
     if request.user.is_authenticated and request.user.id:
         is_cart_item_exists = CartItem.objects.filter(user=request.user,product=product, cart=cart).exists()
@@ -306,7 +303,6 @@ def add_cart(request, product_id):
                 ex_var_list.append(list(existing_variation))
                 id.append(item.id)
 
-            print(ex_var_list)
         
             if product_variation in ex_var_list:
                 # increase CartItem qty
@@ -334,17 +330,8 @@ def add_cart(request, product_id):
                 cart_item.variations.add(*product_variation)
             cart_item.save()
 
-    print(product_variation)
 
     return redirect('cart')
-
-
-
-
-
-
-
-
 
 
 
@@ -484,15 +471,20 @@ def checkout(request, total=0, quantity=0, cart_items=None):
     }
     return render(request, 'checkout.html',ctx)
 
+@login_required(login_url="/accounts/login/")
 def payments(request,total=0, quantity=0, cart_items=None):
     if request.user.is_authenticated and request.user.id:
         cart_items = CartItem.objects.filter(user=request.user, is_active=True)
         products = Product.objects.all().filter(is_available=True)
         cart_count = cart_items.count()
+        for cart_item in cart_items:
+                total += (cart_item.product.new_price*cart_item.quantity)
     else:
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         cart_count = cart_items.count()
+        for cart_item in cart_items:
+            total += (cart_item.product.new_price*cart_item.quantity)
 
     ctx = {
         'total':total,
@@ -511,12 +503,12 @@ def place_order(request,total=0, quantity=0,):
     cart_count = cart_items.count()
     if cart_count <= 0:
         return redirect('shop')
-    sub_total = 0
+    total = 0
     for cart_item in cart_items:
         total += (cart_item.product.new_price*cart_item.quantity)
         quantity += cart_item.quantity
-    sub_total = total
-    print(sub_total)
+    total = total
+    print(total)
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -531,7 +523,7 @@ def place_order(request,total=0, quantity=0,):
             data.county = form.cleaned_data['county']
             data.town = form.cleaned_data['town']
             data.order_note = form.cleaned_data['order_note']
-            data.order_total = sub_total
+            data.order_total = total
             data.ip = request.META.get('REMOTE_ADDR')
             data.save()
 
@@ -544,24 +536,20 @@ def place_order(request,total=0, quantity=0,):
             order_number = current_date + str(data.id)
             data.order_number = order_number
             data.save()
+            # return redirect('checkout')
 
             order = Order.objects.get(user=current_user,is_ordered=False,order_number=order_number)
             ctx = {
                 'order':order,
                 'cart_items':cart_items,
-                'sub_total':sub_total,
+                'total':total,
                 'cart':cart,
             }
-            return render(request, 'payment.html',ctx)
+            return render(request, 'payments.html',ctx)
         
 
     else:
         return redirect('checkout')
-
-
-# def shipping(request):
-
-#     return render (request, 'shipping.html')
 
 def receipt(request):
 
