@@ -316,7 +316,7 @@ header .head{
         flex-wrap: wrap;
     }
     .mb--n30 > .mb-30 {
-        margin: 15px auto;
+        margin: 10px auto;
         gap: 1px;
         
     }
