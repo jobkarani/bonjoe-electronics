@@ -291,7 +291,7 @@
                                         <div class="cart__product d-flex align-items-center">
                                             <div class="product__thumbnail border-radius-5">
                                                 <a href="{{ cart_item.product.get_url }}"><img class="border-radius-5" src="{{cart_item.product.image1.url}}" alt="cart-product"></a>
-                                                <span class="product__thumbnail--quantity">1</span>
+                                                <span class="product__thumbnail--quantity">{{ cart_item.quantity }}</span>
                                             </div>
                                             <div class="product__description">
                                                 <h3 class="product__description--name h4"><a href="{{ cart_item.product.get_url }}">{{cart_item.product.name}}</a></h3>
