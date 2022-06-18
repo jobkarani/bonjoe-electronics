@@ -26,6 +26,5 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('contact/', views.contact, name='contact'),
     path('privacypolicy/', views.privacypolicy, name='privacypolicy'),
-    path('receipt/', views.receipt, name='receipt'),
-    # path('userPayment/', views.userPayment, name='userPayment'),
+    path('userPayment/', views.userPayment, name='userPayment'),
 ]
