@@ -14,8 +14,38 @@ class NewsLetterRecipients(models.Model):
     email = models.EmailField()
 
 
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
+#     profile_photo = CloudinaryField('image')
+#     bio = models.TextField(max_length=500,  null=True)
+#     email = models.EmailField(null=True)
+#     contact = models.CharField(max_length=50, blank=True, null=True)
+
+#     def update(self):
+#         self.save()
+
+#     def save_profile(self):
+#         self.save()
+
+#     def delete_profile(self):
+#         self.delete()
+
+#     def create_profile(self):
+#         self.save()
+
+#     def update_profile(self):
+#         self.update()
+
+#     @classmethod
+#     def get_profile_by_user(cls, user):
+#         profile = cls.objects.filter(user=user)
+#         return profile
+
+#     def __str__(self):
+#         return self.user.username
+
 class Profile(models.Model):
-    user = models.OneToOneField(User,related_name="prof", on_delete=models.PROTECT)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
     profile_photo = CloudinaryField('image')
@@ -29,9 +59,19 @@ class Profile(models.Model):
     def update(self):
         self.save()
 
+    def create_profile(self):
+        self.save()
+
+    def update_profile(self):
+        self.update()
+
+    @classmethod
+    def get_profile_by_user(cls, user):
+        profile = cls.objects.filter(user=user)
+        return profile
+
     def __str__(self):
         return self.user.username
-
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
