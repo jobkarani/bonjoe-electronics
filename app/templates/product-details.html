@@ -623,42 +623,53 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="product__media--nav swiper">
+                         <div class="product__media--nav swiper">
                                 <div class="swiper-wrapper">
+                                   
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
                                             <img class="product__media--nav__items--img" src="{{ single_product.image1.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
+                                    
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
                                             <img class="product__media--nav__items--img" src="{{ single_product.image2.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
+                                    
+                                    {% if single_product.image3.url %} 
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
                                             <img class="product__media--nav__items--img" src="{{ single_product.image3.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
+                                    {% endif %}
+                                    {% if single_product.image4.url %} 
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
                                             <img class="product__media--nav__items--img" src="{{ single_product.image4.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
+                                    {% endif %}
+                                    {% if single_product.image5.url %} 
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
                                             <img class="product__media--nav__items--img" src="{{ single_product.image5.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
+                                    {% endif %}
+                                    {% if single_product.image6.url %} 
                                     <div class="swiper-slide">
                                         <div class="product__media--nav__items">
                                             <img class="product__media--nav__items--img" src="{{ single_product.image6.url }}" alt="product-nav-img">
                                         </div>
                                     </div>
+                                    {% endif %}
                                 </div>
                                 <div class="swiper__nav--btn swiper-button-next"></div>
                                 <div class="swiper__nav--btn swiper-button-prev"></div>
-                            </div> -->
+                            </div> 
                         </div>
                     </div>   
                     <div class="col">
