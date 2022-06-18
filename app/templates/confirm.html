@@ -1,5 +1,4 @@
 {% load static %}
-
 <!doctype html>
 <html lang="en">
 
@@ -16,6 +15,7 @@
    <link rel="stylesheet" href="{% static 'assets/css/plugins/glightbox.min.css' %}">
  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
  <!-- Plugin css -->
  <!-- <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css"> -->
 
@@ -190,15 +190,29 @@
                             </nav>
                     </header>
                     <main class="main__content_wrapper">
-                        <form action="{% url 'place_order' %}">
-                            
-                            
-                           
-                            <div class="checkout__content--step__footer d-flex align-items-center">
-                                <a class="continue__shipping--btn primary__btn border-radius-5" href="{% url 'receipt' %}">Pay now</a>
+                        <h4 class="text-center mb-10">Review your order and make payment</h4>
+                         <div class="card">
+                            <h5 class="card-header">Billing Address</h5>
+                            <div class="card-body">
+                              <p class="card-text">{{order.full_name}}</p>
+                              <p class="card-text">{{order.email}}</p>
+                              <p class="card-text">{{order.phone}}</p>
+                              <p class="card-text">{{order.town}} {{order.county}}</p>
+                              {% if order.order_note %}
+                              <p class="card-text">{{order.order_note}}</p>
+                              {% endif %}
+                            </div>
+                          </div>
+                          <div class="card">
+                            <h5 class="card-header">Payment Method</h5>
+                            <div class="card-body">
+                              <p class="card-text">Lipa na Mpesa</p>
+                            </div>
+                          </div>
+                            <div class="checkout__content--step__footer d-flex align-items-center mt-5">
+                                <a class="continue__shipping--btn primary__btn border-radius-5" href="{% url 'userPayment' %}">Pay now</a>
                                 <a class="previous__link--content" href="{% url 'checkout' %}">Return to checkout</a>
                             </div>
-                        </form>
                     </main>
                     <footer class="main__footer checkout__footer">
                         <p class="copyright__content">Copyright © 2022 <a class="copyright__content--link text__primary" href="{%url 'index' %}">Bonjoe</a> . All Rights Reserved.</p>
@@ -214,7 +228,7 @@
                                         <div class="product__image two  d-flex align-items-center">
                                             <div class="product__thumbnail border-radius-5">
                                                 <a href="{{ cart_item.product.get_url }}"><img class="border-radius-5" src="{{cart_item.product.image1.url}}" alt="cart-product"></a>
-                                                <span class="product__thumbnail--quantity">1</span>
+                                                <span class="product__thumbnail--quantity">{{ cart_item.quantity }}</span>
                                             </div>
                                             <div class="product__description">
                                                 <h3 class="product__description--name h4"><a href="{{ cart_item.product.get_url }}">{{cart_item.product.name}}</a></h3>

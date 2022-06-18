@@ -1,5 +1,6 @@
-{% load static %}
 
+
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -16,6 +17,7 @@
    <link rel="stylesheet" href="{% static 'assets/css/plugins/glightbox.min.css' %}">
  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
  <!-- Plugin css -->
  <!-- <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css"> -->
 
@@ -29,47 +31,47 @@
 
 <body>
 
-    <!-- Start preloader -->
-    <div id="preloader">
-        <div id="ctn-preloader" class="ctn-preloader">
-            <div class="animation-preloader">
-                <div class="spinner"></div>
-                <div class="txt-loading">
-                    <span data-text-preloader="W" class="letters-loading">
-                        W
-                    </span>
+   <!-- Start preloader -->
+   <div id="preloader">
+    <div id="ctn-preloader" class="ctn-preloader">
+        <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+                <span data-text-preloader="W" class="letters-loading">
+                    W
+                </span>
 
-                    <span data-text-preloader="E" class="letters-loading">
-                        E
-                    </span>
+                <span data-text-preloader="E" class="letters-loading">
+                    E
+                </span>
 
-                    <span data-text-preloader="L" class="letters-loading">
-                        L
-                    </span>
+                <span data-text-preloader="L" class="letters-loading">
+                    L
+                </span>
 
-                    <span data-text-preloader="C" class="letters-loading">
-                        C
-                    </span>
+                <span data-text-preloader="C" class="letters-loading">
+                    C
+                </span>
 
-                    <span data-text-preloader="O" class="letters-loading">
-                        O 
-                    </span>
+                <span data-text-preloader="O" class="letters-loading">
+                    O 
+                </span>
 
-                    <span data-text-preloader="M" class="letters-loading">
-                        M 
-                    </span>
+                <span data-text-preloader="M" class="letters-loading">
+                    M 
+                </span>
 
-                    <span data-text-preloader="E" class="letters-loading">
-                        E
-                    </span>
-                </div>
+                <span data-text-preloader="E" class="letters-loading">
+                    E
+                </span>
             </div>
-            <div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
         </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
     </div>
-    <!-- End preloader -->
-
+</div>
+<!-- End preloader -->
+        
     <!-- Start checkout page area -->
     <div class="checkout__page--area">
         <div class="container">
@@ -150,14 +152,7 @@
                                         </tbody>
                                     </table> 
                                 </div>
-                                <div class="checkout__discount--code">
-                                    <form class="d-flex" action="#">
-                                        <label>
-                                            <input class="checkout__discount--code__input--field border-radius-5" placeholder="Gift card or discount code"  type="text">
-                                        </label>
-                                        <button class="checkout__discount--code__btn primary__btn border-radius-5" type="submit">Apply</button>
-                                    </form>
-                                </div>
+                               
                                 <div class="checkout__total">
                                     <table class="checkout__total--table">
                                         <tbody class="checkout__total--body">
@@ -186,99 +181,56 @@
                                     <a class="breadcrumb__link" href="{% url 'cart' %}">Cart</a>
                                     <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
                                 </li>
-                        
                                 <li class="breadcrumb__item breadcrumb__item--current d-flex align-items-center">
-                                    <a class="breadcrumb__text current" href="{% url 'checkout' %}" >Information</a>
+                                    <a class="breadcrumb__link" href="{% url 'checkout' %}">Information</a>
                                     <svg class="readcrumb__chevron-icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
                                 </li>
                                 <li class="breadcrumb__item breadcrumb__item--blank">
-                                    <span class="breadcrumb__text">Payment</span>
+                                    <span class="breadcrumb__text current">Payment</span>
                                 </li>
                             </ol>
                             </nav>
                     </header>
                     <main class="main__content_wrapper">
-                        <form action="{% url 'place_order' %}" method="POST">
-                            {% csrf_token %}
-                            <div class="checkout__content--step section__contact--information">
-                                <div class="checkout__content--step checkout__contact--information2 border-radius-5">
-                                    <div class="checkout__review d-flex justify-content-between align-items-center">
-                                        <div class="checkout__review--inner d-flex align-items-center">
-                                            <label class="checkout__review--label">Contact</label>
-                                            <span class="checkout__review--content">{{user.email}}</span>
-                                        </div>
-                                    </div> 
+                        <div class="checkout__content--step section__shipping--address">
+                            <div class="card" >
+                                <div class="card-header" >
+                                <h4 class="text-dark text-center">Payment Procedure</h4>
+                                <p class="text-center"><strong>MPESA STK payment</strong></p>
                                 </div>
+                                <ul class="p-3" style="list-style: none;">
+                                <li><i class="fas fa-check-square"></i> Fill in the form.</li>
+                                <li><i class="fas fa-check-square"></i> Ensure you enter Mpesa no.</li>
+                                <li><i class="fas fa-check-square"></i> Click on Lipa na Mpesa button and wait for the mpesa pop up on your phone.</li>
+                                <li><i class="fas fa-check-square"></i> Confirm the amount and enter your pin.</li>
+                                <li><i class="fas fa-check-square"></i> Press ok to send.</li>
+                                <li><i class="fas fa-check-square"></i> Upon successful payment you will receive email notification.
+                                </li>
+                                </ul>
                             </div>
-                            <div class="checkout__content--step section__shipping--address">
-                                <div class="section__header mb-25">
-                                    <h3 class="section__header--title">Shipping address</h3>
-                                </div>
-                                <div class="section__shipping--address__content">
-                                    <div class="row">
-                                        <div class="col-lg-6 mb-12">
-                                            <div class="checkout__input--list ">
-                                                <label for="">
-                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="First name" name="first_name" type="text" required>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 mb-12">
-                                            <div class="checkout__input--list">
-                                                <label for="">
-                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Last name"  name="last_name"  type="text" required>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-12">
-                                            <div class="checkout__input--list">
-                                                <label for="">
-                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Email" name="email" type="email"  required>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-12">
-                                            <div class="checkout__input--list">
-                                                <label for="">
-                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Phone Number" name="phone"  type="text"  required>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mb-12">
-                                            <div class="checkout__input--list">
-                                                <label for="">
-                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="County" name="county" type="text" required >
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mb-12">
-                                            <div class="checkout__input--list">
-                                                <label for="">
-                                                    <input class="checkout__input--field border-radius-5 form-control" placeholder="Town" name="town"  type="text" required>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mb-12">
-                                            <div class="checkout__input--list">
-                                                <p class="cart__note--desc">Add special instructions for your seller...</p>
-                                                <label for="">  
-                                                    <textarea class="checkout__input--field cart__note--title border-radius-5 form-control" placeholder="Order Note (Optional)" rows="2" name="order_note"  type="text" ></textarea>
-                                                </label>
-                                            </div>
-                                        </div>
-             
-                                    </div>
-                                </div>
                             </div>
-                           
+
+                        <div class=" checkout__content--step section__shipping--address">
+                                <form class="forms card" action="{%url 'userPayment' %}" method="POST" enctype="multipart/form-data" >
+                                <div class="card-header">
+                                    <h4 class="text-dark text-center">Make your payment of Ksh <strong>{{ sub_total }}</strong> using the form below.</h4>
+                                </div>
+                        
+                                <fieldset class="form-group p-3">
+                                    {% csrf_token %} {% load crispy_forms_tags %} {{ mpesa_form | crispy }} {% csrf_token %}
+                                </fieldset>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-outline-success" type="submit" data-toggle="modal" data-target="#myModal">Lipa na Mpesa</button>
+                                </div>
+                                </form>
+
+                            </div>
                             <div class="checkout__content--step__footer d-flex align-items-center">
-                                <button type="submit" class="continue__shipping--btn primary__btn btn border-radius-5" >Place Order</button>
-                                <a class="previous__link--content" href="{% url 'cart' %}">Continue Shopping</a>
+                                <a class="previous__link--content" href="{% url 'checkout' %}">Return to checkout</a>
                             </div>
-                        </form>
                     </main>
                     <footer class="main__footer checkout__footer">
-                        <p class="copyright__content">Copyright © 2022 <a class="copyright__content--link text__primary" href="{% url 'index' %}">Bonjoe</a> . All Rights Reserved.</p>
+                        <p class="copyright__content">Copyright © 2022 <a class="copyright__content--link text__primary" href="{%url 'index' %}">Bonjoe</a> . All Rights Reserved.</p>
                     </footer>
                 </div>
                 <aside class="checkout__sidebar sidebar">
@@ -288,14 +240,14 @@
                                 {% for cart_item in cart_items %}
                                 <tr class="cart__table--body__items">
                                     <td class="cart__table--body__list">
-                                        <div class="cart__product d-flex align-items-center">
+                                        <div class="product__image two  d-flex align-items-center">
                                             <div class="product__thumbnail border-radius-5">
                                                 <a href="{{ cart_item.product.get_url }}"><img class="border-radius-5" src="{{cart_item.product.image1.url}}" alt="cart-product"></a>
                                                 <span class="product__thumbnail--quantity">{{ cart_item.quantity }}</span>
                                             </div>
                                             <div class="product__description">
                                                 <h3 class="product__description--name h4"><a href="{{ cart_item.product.get_url }}">{{cart_item.product.name}}</a></h3>
-                                                <span class="product__description--variant">COLOR: White</span>
+                                                <span class="product__description--variant">COLOR: Blue</span>
                                             </div>
                                         </div>
                                     </td>
@@ -303,17 +255,17 @@
                                         <span class="cart__price">Ksh {{cart_item.product.new_price}}</span>
                                     </td>
                                 </tr>
-                                {% endfor %}
                             </tbody>
+                            {% endfor %}
                         </table> 
                     </div>
-                   
+   
                     <div class="checkout__total">
                         <table class="checkout__total--table">
                             <tbody class="checkout__total--body">
                                 <tr class="checkout__total--items">
                                     <td class="checkout__total--title text-left">Subtotal </td>
-                                    <td class="checkout__total--amount text-right">Ksh {{total}}</td>
+                                    <td class="checkout__total--amount text-right">Ksh {{sub_total}}</td>
                                 </tr>
                                 <tr class="checkout__total--items">
                                     <td class="checkout__total--title text-left">Shipping</td>
@@ -323,7 +275,7 @@
                             <tfoot class="checkout__total--footer">
                                 <tr class="checkout__total--footer__items">
                                     <td class="checkout__total--footer__title checkout__total--footer__list text-left">Total </td>
-                                    <td class="checkout__total--footer__amount checkout__total--footer__list text-right">Ksh {{total}}</td>
+                                    <td class="checkout__total--footer__amount checkout__total--footer__list text-right">Ksh {{sub_total}}</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -351,3 +303,4 @@
 </body>
 
 </html>
+ 
