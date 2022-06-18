@@ -339,7 +339,7 @@ def add_cart(request, product_id):
 @login_required(login_url="/accounts/login/")
 def remove_cart(request, product_id,cart_item_id):
     if request.user.is_authenticated and request.user.id:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart = Cart.objects.get(user=request.user,cart_id=_cart_id(request))
         product = get_object_or_404(Product, id=product_id)
         try:
             cart_item = CartItem.objects.get(product=product, cart=cart, id=cart_item_id)
