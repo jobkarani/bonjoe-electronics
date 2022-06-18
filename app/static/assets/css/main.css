@@ -291,6 +291,11 @@ header .head{
     margin-bottom: 30px;
 }
 
+.product__badge--items {
+    background: coral;
+
+}
+
 @media only screen and (max-width: 507px){
     .row > * {
         padding-right: 10px;
