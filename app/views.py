@@ -589,7 +589,7 @@ def userPayment(request):
                 "PhoneNumber": phoneSanitize(request.POST.get('phone')),
                 # "CallBackURL": "https://mpesa-api-python.herokuapp.com/api/v1/mpesa/callback/",
                 "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-                "AccountReference": "Sophieskitchen",
+                "AccountReference": "Bonjoe Electronics",
                 "TransactionDesc": "Testing stk push",
             }
             response = requests.post(
