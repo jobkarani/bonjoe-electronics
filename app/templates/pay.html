@@ -1,5 +1,5 @@
 
-
+{% load bootstrap4 %}
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -208,8 +208,13 @@
                                 </li>
                                 </ul>
                             </div>
-                            </div>
+                             
+                            
+                        </div>
 
+                            
+                    </main>
+                    <div class="row">
                         <div class=" checkout__content--step section__shipping--address">
                                 <form class="forms card" action="{%url 'userPayment' %}" method="POST" enctype="multipart/form-data" >
                                 <div class="card-header">
@@ -217,10 +222,10 @@
                                 </div>
                         
                                 <fieldset class="form-group p-3">
-                                    {% csrf_token %} {% load crispy_forms_tags %} {{ mpesa_form | crispy }} {% csrf_token %}
+                                    {% csrf_token %}  {% bootstrap_form mpesa_form %} 
                                 </fieldset>
                                 <div class="form-group text-center">
-                                    <button class="btn btn-outline-success" type="submit" data-toggle="modal" data-target="#myModal">Lipa na Mpesa</button>
+                                    <button class="primary__btn mpesa-btn" type="submit" data-toggle="modal" data-target="#myModal">Lipa na Mpesa</button>
                                 </div>
                                 </form>
 
@@ -228,7 +233,7 @@
                             <div class="checkout__content--step__footer d-flex align-items-center">
                                 <a class="previous__link--content" href="{% url 'checkout' %}">Return to checkout</a>
                             </div>
-                    </main>
+                    </div>
                     <footer class="main__footer checkout__footer">
                         <p class="copyright__content">Copyright © 2022 <a class="copyright__content--link text__primary" href="{%url 'index' %}">Bonjoe</a> . All Rights Reserved.</p>
                     </footer>

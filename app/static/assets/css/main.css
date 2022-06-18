@@ -309,6 +309,11 @@ header .head{
         width: 90%;
         height: auto;
     }
+    .team__thumb--img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
 }
 @media only screen and (max-width: 767px){
     .row {
@@ -325,6 +330,11 @@ header .head{
         gap: 1px;
         
     }
+    .team__thumb--img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
 } 
 
 @media only screen and (min-width: 992px){
@@ -340,10 +350,25 @@ header .head{
         margin-left: auto;
         margin-bottom: 10px;
     }
+    .team__thumb--img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
 }
 .team__thumb--img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+}
+.form-control {
     display: block;
     width: 100%;
-    max-height: 400px;
-    object-fit: cover;
+    height: 35px;
+    margin: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 1.8rem;
+}
+.mpesa-btn{
+    margin-bottom: 1rem;
 }
