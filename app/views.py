@@ -437,11 +437,11 @@ def search(request):
 @login_required(login_url="/accounts/login/")
 def checkout(request, total=0, quantity=0, cart_items=None):
     if request.user.is_authenticated and request.user.id:
-            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
-            products = Product.objects.all().filter(is_available=True)
-            cart_count = cart_items.count()
-            for cart_item in cart_items:
-                total += (cart_item.product.new_price*cart_item.quantity)
+        cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+        products = Product.objects.all().filter(is_available=True)
+        cart_count = cart_items.count()
+        for cart_item in cart_items:
+            total += (cart_item.product.new_price*cart_item.quantity)
     else:
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
@@ -490,12 +490,10 @@ def place_order(request,total=0, quantity=0,):
     cart_count = cart_items.count()
     if cart_count <= 0:
         return redirect('shop')
-    total = 0
     for cart_item in cart_items:
         total += (cart_item.product.new_price*cart_item.quantity)
         quantity += cart_item.quantity
-    total = total
-    print(total)
+        total = total
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -525,14 +523,14 @@ def place_order(request,total=0, quantity=0,):
             data.save()
             # return redirect('checkout')
 
-            order = Order.objects.get(user=current_user,is_ordered=False,order_number=order_number)
-            ctx = {
-                'order':order,
-                'cart_items':cart_items,
-                'total':total,
-                'cart':cart,
-            }
-            return render(request, 'confirm.html',ctx)
+        order = Order.objects.get(user=current_user,is_ordered=False,order_number=order_number)
+        ctx = {
+            'order':order,
+            'cart_items':cart_items,
+            'total':total,
+            'cart':cart,
+        }
+        return render(request, 'confirm.html',ctx)
 
     else:
         return redirect('checkout')
