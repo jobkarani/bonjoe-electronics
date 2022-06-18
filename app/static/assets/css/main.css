@@ -291,6 +291,11 @@ header .head{
     margin-bottom: 30px;
 }
 
+.product__badge--items {
+    background: coral;
+
+}
+
 @media only screen and (max-width: 507px){
     .row > * {
         padding-right: 10px;
@@ -335,4 +340,10 @@ header .head{
         margin-left: auto;
         margin-bottom: 10px;
     }
+}
+.team__thumb--img {
+    display: block;
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
 }

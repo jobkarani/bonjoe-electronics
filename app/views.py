@@ -30,6 +30,7 @@ def _cart_id(request):
         return cart
 
 def about(request):
+    products = None
     cart = 0
     cart_items = 0
     cart_count = 0
@@ -38,9 +39,7 @@ def about(request):
             products = Product.objects.all().filter(is_available=True)
             cart_count = cart_items.count()
     else:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-        cart_count = cart_items.count()
+        cart_count = 0
 
     ctx={
      'cart':cart,
@@ -52,6 +51,7 @@ def about(request):
 
 def contact(request):
     cart = 0
+    products = None
     cart_items = 0
     cart_count = 0
     if request.user.is_authenticated and request.user.id:
@@ -59,9 +59,7 @@ def contact(request):
             products = Product.objects.all().filter(is_available=True)
             cart_count = cart_items.count()
     else:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-        cart_count = cart_items.count()
+        cart_count = 0
 
     ctx={
      'cart':cart,
@@ -73,6 +71,7 @@ def contact(request):
 
 def privacypolicy(request ):
     cart = 0
+    products = None
     cart_items = 0
     cart_count = 0
     if request.user.is_authenticated and request.user.id:
@@ -80,9 +79,7 @@ def privacypolicy(request ):
             products = Product.objects.all().filter(is_available=True)
             cart_count = cart_items.count()
     else:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-        cart_count = cart_items.count()
+        cart_count = 0
 
     ctx={
      'cart':cart,
@@ -108,7 +105,6 @@ def create_profile(request):
     else:
         form = ProfileForm()
     return render(request, 'create_profile.html', {"form": form, "title": title})
-
             
 
 @login_required(login_url="/accounts/login/")
@@ -140,26 +136,21 @@ def profile(request):
     return render(request, "profile.html", ctx)
 
 
-def update_profile(request, id):
-    # current_user = request.user
+@login_required(login_url="/accounts/login/")
+def update_profile(request,id):
     user = User.objects.get(id=id)
-    profile = Profile.objects.get(user=user)
+    profile = Profile.objects.get(user = user)
     form = UpdateProfileForm(instance=profile)
     if request.method == "POST":
-        form = UpdateProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-
-            profile = form.save(commit=False)
-            profile.save()
-            return redirect('profile')
-
-    ctx = {
-        "form": form,
-        "user":user,
-        "profile":profile,
-        }
+            form = UpdateProfileForm(request.POST,request.FILES,instance=profile)
+            if form.is_valid():  
+                
+                profile = form.save(commit=False)
+                profile.save()
+                return redirect('profile') 
+            
+    ctx = {"form":form}
     return render(request, 'update_prof.html', ctx)
-
 
 # pages 
 
@@ -175,9 +166,7 @@ def index(request, category_slug=None):
             products = Product.objects.all().filter(is_available=True)
             cart_count = cart_items.count()
     else:
-        cart = Cart.objects.get(id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-        cart_count = cart_items.count()
+        cart_count = 0
 
 
     if category_slug != None:
@@ -208,9 +197,8 @@ def shop(request, category_slug=None,product_slug=None):
             products = Product.objects.all().filter(is_available=True)
             cart_count = cart_items.count()
     else:
-        cart = Cart.objects.get(id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-        cart_count = cart_items.count()
+        cart_count = 0
+
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=categories, is_available=True)
@@ -254,9 +242,7 @@ def product_detail(request, category_slug, product_slug):
             products = Product.objects.all().filter(is_available=True)
             cart_count = cart_items.count()
     else:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
-        cart_count = cart_items.count()
+        cart_count = 0
 
     context = {
     'single_product': single_product,
