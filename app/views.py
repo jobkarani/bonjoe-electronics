@@ -457,7 +457,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         'products':products,
     }
     return render(request, 'checkout.html',ctx)
-
+                
 @login_required(login_url="/accounts/login/")
 def payments(request,total=0, quantity=0, cart_items=None):
     if request.user.is_authenticated and request.user.id:
