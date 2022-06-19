@@ -522,25 +522,23 @@
 
     <main class="main__content_wrapper">
 
-        <!-- Start breadcrumb section -->
-        <section class="breadcrumb__section breadcrumb__bg">
-            <div class="container">
-                <div class="row row-cols-1">
-                    <div class="col">
-                        <div class="breadcrumb__content text-center">
-                            <h1 class="breadcrumb__content--title text-white mb-25">My Account</h1>
-                            <ul class="breadcrumb__content--menu d-flex justify-content-center">
-                                <li class="breadcrumb__content--menu__items"><a class="text-white"
-                                        href="index-2.html">Home</a></li>
-                                <li class="breadcrumb__content--menu__items"><span class="text-white">My Account</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+       <!-- Start breadcrumb section -->
+  <section class="breadcrumb__section" style="background-color: coral;">
+    <div class="container">
+        <div class="row row-cols-1">
+            <div class="col">
+                <div class="breadcrumb__content text-center" >
+                    <h1 class="breadcrumb__content--title text-white mb-25">My Account</h1>
+                    <ul class="breadcrumb__content--menu d-flex justify-content-center">
+                        <li class="breadcrumb__content--menu__items"><a class="text-white" href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb__content--menu__items"><span class="text-white">My Account</span></li>
+                    </ul>
                 </div>
             </div>
-        </section>
-        <!-- End breadcrumb section -->
+        </div>
+    </div>
+</section>
+<!-- End breadcrumb section -->
 
         <!-- my account section start -->
         <section class="my__account--section section--padding">
@@ -583,7 +581,7 @@
                                     <span class="shipping__items2--content__title" style="color:coral;text-decoration: line-through;">No contact</span>
                                     {% endif %}
                                     <br>
-                                    {% if request.user is user %}
+                                    {% if request.user is user and user.profile %}
                                     <button style="background-color: coral;border:none; border-radius: 5px 5px 5px 5px;">
                                         <a class="account__content--title h4 mb-20" style="color: white; margin-top: 5%; text-align: center;" href="{%url 'update_profile' user.id %}">
                                             Edit Profile

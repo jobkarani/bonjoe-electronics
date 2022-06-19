@@ -569,8 +569,8 @@
             <div class="container">
                 <div class="row row-cols-1">
                     <div class="col">
-                        <div class="breadcrumb__content text-center" style="margin-top: 5%; margin-bottom: 5%;">
-                            <h1 class="breadcrumb__content--title text-white mb-25">Welcome to Bonjoe's Electronic Shop</h1>
+                        <div class="breadcrumb__content text-center" >
+                            <h1 class="breadcrumb__content--title text-white mb-25">Product Details</h1>
                             <ul class="breadcrumb__content--menu d-flex justify-content-center">
                                 <li class="breadcrumb__content--menu__items"><a class="text-white" href="{% url 'index' %}">Home</a></li>
                                 <li class="breadcrumb__content--menu__items"><span class="text-white">Product Details</span></li>
@@ -937,7 +937,7 @@
                             <div class="product__items--thumbnail">
                                 <a class="product__items--link" href="{{ product.get_url }}">
                                     <img class="product__items--img product__primary--img" src="{{product.image1.url}}" alt="product-img">
-                                    <img class="product__items--img product__secondary--img" src="{{product.image1.url}}" alt="product-img">
+                                    <img class="product__items--img product__secondary--img" src="{{product.image2.url}}" alt="product-img">
                                 </a>
                                 <div class="product__badge">
                                     <span class="product__badge--items sale">Sale</span>

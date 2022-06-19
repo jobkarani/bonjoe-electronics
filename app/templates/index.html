@@ -704,7 +704,7 @@
                         </div>
                         <div class="shipping__style3--content">
                             <h2 class="shipping__style3--content__title">SECURE SHOPPING</h2>
-                            <p class="shipping__style3--content__desc">Free order over $300</p>
+                            <p class="shipping__style3--content__desc">Free delivery over Ksh100k</p>
                         </div>
                     </div>
                     <div class="shipping__style3--items d-flex align-items-center">
@@ -773,7 +773,7 @@
                         </div>
                         <div class="shipping__style3--content">
                             <h2 class="shipping__style3--content__title">ACCEPT PAYMENT</h2>
-                            <p class="shipping__style3--content__desc">Visa, Paypal, Mpesa</p>
+                            <p class="shipping__style3--content__desc">Lipa na Mpesa</p>
                         </div>
                     </div>
                     <div class="shipping__style3--items d-flex align-items-center">
@@ -832,45 +832,6 @@
                         Featured
                     </li>
                 </ul>
-                <div class="tab_content">
-                    <!-- <div id="featured" class="tab_pane active show">
-                        <div class="product__section--inner">
-                            <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30 cols-sm-12">
-                                {% for prod in products %}
-                                <div class="col mb-30" id="product" style=" box-shadow: 5px 5px 5px 5px #e2dede;; margin: 5px 5px;">
-                                    <div class="product__items ">
-                                        <div class="product__items--thumbnail">
-                                            <a class="product__items--link" href="{{ prod.get_url }}">
-                                                <img class="product__items--img product__primary--img"
-                                                    src="{{ prod.image1.url }}" alt="product-img" />
-                                                <img class="product__items--img product__secondary--img"
-                                                    src="{{ prod.image1.url }}" alt="product-img" />
-                                            </a>
-                                            <div class="product__badge">
-                                                <span class="product__badge--items sale"
-                                                    style="background: coral;">sale</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">{{ prod.category }}</span>
-                                            <h3 class="product__items--content__title h4">
-                                                <a href="{{ prod.get_url }}">{{ prod.name }}</a>
-                                            </h3>
-                                            <div class="product__items--price">
-                                                <span class="current__price">Ksh {{ prod.new_price }}</span>
-                                                <span class="price__divided"></span>
-                                                <span class="old__price">Ksh {{ prod.old_price }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                                
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
-
                 <div id="featured" class="tab_pane active show">
                     <div class="product__section--inner">
                         <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
@@ -882,7 +843,7 @@
                                             <img class="product__items--img product__primary--img"
                                                 src="{{ prod.image1.url }}" alt="product-img" />
                                             <img class="product__items--img product__secondary--img"
-                                                src="{{ prod.image1.url }}" alt="product-img" />
+                                                src="{{ prod.image2.url }}" alt="product-img" />
                                         </a>
                                         <div class="product__badge">
                                             <span class="product__badge--items sale" style="background: coral;">Sale</span>
@@ -922,7 +883,7 @@
                 <div class="row row-cols-md-2 row-cols-1 mb--n28">
                     <div class="col mb-28">
                         <div class="banner__items position__relative">
-                            <a class="banner__items--thumbnail " href="shop.html"><img
+                            <a class="banner__items--thumbnail " href="{% url 'shop' %}"><img
                                     class="banner__items--thumbnail__img banner__img--max__height"
                                     src="{% static 'assets/img/banner/banner5.png' %}" alt="banner-img">
                                 <div class="banner__items--content">
@@ -936,7 +897,7 @@
                     </div>
                     <div class="col mb-28">
                         <div class="banner__items position__relative">
-                            <a class="banner__items--thumbnail " href="shop.html"><img
+                            <a class="banner__items--thumbnail " href="{% url 'shop' %}"><img
                                     class="banner__items--thumbnail__img banner__img--max__height"
                                     src="{% static 'assets/img/banner/banner6.png' %}" alt="banner-img">
                                 <div class="banner__items--content">

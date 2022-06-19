@@ -4185,7 +4185,7 @@ input[type="number"]::-webkit-outer-spin-button {
   transform: scale(1.04);
 }
 .banner__items--thumbnail:hover .banner__items--content__link {
-  color: var(--secondary-color);
+  color: coral;
 }
 .banner__items--content {
   position: absolute;
@@ -4249,7 +4249,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .banner__items--content__title {
   margin-bottom: 0.7rem;
-  color: var(--primary-color);
+  color:black;
   font-weight: 600;
 }
 @media only screen and (min-width: 768px) {
