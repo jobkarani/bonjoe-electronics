@@ -2,8 +2,8 @@ virtual/
 venv/
 virtual/
 .env
-virtual/
-project/
+env/
+!project/
 *.pyc
 ./start.sh
 __pycache__/
