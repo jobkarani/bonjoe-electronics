@@ -453,29 +453,7 @@ const offcanvasHeader = function () {
       });
 };
 offcanvasHeader();
-const quantityWrapper = document.querySelectorAll(".quantity__box");
-quantityWrapper &&
-  quantityWrapper.forEach(function (singleItem) {
-    let increaseButton = singleItem.querySelector(".increase"),
-      decreaseButton = singleItem.querySelector(".decrease");
-    increaseButton.addEventListener("click", function (e) {
-      let input = e.target.previousElementSibling.children[0];
-      if (null != input.dataset.counter) {
-        let value = parseInt(input.value, 10);
-        (value = isNaN(value) ? 0 : value), value++, (input.value = value);
-      }
-    }),
-      decreaseButton.addEventListener("click", function (e) {
-        let input = e.target.nextElementSibling.children[0];
-        if (null != input.dataset.counter) {
-          let value = parseInt(input.value, 10);
-          (value = isNaN(value) ? 0 : value),
-            value < 1 && (value = 1),
-            value--,
-            (input.value = value);
-        }
-      });
-  });
+
 const openEls = document.querySelectorAll("[data-open]"),
   closeEls = document.querySelectorAll("[data-close]"),
   isVisible = "is-visible";
