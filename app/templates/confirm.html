@@ -150,12 +150,12 @@
                          <div class="card">
                             <h5 class="card-header">Billing Address</h5>
                             <div class="card-body">
-                              <p class="card-text">{{order.full_name}}</p>
-                              <p class="card-text">{{order.email}}</p>
-                              <p class="card-text">{{order.phone}}</p>
-                              <p class="card-text">{{order.town}} {{order.county}}</p>
+                              <p class="card-text"><strong>Name:</strong> {{order.full_name}}</p>
+                              <p class="card-text"><strong>Email:</strong> {{order.email}}</p>
+                              <p class="card-text"><strong>Phone:</strong> {{order.phone}}</p>
+                              <p class="card-text"><strong>Location:</strong> {{order.town}} {{order.county}}</p>
                               {% if order.order_note %}
-                              <p class="card-text">{{ order.order_note }}</p>
+                              <p class="card-text"><strong>Note:</strong> {{ order.order_note }}</p>
                               {% endif %}
                             </div>
                           </div>
