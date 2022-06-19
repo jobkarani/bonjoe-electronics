@@ -2,7 +2,7 @@
 #### This is an ecommerce project  19.6.2022
 #### By **JOB KARANI** and **DERRICK MACHARIA**
 ## Description
-THis is an ecommerce webapp whereby customers can buy products online and pay via Mpesa.
+This is an ecommerce webapp whereby customers can buy products online and pay via Mpesa.
 ## Setup/Installation Requirements
 * python3
 * Github
