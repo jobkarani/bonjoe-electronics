@@ -20,4 +20,4 @@ THis is an ecommerce webapp whereby customers can buy products online and pay vi
 * CSS 
 * HTML
 ## Support and contact details
-If you feel like there is something you think i should change or add in my project or you have a project I can work on, feel free to contact me jobkarani084j@gmail.com <a href="jobkarani084j@gmail.com ">jobkarani084j@gmail.com </a>0707367650
+If you feel like there is something you think i should change or add in my project or you have a project I can work on, feel free to contact me<a href="jobkarani084j@gmail.com ">jobkarani084j@gmail.com </a> or 0707367650
