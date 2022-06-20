@@ -416,7 +416,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
 def search(request):
     products = 0
     product_count = 0
-    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart = Cart.objects.get(user=request.user,cart_id=_cart_id(request))
     cart_items = CartItem.objects.filter(cart=cart, is_active=True)
     cart_count = cart_items.count()
     if 'keyword' in request.GET:
