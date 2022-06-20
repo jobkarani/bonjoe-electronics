@@ -14,35 +14,6 @@ class NewsLetterRecipients(models.Model):
     email = models.EmailField()
 
 
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
-#     profile_photo = CloudinaryField('image')
-#     bio = models.TextField(max_length=500,  null=True)
-#     email = models.EmailField(null=True)
-#     contact = models.CharField(max_length=50, blank=True, null=True)
-
-#     def update(self):
-#         self.save()
-
-#     def save_profile(self):
-#         self.save()
-
-#     def delete_profile(self):
-#         self.delete()
-
-#     def create_profile(self):
-#         self.save()
-
-#     def update_profile(self):
-#         self.update()
-
-#     @classmethod
-#     def get_profile_by_user(cls, user):
-#         profile = cls.objects.filter(user=user)
-#         return profile
-
-#     def __str__(self):
-#         return self.user.username
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
@@ -138,6 +109,7 @@ class Variation(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     cart_id = models.CharField(max_length=250, blank=False, null=True)
+    variations = models.ManyToManyField(Variation, blank=True)
     date_added = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
