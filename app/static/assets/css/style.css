@@ -1,3 +1,5 @@
+
+
 @charset "UTF-8";
 :root {
   --primary-color: #061738;
@@ -18,7 +20,7 @@
   --bg-gray-color: #fcfcfc;
   --gray-color: #fafbfe;
   --gray-color2: #f5f5f5;
-  --font-jost: "Jost", sans-serif;
+  --font-jost: "Inter", sans-serif;
   --body-font-size: 1.6rem;
   --body-font-weight: 400;
   --body-line-height: 2.8rem;
@@ -26,6 +28,8 @@
   --transition: all 0.3s ease 0s;
   --container-fluid-offset: 19rem;
 }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
 .color-scheme-1 {
   --secondary-color: #f51c1c;
 }
@@ -49,7 +53,6 @@ html {
   padding: 0;
 }
 body {
-  font-family: var(--font-jost);
   font-size: var(--body-font-size, 1.6rem);
   font-weight: var(--body-font-weight);
   font-style: normal;
