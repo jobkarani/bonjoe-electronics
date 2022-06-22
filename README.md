@@ -7,7 +7,7 @@ This is an ecommerce webapp whereby customers can buy products online and pay vi
 * python3
 * Github
 * Web browser of your choice.
-* Live link to view the project <a href="">View Bonjoe</a>
+* Live link to view the project <a href="https://bonjoe.herokuapp.com/">View Bonjoe</a>
 ## Known Bugs
 * no bugs known at the moment. 
 ## Technologies Used

@@ -12,7 +12,7 @@ from .models import *
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import  HttpResponseRedirect
+from django.http import  HttpResponse, HttpResponseRedirect
 from .email import send_welcome_email
 from .forms import *
 from django.core.paginator import Paginator
@@ -424,6 +424,10 @@ def search(request):
         if keyword:
             products= Product.objects.order_by('-name').filter(Q(description__icontains=keyword) | Q(name__icontains=keyword))
             product_count = products.count()
+        elif keyword != keyword :
+           
+            return HttpResponse('Ooops no products found with that keyword :(  Try another Keyword :)')
+    
     ctx={
         'products':products,
         'product_count':product_count,
