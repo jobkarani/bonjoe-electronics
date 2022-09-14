@@ -19,8 +19,10 @@ from django.core.paginator import Paginator
 from django.core.exceptions import ObjectDoesNotExist
 from decouple import config
 
-from .mpesa_credentials import MpesaAccessToken, LipaNaMpesaPassword
+# from .mpesa_credentials import MpesaAccessToken, LipaNaMpesaPassword
 from .models import MpesaPayment
+import http.client
+import json
 
 # auth 
 def _cart_id(request):
@@ -560,31 +562,47 @@ def userPayment(request):
         mpesa_form = PaymentForm(
             request.POST, request.FILES, instance=request.user)
         if mpesa_form.is_valid():
-            access_token = MpesaAccessToken().validated_mpesa_access_token
-            stk_push_api_url = config("STK_PUSH_API_URL")
+            conn = http.client.HTTPSConnection("sandbox.safaricom.co.ke")
+            payload = json.dumps({
+            "ShortCode": " ",
+            "CommandID": "CustomerPayBillOnline",
+            "Amount": " ",
+            "Msisdn": " ",
+            "BillRefNumber": " "
+            })
             headers = {
-                "Authorization": "Bearer %s" % access_token,
-                "Content-Type": "application/json",
+            'Authorization': 'Bearer <Access-Token>',
+            'Content-Type': 'application/json'
             }
+            conn.request("POST", "/mpesa/c2b/v1/simulate", payload, headers)
+            res = conn.getresponse()
+            data = res.read()
+            print(data.decode("utf-8"))
+            # access_token = MpesaAccessToken().validated_mpesa_access_token
+            # stk_push_api_url = config("STK_PUSH_API_URL")
+            # headers = {
+            #     "Authorization": "Bearer %s" % access_token,
+            #     "Content-Type": "application/json",
+            # }
            
-            request = {
-                "BusinessShortCode": LipaNaMpesaPassword().BusinessShortCode,
-                "Password": LipaNaMpesaPassword().decode_password,
-                "Timestamp": LipaNaMpesaPassword().payment_time,
-                "TransactionType": "CustomerPayBillOnline",
-                "Amount": "1",
-                "PartyA": phoneSanitize(request.POST.get('phone')),
-                "PartyB": LipaNaMpesaPassword().BusinessShortCode,
-                "PhoneNumber": phoneSanitize(request.POST.get('phone')),
-                # "CallBackURL": "https://mpesa-api-python.herokuapp.com/api/v1/mpesa/callback/",
-                "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-                "AccountReference": "Bonjoe Electronics",
-                "TransactionDesc": "Testing stk push",
-            }
-            response = requests.post(
-                stk_push_api_url, json=request, headers=headers)
+            # request = {
+            #     "BusinessShortCode": LipaNaMpesaPassword().BusinessShortCode,
+            #     "Password": LipaNaMpesaPassword().decode_password,
+            #     "Timestamp": LipaNaMpesaPassword().payment_time,
+            #     "TransactionType": "CustomerPayBillOnline",
+            #     "Amount": "1",
+            #     "PartyA": phoneSanitize(request.POST.get('phone')),
+            #     "PartyB": LipaNaMpesaPassword().BusinessShortCode,
+            #     "PhoneNumber": phoneSanitize(request.POST.get('phone')),
+            #     # "CallBackURL": "https://mpesa-api-python.herokuapp.com/api/v1/mpesa/callback/",
+            #     "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
+            #     "AccountReference": "Bonjoe Electronics",
+            #     "TransactionDesc": "Testing stk push",
+            # }
+            # response = requests.post(
+            #     stk_push_api_url, json=request, headers=headers)
 
-            print(response.text)
+            # print(response.text)
 
             mpesa_form.save()
             # messages.success(
@@ -640,7 +658,3 @@ def submit_review(request, product_id):
                 data.save()
                 messages.success(request, 'Thank you! Your review has been submitted.')
                 return redirect(url)
-
-
-
-        
