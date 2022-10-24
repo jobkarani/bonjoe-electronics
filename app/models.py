@@ -190,6 +190,7 @@ class OrderProduct(models.Model):
 class Pay(models.Model):
     first_name = models.CharField(max_length=144, null=True, blank=True)
     last_name = models.CharField(max_length=144, null=True, blank=True)
+    email = models.EmailField(max_length=256, null=True)
     phone = models.CharField(max_length=30)
 
 

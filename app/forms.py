@@ -25,7 +25,7 @@ class PaymentForm(forms.ModelForm):
         
     class Meta:
         model = Pay
-        fields = ['first_name', 'last_name', 'phone']
+        fields = ['first_name', 'last_name', 'email', 'phone']
 
 class ReviewForm(forms.ModelForm):
     class Meta:

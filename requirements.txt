@@ -34,3 +34,4 @@ toml==0.10.2
 urllib3==1.26.7
 whitenoise==5.0
 zipp==3.6.0
+k2-connect=1.2.4

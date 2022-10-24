@@ -2,12 +2,13 @@ import datetime
 from math import ceil
 from multiprocessing import context
 from multiprocessing.dummy import Value
+from os import environ
 from re import sub
 from tokenize import Pointfloat
 from django.contrib import messages
 from django.db.models import Q
 import requests
-
+import k2connect
 from .models import *
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
@@ -543,6 +544,120 @@ def place_order(request,total=0, quantity=0,):
         return redirect('checkout')
 
 
+# @login_required
+# def userPayment(request):
+#     current_user = request.user
+
+#     cart_items = CartItem.objects.filter(user=current_user)
+#     total = 0
+#     quantity = 0
+#     sub_total = 0
+
+#     for cart_item in cart_items:
+#         total += (cart_item.product.new_price*cart_item.quantity)
+#         quantity += cart_item.quantity
+#         sub_total = total
+#         cart_count = cart_items.count()
+    
+#     if request.method == 'POST':
+#         mpesa_form = PaymentForm(
+#             request.POST, request.FILES, instance=request.user)
+#         if mpesa_form.is_valid():
+#             conn = http.client.HTTPSConnection("sandbox.safaricom.co.ke")
+#             payload = json.dumps({
+#             "ShortCode": " ",
+#             "CommandID": "CustomerPayBillOnline",
+#             "Amount": " ",
+#             "Msisdn": " ",
+#             "BillRefNumber": " "
+#             })
+#             headers = {
+#             'Authorization': 'Bearer <Access-Token>',
+#             'Content-Type': 'application/json'
+#             }
+#             conn.request("POST", "/mpesa/c2b/v1/simulate", payload, headers)
+#             res = conn.getresponse()
+#             data = res.read()
+#             print(data.decode("utf-8"))
+#             # access_token = MpesaAccessToken().validated_mpesa_access_token
+#             # stk_push_api_url = config("STK_PUSH_API_URL")
+#             # headers = {
+#             #     "Authorization": "Bearer %s" % access_token,
+#             #     "Content-Type": "application/json",
+#             # }
+           
+#             # request = {
+#             #     "BusinessShortCode": LipaNaMpesaPassword().BusinessShortCode,
+#             #     "Password": LipaNaMpesaPassword().decode_password,
+#             #     "Timestamp": LipaNaMpesaPassword().payment_time,
+#             #     "TransactionType": "CustomerPayBillOnline",
+#             #     "Amount": "1",
+#             #     "PartyA": phoneSanitize(request.POST.get('phone')),
+#             #     "PartyB": LipaNaMpesaPassword().BusinessShortCode,
+#             #     "PhoneNumber": phoneSanitize(request.POST.get('phone')),
+#             #     # "CallBackURL": "https://mpesa-api-python.herokuapp.com/api/v1/mpesa/callback/",
+#             #     "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
+#             #     "AccountReference": "Bonjoe Electronics",
+#             #     "TransactionDesc": "Testing stk push",
+#             # }
+#             # response = requests.post(
+#             #     stk_push_api_url, json=request, headers=headers)
+
+#             # print(response.text)
+
+#             mpesa_form.save()
+#             # messages.success(
+#             # request, 'Your Payment has been made successfully')
+#             user = User.objects.get(id=current_user.id)
+#             user.save()
+#             # time.sleep(10)
+#             return redirect('userPayment')
+#     else:
+#         mpesa_form = PaymentForm(instance=request.user)
+#     context = {
+#         'mpesa_form': mpesa_form,
+#         'cart_items':cart_items,
+#         'sub_total':sub_total,
+#         'cart_count':cart_count,
+#     }
+#     return render(request, 'pay.html', context)
+
+
+def submit_review(request, product_id):
+    url = request.META.get('HTTP_REFERER')
+    if request.method == 'POST':
+        try:
+            reviews = ReviewRating.objects.get(user__id=request.user.id, product__id=product_id)
+            form = ReviewForm(request.POST, instance=reviews)
+            form.save()
+            messages.success(request, 'Thank you! Your review has been updated.')
+            return redirect(url)
+        except ReviewRating.DoesNotExist:
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = ReviewRating()
+                data.subject = form.cleaned_data['subject']
+                data.rating = form.cleaned_data['rating']
+                data.review = form.cleaned_data['review']
+                data.ip = request.META.get('REMOTE_ADDR')
+                data.product_id = product_id
+                data.user_id = request.user.id
+                data.save()
+                messages.success(request, 'Thank you! Your review has been submitted.')
+                return redirect(url)
+
+
+def oauth(request):
+    url = "https://sandbox.kopokopo.com/oauth/token?grant_type=client_credentials&client_id=config('CLIENT_ID')&client_secret=config('CLIENT_SECRET')&api key=config('API_KEY')"
+    payload={}
+    headers = {
+    'Accept': 'application/json'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    print(response.text)
+
 @login_required
 def userPayment(request):
     current_user = request.user
@@ -561,56 +676,45 @@ def userPayment(request):
     if request.method == 'POST':
         mpesa_form = PaymentForm(
             request.POST, request.FILES, instance=request.user)
+            
+        
+
         if mpesa_form.is_valid():
-            conn = http.client.HTTPSConnection("sandbox.safaricom.co.ke")
+
+            url = "https://sandbox.kopokopo.com/api/v1/incoming_payments?grant_type=client_credentials&client_id=config('CLIENT_ID')&client_secret=config('CLIENT_SECRET')&API Key=config('API_KEY')"
+
             payload = json.dumps({
-            "ShortCode": " ",
-            "CommandID": "CustomerPayBillOnline",
-            "Amount": " ",
-            "Msisdn": " ",
-            "BillRefNumber": " "
+            "payment_channel": "",
+            "till_number": config('TILL_NUMBER'),
+            "subscriber": {
+                "first_name": request.POST.get('first_name'),
+                "last_name": request.POST.get('last_name'),
+                "phone_number": phoneSanitize(request.POST.get('phone')),
+                "email": request.POST.get('email'),
+            },
+            "amount": {
+                "currency": "KES",
+                "value": sub_total
+            },
+            "metadata": {
+                "something": "",
+                "something_else": "Something else"
+            },
+            "_links": {
+                "callback_url": "https://webhook.site/52fd1913-778e-4ee1-bdc4-74517abb758d"
+            }
             })
             headers = {
-            'Authorization': 'Bearer <Access-Token>',
+            'Authorization': 'Bearer OWxjVF1zPyI6NCeSQhZgqtHN8ZaKKcy6GN6fI8RezeI',
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
             }
-            conn.request("POST", "/mpesa/c2b/v1/simulate", payload, headers)
-            res = conn.getresponse()
-            data = res.read()
-            print(data.decode("utf-8"))
-            # access_token = MpesaAccessToken().validated_mpesa_access_token
-            # stk_push_api_url = config("STK_PUSH_API_URL")
-            # headers = {
-            #     "Authorization": "Bearer %s" % access_token,
-            #     "Content-Type": "application/json",
-            # }
-           
-            # request = {
-            #     "BusinessShortCode": LipaNaMpesaPassword().BusinessShortCode,
-            #     "Password": LipaNaMpesaPassword().decode_password,
-            #     "Timestamp": LipaNaMpesaPassword().payment_time,
-            #     "TransactionType": "CustomerPayBillOnline",
-            #     "Amount": "1",
-            #     "PartyA": phoneSanitize(request.POST.get('phone')),
-            #     "PartyB": LipaNaMpesaPassword().BusinessShortCode,
-            #     "PhoneNumber": phoneSanitize(request.POST.get('phone')),
-            #     # "CallBackURL": "https://mpesa-api-python.herokuapp.com/api/v1/mpesa/callback/",
-            #     "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-            #     "AccountReference": "Bonjoe Electronics",
-            #     "TransactionDesc": "Testing stk push",
-            # }
-            # response = requests.post(
-            #     stk_push_api_url, json=request, headers=headers)
 
-            # print(response.text)
+            response = requests.request("POST", url, headers=headers, data=payload)
 
-            mpesa_form.save()
-            # messages.success(
-            # request, 'Your Payment has been made successfully')
-            user = User.objects.get(id=current_user.id)
-            user.save()
-            # time.sleep(10)
-            return redirect('userPayment')
+            print(response.text)
+
+
     else:
         mpesa_form = PaymentForm(instance=request.user)
     context = {
@@ -635,26 +739,3 @@ def phoneSanitize(phone):
     return phone
     
 print(phoneSanitize("0112528016"))
-
-def submit_review(request, product_id):
-    url = request.META.get('HTTP_REFERER')
-    if request.method == 'POST':
-        try:
-            reviews = ReviewRating.objects.get(user__id=request.user.id, product__id=product_id)
-            form = ReviewForm(request.POST, instance=reviews)
-            form.save()
-            messages.success(request, 'Thank you! Your review has been updated.')
-            return redirect(url)
-        except ReviewRating.DoesNotExist:
-            form = ReviewForm(request.POST)
-            if form.is_valid():
-                data = ReviewRating()
-                data.subject = form.cleaned_data['subject']
-                data.rating = form.cleaned_data['rating']
-                data.review = form.cleaned_data['review']
-                data.ip = request.META.get('REMOTE_ADDR')
-                data.product_id = product_id
-                data.user_id = request.user.id
-                data.save()
-                messages.success(request, 'Thank you! Your review has been submitted.')
-                return redirect(url)

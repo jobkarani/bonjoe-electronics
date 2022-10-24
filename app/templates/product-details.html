@@ -522,7 +522,7 @@
     <main class="main__content_wrapper">
         
         <!-- Start breadcrumb section -->
-        <section class="breadcrumb__section" style="background-color: coral;">
+        <section class="breadcrumb__section" style="background-color: coral; padding-top: 5%;padding-bottom: 5%;">
             <div class="container">
                 <div class="row row-cols-1">
                     <div class="col">
@@ -710,30 +710,7 @@
                                 </div>
                                 <p class="product__details--info__desc mb-15">{{ single_product.description }}</p>
                                 <div class="product__variant">
-                                    <div class="product__variant--list mb-10">
-                                        <div class="item-option-select">
-                                            <h4>Choose Color</h4>
-                                            <form class="form-radio" name="flavour"  enctype="multipart/form-data" required>
-                                              {% for i in single_product.variation_set.colors %}
-                                                <input value="{{ i.variation_value | lower }}" type="radio" name="radAnswer"><span>{{ i.variation_value | capfirst }}</span>
-                                              {% endfor %}
-                                            </form>
-                                          </div> <br>
-                                          <div class="item-option-select">
-                                            <h4>Choose Size</h4>
-                                            <form class="form-radio" enctype="multipart/form-data" required>
-                                              {% for i in single_product.variation_set.sizes %}
-                                              <input type="radio" value="{{ i.variation_value | lower }}" name="radAnswer">{{ i.variation_value | capfirst }}
-                                              {% endfor %}
-                                            </form>
-                                          </div>
-                                          <br>
-                                    </div>
-                                    
-
-
                                     <div class="product__variant--list quantity d-flex align-items-center mb-20">
-                                        
                                         {% if single_product.stock <= 0 %}
                                         <h5 class="text-danger">Out of Stock</h5>
                                         {% else %}
