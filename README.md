@@ -1,6 +1,6 @@
  # Bonjoe
 #### This is an ecommerce project  19.6.2022
-#### By **JOB KARANI** VALENTINE JUNIOR and **DERRICK MACHARIA**
+#### By **JOB KARANI**, VALENTINE JUNIOR and **DERRICK MACHARIA**
 ## Description
 This is an ecommerce webapp whereby customers can buy products online and pay via Mpesa.
 ## Setup/Installation Requirements
