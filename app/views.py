@@ -544,83 +544,83 @@ def place_order(request,total=0, quantity=0,):
         return redirect('checkout')
 
 
-# @login_required
-# def userPayment(request):
-#     current_user = request.user
+@login_required
+def userPayment(request):
+    current_user = request.user
 
-#     cart_items = CartItem.objects.filter(user=current_user)
-#     total = 0
-#     quantity = 0
-#     sub_total = 0
+    cart_items = CartItem.objects.filter(user=current_user)
+    total = 0
+    quantity = 0
+    sub_total = 0
 
-#     for cart_item in cart_items:
-#         total += (cart_item.product.new_price*cart_item.quantity)
-#         quantity += cart_item.quantity
-#         sub_total = total
-#         cart_count = cart_items.count()
+    for cart_item in cart_items:
+        total += (cart_item.product.new_price*cart_item.quantity)
+        quantity += cart_item.quantity
+        sub_total = total
+        cart_count = cart_items.count()
     
-#     if request.method == 'POST':
-#         mpesa_form = PaymentForm(
-#             request.POST, request.FILES, instance=request.user)
-#         if mpesa_form.is_valid():
-#             conn = http.client.HTTPSConnection("sandbox.safaricom.co.ke")
-#             payload = json.dumps({
-#             "ShortCode": " ",
-#             "CommandID": "CustomerPayBillOnline",
-#             "Amount": " ",
-#             "Msisdn": " ",
-#             "BillRefNumber": " "
-#             })
-#             headers = {
-#             'Authorization': 'Bearer <Access-Token>',
-#             'Content-Type': 'application/json'
-#             }
-#             conn.request("POST", "/mpesa/c2b/v1/simulate", payload, headers)
-#             res = conn.getresponse()
-#             data = res.read()
-#             print(data.decode("utf-8"))
-#             # access_token = MpesaAccessToken().validated_mpesa_access_token
-#             # stk_push_api_url = config("STK_PUSH_API_URL")
-#             # headers = {
-#             #     "Authorization": "Bearer %s" % access_token,
-#             #     "Content-Type": "application/json",
-#             # }
+    if request.method == 'POST':
+        mpesa_form = PaymentForm(
+            request.POST, request.FILES, instance=request.user)
+        if mpesa_form.is_valid():
+            conn = http.client.HTTPSConnection("sandbox.safaricom.co.ke")
+            payload = json.dumps({
+            "ShortCode": " ",
+            "CommandID": "CustomerPayBillOnline,"
+            "Amount": " ",
+            "Msisdn": " ",
+            "BillRefNumber": " "
+            })
+            headers = {
+            'Authorization': 'Bearer <Access-Token>',
+            'Content-Type': 'application/json'
+            }
+            conn.request("POST", "/mpesa/c2b/v1/simulate", payload, headers)
+            res = conn.getresponse()
+            data = res.read()
+            print(data.decode("utf-8"))
+            access_token = MpesaAccessToken().validated_mpesa_access_token
+            stk_push_api_url = config("STK_PUSH_API_URL")
+            headers = {
+                "Authorization": "Bearer %s" % access_token,
+                "Content-Type": "application/json",
+            }
            
-#             # request = {
-#             #     "BusinessShortCode": LipaNaMpesaPassword().BusinessShortCode,
-#             #     "Password": LipaNaMpesaPassword().decode_password,
-#             #     "Timestamp": LipaNaMpesaPassword().payment_time,
-#             #     "TransactionType": "CustomerPayBillOnline",
-#             #     "Amount": "1",
-#             #     "PartyA": phoneSanitize(request.POST.get('phone')),
-#             #     "PartyB": LipaNaMpesaPassword().BusinessShortCode,
-#             #     "PhoneNumber": phoneSanitize(request.POST.get('phone')),
-#             #     # "CallBackURL": "https://mpesa-api-python.herokuapp.com/api/v1/mpesa/callback/",
-#             #     "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-#             #     "AccountReference": "Bonjoe Electronics",
-#             #     "TransactionDesc": "Testing stk push",
-#             # }
-#             # response = requests.post(
-#             #     stk_push_api_url, json=request, headers=headers)
+            request = {
+                "BusinessShortCode": LipaNaMpesaPassword().BusinessShortCode,
+                "Password": LipaNaMpesaPassword().decode_password,
+                "Timestamp": LipaNaMpesaPassword().payment_time,
+                "TransactionType": "CustomerPayBillOnline",
+                "Amount": "1",
+                "PartyA": phoneSanitize(request.POST.get('phone')),
+                "PartyB": LipaNaMpesaPassword().BusinessShortCode,
+                "PhoneNumber": phoneSanitize(request.POST.get('phone')),
+                # "CallBackURL": "https://mpesa-api-python.herokuapp.com/api/v1/mpesa/callback/",
+                "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
+                "AccountReference": "Bonjoe Electronics",
+                "TransactionDesc": "Testing stk push",
+            }
+            response = requests.post(
+                stk_push_api_url, json=request, headers=headers)
 
-#             # print(response.text)
+            print(response.text)
 
-#             mpesa_form.save()
-#             # messages.success(
-#             # request, 'Your Payment has been made successfully')
-#             user = User.objects.get(id=current_user.id)
-#             user.save()
-#             # time.sleep(10)
-#             return redirect('userPayment')
-#     else:
-#         mpesa_form = PaymentForm(instance=request.user)
-#     context = {
-#         'mpesa_form': mpesa_form,
-#         'cart_items':cart_items,
-#         'sub_total':sub_total,
-#         'cart_count':cart_count,
-#     }
-#     return render(request, 'pay.html', context)
+            mpesa_form.save()
+            # messages.success(
+            # request, 'Your Payment has been made successfully')
+            user = User.objects.get(id=current_user.id)
+            user.save()
+            # time.sleep(10)
+            return redirect('userPayment')
+    else:
+        mpesa_form = PaymentForm(instance=request.user)
+    context = {
+        'mpesa_form': mpesa_form,
+        'cart_items':cart_items,
+        'sub_total':sub_total,
+        'cart_count':cart_count,
+    }
+    return render(request, 'pay.html', context)
 
 
 def submit_review(request, product_id):
